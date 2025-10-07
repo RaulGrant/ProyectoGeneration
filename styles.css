@@ -23,13 +23,26 @@
   --shadow-lg: 0 8px 32px rgba(13, 13, 13, 0.2);
 
   --transition: all 0.3s ease;
+
+  /* Accent colour derived from the secondary colour. This is used for interactive
+   * elements and decorative icons in the team section to provide a cohesive
+   * colour palette based on the design from the v0 conversation. */
+  --color-accent: var(--color-secondary);
+
 }
 
 body {
   font-family: var(--font-serif);
   line-height: 1.6;
   color: var(--color-white);
-  background-color: var(--color-primary);
+  /* Use a light blue background and apply a repeating pattern of paws and
+   * prosthetic illustrations. The pattern image is stored in the images
+   * directory as paw-pattern-bg.png. Setting a larger background-size makes
+   * the pattern subtle and non‑distracting. */
+  background-color: var(--color-primary-light);
+  background-image: url('images/paw-pattern-bg.png');
+  background-repeat: repeat;
+  background-size: 500px;
   overflow-x: hidden;
 }
 
@@ -728,6 +741,55 @@ body {
   transform: scale(1.05);
 }
 
+/* Sección: Así nació Pawssible */
+.pawssible-birth-section {
+  padding: 2.5rem 2rem;
+  border-radius: 1rem;
+  background-color: #0597f2; /* color sólido similar al azul original */
+  max-width: 100%;
+  margin: 2rem 0;
+  box-shadow: var(--shadow-md); /* sombra discreta, igual que otros cuadros */
+  animation: none; /* quitamos animación glow */
+}
+
+.pawssible-birth-text {
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-white);
+  text-align: center;
+  line-height: 1.8;
+  margin: 0;
+}
+
+
+/* Responsive Design para la sección */
+@media (min-width: 640px) {
+  .pawssible-birth-section {
+    padding: 2rem 2.5rem;
+  }
+
+  .pawssible-birth-text {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .pawssible-birth-text {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .pawssible-birth-section {
+    padding: 2.5rem 3rem;
+  }
+
+  .pawssible-birth-text {
+    font-size: 1.5rem;
+  }
+}
+
 /* Misión */
 .mision {
   background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
@@ -893,33 +955,39 @@ body {
   box-shadow: 0 8px 32px rgba(242, 154, 46, 0.4);
 }
 
-.member-photo {
+.member-photo2{
   width: 100%;
   height: 100%;
   object-fit: cover;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .member-name {
   font-family: var(--font-sans);
-  font-size: 1.5rem;
+  font-size: 1.1em;
   font-weight: 700;
   color: var(--color-white);
+  font-weight: 600;
   margin-bottom: 0.5rem;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .member-role {
   font-family: var(--font-subtitle);
-  font-size: 1.125rem;
+  font-size: 1.45rem;
   font-weight: 400;
-  color: var(--color-secondary);
+  color: var(--color-sncondarydary);
   margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .member-description {
   font-family: var(--font-serif);
-  font-size: 1rem;
-  color: var(--color-beige);
-  line-height: 1.6;
+  font-size: 1.1rem;
+  color: var(--color-secondary);
+  line-height: 1.6;;
+  font-weight: 600;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2)
 }
 
 /* Footer */
@@ -950,24 +1018,26 @@ body {
 
 .footer-tagline {
   font-family: var(--font-serif);
-  font-size: 0.95rem;
-  color: var(--color-beige);
+  font-size: 1.1rem;
+  color: var(--color-secondary);
+  font-weight: 600;
   font-style: italic;
   margin-top: 0.5rem;
 }
 
 .footer-subtitle {
   font-family: var(--font-sans);
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   font-weight: 700;
-  color: var(--color-white);
+  color: var(--color-secondary);
   margin-bottom: 1rem;
 }
 
 .footer-text {
   font-family: var(--font-serif);
-  font-size: 1rem;
-  color: var(--color-beige);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-secondary);
   margin-bottom: 0.5rem;
 }
 
@@ -1006,8 +1076,10 @@ body {
 
 .footer-copyright {
   font-family: var(--font-subtitle);
-  font-size: 0.95rem;
-  color: var(--color-beige);
+  font-size: 1.05rem;
+  color: var(--color-secondary);
+  font-weight: 600;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 /* Responsive Design */
@@ -1148,4 +1220,269 @@ body {
 
 .highlight-box {
   animation: glow 5s ease-in-out infinite;
+}
+
+/* ===== Estilos personalizados para la nueva sección de equipo ===== */
+
+/* Tarjeta del equipo con efecto de desenfoque y desplazamiento */
+.team-card {
+  position: relative;
+  background-color: rgba(34, 99, 180, 0.4);
+  backdrop-filter: blur(6px);
+  border-radius: 1.5rem;
+  padding: 2rem 1.5rem;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Animación de la tarjeta al pasar el ratón */
+.team-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 8px 32px rgba(242, 154, 46, 0.4);
+}
+
+/* Contenedor circular de la imagen */
+.card-image {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid var(--color-secondary);
+  transition: border-width 0.3s ease, transform 0.3s ease;
+}
+
+/* Imagen dentro del contenedor circular */
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Aumenta el borde y escala la imagen en hover */
+.team-card:hover .card-image {
+  border-width: 8px;
+  transform: scale(1.05);
+}
+
+/* Icono de huella superpuesto a la imagen */
+.paw-icon {
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+  font-size: 2rem;
+  color: var(--color-secondary);
+  transition: transform 0.3s ease;
+}
+
+/* Animación del icono de huella en hover */
+.team-card:hover .paw-icon {
+  transform: translate(10px, -10px) scale(1.3) rotate(12deg);
+}
+
+/* Nombre del integrante */
+.card-name {
+  color: var(--color-white);
+  font-family: var(--font-sans);
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+/* Puesto del integrante */
+.card-position {
+  color: var(--color-secondary);
+  font-family: var(--font-subtitle);
+  font-size: 1.125rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Descripción del integrante */
+.card-description {
+  color: var(--color-beige);
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Botón interactivo */
+.card-button {
+  margin-top: 1.25rem;
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-family: var(--font-sans);
+  color: var(--color-white);
+  background-color: var(--color-secondary);
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Cambia el color y escala del botón al hacer hover en la tarjeta */
+.team-card:hover .card-button {
+  background-color: var(--color-primary);
+  transform: scale(1.05);
+}
+
+/* Definición del texto por defecto dentro del botón */
+.card-button .button-default {
+  display: inline;
+}
+
+/* Definición del texto alternativo del botón */
+.card-button .button-hover {
+  display: none;
+}
+
+/* Al hacer hover sobre la tarjeta, alternar los textos del botón */
+.team-card:hover .card-button .button-default {
+  display: none;
+}
+.team-card:hover .card-button .button-hover {
+  display: inline;
+}
+
+/* Contenedor de los elementos decorativos flotantes */
+.decoratives {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Iconos decorativos flotantes */
+.decorative {
+  position: absolute;
+  opacity: 0.3;
+  font-size: 3rem;
+  color: var(--color-secondary);
+  animation: float 12s infinite linear;
+}
+
+/* Posicionamientos distintos para cada icono decorativo */
+.decorative.bone {
+  top: 10%;
+  left: -5%;
+  animation-duration: 14s;
+}
+.decorative.ball {
+  bottom: 15%;
+  right: -5%;
+  animation-duration: 10s;
+}
+.decorative.paw {
+  top: 50%;
+  right: -5%;
+  animation-duration: 12s;
+}
+/* Hero Decorative Elements */
+.hero-ball {
+  position: absolute;
+  bottom: 4rem;
+  right: 2rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background-color: #f29a2e;
+  box-shadow: 0 20px 40px rgba(242, 154, 46, 0.4);
+  animation: float 2s ease-in-out infinite;
+}
+
+@media (min-width: 640px) {
+  .hero-ball {
+    bottom: 6rem;
+    right: 4rem;
+    width: 5rem;
+    height: 5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-ball {
+    width: 6rem;
+    height: 6rem;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(-20px);
+  }
+  50% {
+    transform: translateY(20px);
+  }
+}
+
+.hero-shape-1 {
+  position: absolute;
+  top: 5rem;
+  left: 1rem;
+  width: 3rem;
+  height: 3rem;
+  border: 4px solid #0597f2;
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: rotate 8s linear infinite;
+}
+
+@media (min-width: 640px) {
+  .hero-shape-1 {
+    top: 8rem;
+    left: 3rem;
+    width: 4rem;
+    height: 4rem;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.2);
+  }
+  to {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+.hero-shape-2 {
+  position: absolute;
+  bottom: 8rem;
+  left: 2rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: #05aff2;
+  opacity: 0.2;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+@media (min-width: 640px) {
+  .hero-shape-2 {
+    bottom: 12rem;
+    left: 6rem;
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
 }
