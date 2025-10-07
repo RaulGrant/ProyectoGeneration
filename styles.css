@@ -614,7 +614,7 @@ body {
 }
 
 .btn-primary:hover {
-  transform: translateY(-3px);
+  
   box-shadow: var(--shadow-lg);
   background: linear-gradient(135deg, #e08a1e 0%, var(--color-secondary) 100%);
 }
@@ -1122,12 +1122,12 @@ body {
 }
 
 /* Aplicar animaciones sutiles a elementos específicos */
-.btn-primary {
-  animation: pulse 2s infinite;
-}
 
+.btn-primary {
+  animation: float 3s ease-in-out infinite;
+}
 .btn-primary:hover {
-  animation: none;
+  animation: pulse 3s ease-in-out infinite;
 }
 
 .historia-image-container {
