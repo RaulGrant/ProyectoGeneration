@@ -1199,7 +1199,7 @@ body {
   animation: float 3s ease-in-out infinite;
 }
 .btn-primary:hover {
-  animation: pulse 3s ease-in-out infinite;
+  animation: float 3s ease-in-out infinite;
 }
 
 .historia-image-container {

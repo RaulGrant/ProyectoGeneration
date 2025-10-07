@@ -1,3 +1,5 @@
+// ===== FUNCIONALIDADES DE LA PÁGINA SOBRE NOSOTROS =====
+// Script limpio sin AOS personalizado - Usa AOS estándar desde CDN
 
 document.addEventListener('DOMContentLoaded', function() {
     
@@ -97,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // ===== SCROLL TO TOP BUTTON =====
     const scrollToTopBtn = document.createElement('button');
-    scrollToTopBtn.innerHTML = '⬆️';
+    scrollToTopBtn.innerHTML = '↑';
     scrollToTopBtn.className = 'scroll-to-top';
     scrollToTopBtn.style.cssText = `
         position: fixed;
