@@ -7,13 +7,13 @@
 
 
 :root {
-  --color-primary: #2263b4;
+  --color-primary: #1a4d8f;
   --color-secondary: #f29a2e;
   --color-white: #ffffff;
   --color-beige: #f7f4ef;
   --color-black: #0d0d0d;
   --color-primary-dark: #1a4d8f;
-  --color-primary-light: #3a7bc8;
+  --color-primary-light: #1a4d8f;
 
   --font-serif: "Jomolhari", serif;
   --font-sans: "Jost", sans-serif;
@@ -303,7 +303,7 @@ body {
   font-family: var(--font-sans);
   font-size: 1.75rem;
   font-weight: 700;
-  color: var(--color-secondary);
+  color: #f29a2e;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -418,7 +418,7 @@ body {
   font-family: var(--font-sans);
   color: var(--color-white);
   text-decoration: none;
-  background: linear-gradient(135deg, var(--color-secondary) 0%, #e08a1e 100%);
+  background: linear-gradient(135deg, var(--color-secondary) 0%, #f29a2e 100%);
   border-radius: 15px;           /* redondeado elegante */
   box-shadow: var(--shadow-md);
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
@@ -429,7 +429,7 @@ body {
 .btn-primary:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-lg);
-  background: linear-gradient(135deg, #e08a1e 0%, var(--color-secondary) 100%);
+  background: linear-gradient(135deg, #f29a2e 0%, var(--color-secondary) 100%);
 }
 
 
@@ -533,7 +533,7 @@ body {
 
 .features {
   padding: 5rem 2rem;
-  background: linear-gradient(180deg, #f0f4f8 0%, #e6f0ff 100%);
+  background: linear-gradient(180deg, #1a4d8f 0%, #1a4d8f 100%);
   position: relative;
 }
 
@@ -544,13 +544,13 @@ body {
   left: 0;
   right: 0;
   height: 5px;
-  background: linear-gradient(90deg, #1e3a5f 0%, #ff6b35 50%, #1e3a5f 100%);
+  background: #1a4d8f;
 }
 
 .section-title {
   text-align: center;
   font-size: 3rem;
-  color: #1e3a5f;
+  color: #ffffff;
   margin-bottom: 3rem;
   text-shadow: 2px 2px 4px rgba(255, 107, 53, 0.2);
 }
@@ -569,14 +569,14 @@ body {
   border-radius: 20px;
   text-align: center;
   transition: all 0.3s;
-  border: 3px solid #ff6b35;
+  border: 5px solid #f29a2e;
   box-shadow: 0 8px 25px rgba(30, 58, 95, 0.2);
 }
 
 .feature-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 15px 40px rgba(255, 107, 53, 0.4);
-  border-color: #1e3a5f;
+  border-color: #f29a2e;
 }
 
 .feature-icon {
@@ -602,7 +602,7 @@ body {
 /* ========== PRODUCTS SECTION ========== */
 .products {
   padding: 5rem 2rem;
-  background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+  background: linear-gradient(135deg, #1a4d8f 0%, #1a4d8f 100%);
 }
 
 .products .section-title {
@@ -622,8 +622,8 @@ body {
   border-radius: 20px;
   overflow: hidden;
   transition: all 0.3s;
-  border: 4px solid #ff6b35;
-  box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+  border: 4px solid #f29a2e;
+  box-shadow: 0 10px 30px oklab(71.867% 0.04922 0.14611 / 0.3);
 }
 
 .product-card:hover {
@@ -643,13 +643,13 @@ body {
 }
 
 .product-info h3 {
-  color: #1e3a5f;
+  color: #2263b4;
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
 }
 
 .product-price {
-  color: #ff6b35;
+  color: #f29a2e;
   font-size: 1.8rem;
   font-weight: bold;
   margin: 1rem 0;
@@ -657,7 +657,7 @@ body {
 
 .product-btn {
   width: 100%;
-  background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+  background: linear-gradient(135deg, #f29a2e 0%, #f29a2e 100%);
   color: white;
   border: none;
   padding: 1rem;
@@ -665,22 +665,22 @@ body {
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s;
-  border: 2px solid #ff6b35;
+  border: 2px solid #f29a2e;
 }
 
 .product-btn:hover {
-  background: linear-gradient(135deg, #ff6b35 0%, #ff8555 100%);
+  background: linear-gradient(135deg, #f29a2e 0%, #f29a2e 100%);
   transform: translateY(-2px);
 }
 
 /* ========== TESTIMONIALS SECTION ========== */
 .testimonials {
   padding: 5rem 2rem;
-  background: linear-gradient(180deg, #ffeee8 0%, #fff5f0 100%);
+  background: linear-gradient(180deg, #1a4d8f 0%, #1a4d8f 100%);
 }
 
 .testimonials .section-title {
-  color: #1e3a5f;
+  color: #ffffff;
 }
 
 .testimonials-grid {
@@ -695,7 +695,7 @@ body {
   background: white;
   padding: 2rem;
   border-radius: 20px;
-  border: 3px solid #1e3a5f;
+  border: 3px solid #f29a2e;
   box-shadow: 0 8px 25px rgba(255, 107, 53, 0.2);
   transition: all 0.3s;
 }
