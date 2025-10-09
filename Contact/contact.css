@@ -76,9 +76,16 @@ img, svg{ display:block; }
 
 /* ===== HERO con esferas ===== */
 .hero{
-  position:relative; overflow:hidden; text-align:center;
+  position:relative;
+  overflow:hidden;
+  text-align:center;
+  /* El héroe queda escondido parcialmente por la barra de navegación fija. Añadimos un margen superior para
+   * compensar el alto del navbar. Ajustamos 6rem para desplazar el contenido lo suficiente y evitar que
+   * el título "Estamos aquí para ayudarte" quede oculto. */
+  margin-top: 6rem;
   background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
-  color:#fff; padding: clamp(2.5rem, 5vw, 4.5rem) 0;
+  color:#fff;
+  padding: clamp(2.5rem, 5vw, 4.5rem) 0;
 }
 .hero-inner{ position:relative; z-index:1; max-width:900px; margin:0 auto; }
 .hero-title{ margin:0 0 .5rem; font-weight:800; font-size: clamp(1.8rem, 1rem + 3vw, 3rem); }

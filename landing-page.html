@@ -10,21 +10,21 @@
     <link rel="stylesheet" href="stylesLanding.css">
 </head>
 <body>
-     Navbar 
+    <!-- Barra de navegación principal -->
     <nav class="navbarlanding">
         <div class="container">
             <div class="nav-content">
+                <!-- Logo con imagen y texto para unificar el navbar en todo el sitio -->
                 <div class="logo">
-                    <span class="logo-text">Pawssible</span>
+                    <img src="images/logo.webp" alt="Logo Pawssible" class="logo-img">
+                    <span class="logo-text">PAWSSIBLE</span>
                 </div>
+                <!-- Lista de enlaces completa: incluimos también un enlace al catálogo aunque estemos en él para mantener coherencia -->
                 <ul class="nav-links">
-                    <li><a href="landing-page.html" class="nav-link active">Inicio</a></li>
-                </ul>
-                <ul class="nav-links">
-                    <li><a href="sobre-nosotros.html" class="nav-link active">Sobre Nosotros</a></li>
-                </ul>
-                <ul class="nav-links">
-                    <li><a href="restodelinkdeIsaac.html" class="nav-link active">Contacto</a></li>
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="landing-page.html" class="nav-link">Catálogo</a></li>
+                    <li><a href="sobre-nosotros.html" class="nav-link">Sobre Nosotros</a></li>
+                    <li><a href="Contact/contact.html" class="nav-link">Contacto</a></li>
                 </ul>
             </div>
         </div>
@@ -113,35 +113,8 @@
          <!-- Products Section -->
         <section class="products" id="productos">
             <h2 class="section-title">Nuestros Productos</h2>
-            <div class="products-grid">
-                <div class="product-card">
-                    <img src="/images/frontLeg.jpg" alt="Prótesis Delantera" class="product-image">
-                    <div class="product-info">
-                        <h3>Prótesis Pata Delantera</h3>
-                        <p>Diseño ergonómico para máxima movilidad</p>
-                        <div class="product-price">$299.99</div>
-                        <button class="product-btn">Agregar al Carrito</button>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <img src="/images/backLeg.jpg" alt="Prótesis Trasera" class="product-image">
-                    <div class="product-info">
-                        <h3>Prótesis Pata Trasera</h3>
-                        <p>Soporte óptimo para patas posteriores</p>
-                        <div class="product-price">$349.99</div>
-                        <button class="product-btn">Agregar al Carrito</button>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <img src="/images/kit.jpg" alt="Kit Completo" class="product-image">
-                    <div class="product-info">
-                        <h3>Kit de Accesorios</h3>
-                        <p>Incluye fundas, almohadillas y herramientas</p>
-                        <div class="product-price">$89.99</div>
-                        <button class="product-btn">Agregar al Carrito</button>
-                    </div>
-                </div>
-            </div>
+            <!-- Contenedor dinámico para catálogo; se rellena con los datos de data/protesis.json -->
+            <div id="product-list" class="products-grid"></div>
         </section>
 
         <!-- Testimonials Section -->
@@ -166,6 +139,22 @@
             </div>
         </section>
    
+    <!-- Copia embebida del catálogo para funcionar sin servidor local -->
+    <script type="application/json" id="catalog-embed">
+[
+  {"id":1,"sku":"PAW-FR-PARCIAL-01","tipo":"protesis","miembro":"frontal","segmento":"parcial","nombre":"Prótesis delantera — parcial","descripcion":"Socket ligero con soporte rígido y correas dobles.","precio":2500,"stock":10,"imagenes":["images/catalog/protesis-frontal-parcial-01.png"]},
+  {"id":2,"sku":"PAW-TR-PARCIAL-01","tipo":"protesis","miembro":"trasero","segmento":"parcial","nombre":"Prótesis trasera — parcial","descripcion":"Acolchado en zonas de contacto y refuerzos de apoyo.","precio":2600,"stock":8,"imagenes":["images/catalog/protesis-trasera-parcial-01.png"]},
+  {"id":3,"sku":"PAW-FR-COMPLETA-01","tipo":"protesis","miembro":"frontal","segmento":"completa","nombre":"Prótesis delantera — completa","descripcion":"Con articulación simulada para marcha natural.","precio":4200,"stock":6,"imagenes":["images/catalog/protesis-frontal-completa-01.png"]},
+  {"id":4,"sku":"PAW-TR-COMPLETA-01","tipo":"protesis","miembro":"trasero","segmento":"completa","nombre":"Prótesis trasera — completa","descripcion":"Centro de gravedad estable y tope antideslizante.","precio":4400,"stock":5,"imagenes":["images/catalog/protesis-trasera-completa-01.png"]},
+  {"id":5,"sku":"PAW-BI-FR-PARCIAL-01","tipo":"protesis","miembro":"frontal","configuracion":"bilateral","segmento":"parcial","nombre":"Prótesis bilateral delantera — parcial","descripcion":"Par emparejado con ajuste sincronizado.","precio":4800,"stock":3,"imagenes":["images/catalog/protesis-bilateral-frontal-parcial-01.png"]},
+  {"id":6,"sku":"PAW-QUAD-PARCIAL-ROBUSTA-01","tipo":"protesis","miembro":"cuatro-extremidades","configuracion":"cuadripodal","segmento":"parcial","nombre":"Prótesis cuadripodal — parcial robusta (4 patitas)","descripcion":"Cuatro prótesis parciales reforzadas (carbono/aleación) para soportar peso completo y libertad de movimiento.","precio":7200,"stock":2,"imagenes":["images/catalog/protesis-cuatripodal-robusta-01.png"]},
+  {"id":7,"sku":"PAW-HARNESS-01","tipo":"accesorio","nombre":"Arnés de rehabilitación","descripcion":"Azul marino con ribete claro, tirantes a antebrazos y puntos de anclaje modulares.","precio":790,"stock":15,"imagenes":["images/catalog/accesorio-arnes-01.png"]},
+  {"id":8,"sku":"PAW-KIT-MANT-01","tipo":"accesorio","nombre":"Kit de mantenimiento","descripcion":"Silicona, fijador de roscas, llaves, correas y tornillería en estuche.","precio":350,"stock":25,"imagenes":["images/catalog/accesorio-kit-mantenimiento-01.png"]},
+  {"id":9,"sku":"PAW-WHEEL-AT-01","tipo":"accesorio","nombre":"Kit de ruedas todo-terreno","descripcion":"Ruedas robustas con brazos ajustables para carrito.","precio":1150,"stock":12,"imagenes":["images/catalog/accesorio-rueda-tt-01.png"]},
+  {"id":10,"sku":"PAW-SERV-AJUSTE-01","tipo":"servicio","nombre":"Servicio de ajuste y calibración","descripcion":"Ajuste fino, nivelación y confort del paciente (sesión profesional).","precio":600,"stock":null,"duracion_min":45,"imagenes":["images/catalog/servicio-ajuste-01.png"]}
+]
+    </script>
+    <script src="scripts/catalog.js" defer></script>
     <script>
         // ===== FUNCIONALIDAD AOS (ANIMATE ON SCROLL) =====
         class AOS {
