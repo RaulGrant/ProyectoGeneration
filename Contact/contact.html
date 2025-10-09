@@ -11,9 +11,29 @@
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="contact.css" />
+  <!-- Incluimos estilos de la landing para reutilizar la barra de navegación -->
+  <link rel="stylesheet" href="../stylesLanding.css" />
 </head>
 <body>
-
+  <!-- Barra de navegación principal para página de contacto -->
+  <nav class="navbarlanding">
+    <div class="container">
+      <div class="nav-content">
+        <!-- Logo e imagen: utilizar ruta relativa desde el directorio Contact hacia la carpeta images -->
+        <div class="logo">
+          <img src="../images/logo.webp" alt="Logo Pawssible" class="logo-img">
+          <span class="logo-text">PAWSSIBLE</span>
+        </div>
+        <!-- Enlaces completos: añadimos la página Sobre Nosotros para mantener consistencia -->
+        <ul class="nav-links">
+          <li><a href="../index.html" class="nav-link">Inicio</a></li>
+          <li><a href="../landing-page.html" class="nav-link">Catálogo</a></li>
+          <li><a href="../sobre-nosotros.html" class="nav-link">Sobre Nosotros</a></li>
+          <li><a href="contact.html" class="nav-link">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
   <!-- 
   <nav class="navbar">
     <div class="container nav-content">
