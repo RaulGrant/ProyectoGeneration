@@ -1,0 +1,117 @@
+[
+  {
+    "id": 1,
+    "sku": "PAW-FR-PARCIAL-01",
+    "tipo": "protesis",
+    "miembro": "frontal",
+    "segmento": "parcial",
+    "nombre": "Prótesis delantera — parcial",
+    "descripcion": "Socket ligero con soporte rígido y correas dobles.",
+    "precio": 2500,
+    "stock": 10,
+    "imagenes": ["images/catalog/protesis-frontal-parcial-01.png"]
+  },
+  {
+    "id": 2,
+    "sku": "PAW-TR-PARCIAL-01",
+    "tipo": "protesis",
+    "miembro": "trasero",
+    "segmento": "parcial",
+    "nombre": "Prótesis trasera — parcial",
+    "descripcion": "Acolchado en zonas de contacto y refuerzos de apoyo.",
+    "precio": 2600,
+    "stock": 8,
+    "imagenes": ["images/catalog/protesis-trasera-parcial-01.png"]
+  },
+  {
+    "id": 3,
+    "sku": "PAW-FR-COMPLETA-01",
+    "tipo": "protesis",
+    "miembro": "frontal",
+    "segmento": "completa",
+    "nombre": "Prótesis delantera — completa",
+    "descripcion": "Con articulación simulada para marcha natural.",
+    "precio": 4200,
+    "stock": 6,
+    "imagenes": ["images/catalog/protesis-frontal-completa-01.png"]
+  },
+  {
+    "id": 4,
+    "sku": "PAW-TR-COMPLETA-01",
+    "tipo": "protesis",
+    "miembro": "trasero",
+    "segmento": "completa",
+    "nombre": "Prótesis trasera — completa",
+    "descripcion": "Centro de gravedad estable y tope antideslizante.",
+    "precio": 4400,
+    "stock": 5,
+    "imagenes": ["images/catalog/protesis-trasera-completa-01.png"]
+  },
+  {
+    "id": 5,
+    "sku": "PAW-BI-FR-PARCIAL-01",
+    "tipo": "protesis",
+    "miembro": "frontal",
+    "configuracion": "bilateral",
+    "segmento": "parcial",
+    "nombre": "Prótesis bilateral delantera — parcial",
+    "descripcion": "Par emparejado con ajuste sincronizado.",
+    "precio": 4800,
+    "stock": 3,
+    "imagenes": ["images/catalog/protesis-bilateral-frontal-parcial-01.png"]
+  },
+  {
+    "id": 6,
+    "sku": "PAW-QUAD-PARCIAL-ROBUSTA-01",
+    "tipo": "protesis",
+    "miembro": "cuatro-extremidades",
+    "configuracion": "cuadripodal",
+    "segmento": "parcial",
+    "nombre": "Prótesis cuadripodal — parcial robusta (4 patitas)",
+    "descripcion": "Cuatro prótesis parciales reforzadas (carbono/aleación) para soportar peso completo y libertad de movimiento.",
+    "precio": 7200,
+    "stock": 2,
+    "imagenes": ["images/catalog/protesis-cuatripodal-robusta-01.png"]
+  },
+  {
+    "id": 7,
+    "sku": "PAW-HARNESS-01",
+    "tipo": "accesorio",
+    "nombre": "Arnés de rehabilitación",
+    "descripcion": "Azul marino con ribete claro, tirantes a antebrazos y puntos de anclaje modulares.",
+    "precio": 790,
+    "stock": 15,
+    "imagenes": ["images/catalog/accesorio-arnes-01.png"]
+  },
+  {
+    "id": 8,
+    "sku": "PAW-KIT-MANT-01",
+    "tipo": "accesorio",
+    "nombre": "Kit de mantenimiento",
+    "descripcion": "Silicona, fijador de roscas, llaves, correas y tornillería en estuche.",
+    "precio": 350,
+    "stock": 25,
+    "imagenes": ["images/catalog/accesorio-kit-mantenimiento-01.png"]
+  },
+  {
+    "id": 9,
+    "sku": "PAW-WHEEL-AT-01",
+    "tipo": "accesorio",
+    "nombre": "Kit de ruedas todo-terreno",
+    "descripcion": "Ruedas robustas con brazos ajustables para carrito.",
+    "precio": 1150,
+    "stock": 12,
+    "imagenes": ["images/catalog/accesorio-rueda-tt-01.png"]
+  },
+  {
+    "id": 10,
+    "sku": "PAW-SERV-AJUSTE-01",
+    "tipo": "servicio",
+    "nombre": "Servicio de ajuste y calibración",
+    "descripcion": "Ajuste fino, nivelación y confort del paciente (sesión profesional).",
+    "precio": 600,
+    "stock": null,
+    "duracion_min": 45,
+    "imagenes": ["images/catalog/servicio-ajuste-01.png"]
+  }
+]
