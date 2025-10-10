@@ -1,3 +1,4 @@
+
 /* Reset y Variables */
 * {
   margin: 0;
@@ -339,9 +340,40 @@ body {
   color: var(--color-secondary);
 }
 
+/* Añadimos estilos para el contenedor del logotipo y la imagen dentro de la barra de navegación. Estas reglas
+ * están inspiradas en el archivo styles.css para que todos los navbars compartan la misma estructura visual.
+ * Con display:flex alineamos la imagen y el texto y establecemos un pequeño espacio entre ellos. La clase
+ * logo-img define un tamaño coherente para el icono y mantiene las proporciones para evitar que distorsione. */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo-img {
+  height: 2rem;
+  width: auto;
+  object-fit: contain;
+  transition: var(--transition);
+}
+
 .nav-link:hover::after {
   width: 100%;
 }
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo-img {
+  height: 2rem;
+  width: auto;
+  object-fit: contain;
+  transition: var(--transition);
+}
+
 
 /* Hero Section */
 .herolanding {
@@ -351,7 +383,7 @@ body {
   justify-content: center;
   text-align: center;
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-  padding: 5rem 2rem 4rem;
+  padding: 6rem 2rem 4rem;
   position: relative;
   overflow: hidden;
 }
@@ -579,13 +611,17 @@ body {
   border-color: #f29a2e;
 }
 
+/*
+ * Estilizado de iconos de la sección de características.
+ * Se elimina el degradado que provocaba que los emojis aparecieran cafés o apagados.
+ * Ahora se colorean directamente con el color secundario de la paleta.
+ */
 .feature-icon {
   font-size: 3rem;
   margin-bottom: 1rem;
-  background: linear-gradient(135deg, #1e3a5f 0%, #ff6b35 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-secondary);
+  background: none;
+  -webkit-text-fill-color: inherit;
 }
 
 .feature-card h3 {

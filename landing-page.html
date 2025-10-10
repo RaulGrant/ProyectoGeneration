@@ -10,21 +10,21 @@
     <link rel="stylesheet" href="stylesLanding.css">
 </head>
 <body>
-     Navbar 
+    <!-- Barra de navegación principal -->
     <nav class="navbarlanding">
         <div class="container">
             <div class="nav-content">
+                <!-- Logo con imagen y texto para unificar el navbar en todo el sitio -->
                 <div class="logo">
-                    <span class="logo-text">Pawssible</span>
+                    <img src="images/logo.webp" alt="Logo Pawssible" class="logo-img">
+                    <span class="logo-text">PAWSSIBLE</span>
                 </div>
+                <!-- Lista de enlaces completa: incluimos también un enlace al catálogo aunque estemos en él para mantener coherencia -->
                 <ul class="nav-links">
-                    <li><a href="landing-page.html" class="nav-link active">Inicio</a></li>
-                </ul>
-                <ul class="nav-links">
-                    <li><a href="sobre-nosotros.html" class="nav-link active">Sobre Nosotros</a></li>
-                </ul>
-                <ul class="nav-links">
-                    <li><a href="restodelinkdeIsaac.html" class="nav-link active">Contacto</a></li>
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                       <li><a href="landing-page.html" class="nav-link">HomeLanding</a></li>
+                       <li><a href="sobre-nosotros.html" class="nav-link">Sobre Nosotros</a></li>
+                      <li><a href="Contact/contact.html" class="nav-link">Contacto</a></li>
                 </ul>
             </div>
         </div>
@@ -70,224 +70,95 @@
   </div>
 </section>
 
-       
-    </section>
+    <!-- Features Section -->
+   <section class="features" data-aos="fade-up" data-aos-duration="1000">
+    <h2 class="section-title" data-aos="zoom-in" data-aos-duration="900" data-aos-delay="200">
+        ¿Por Qué Elegirnos?
+    </h2>
+    <div class="features-grid">
+        <div class="feature-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+            <div class="feature-icon">🏆</div>
+            <h3>Calidad Premium</h3>
+            <p>Materiales de grado médico certificados para máxima durabilidad y comodidad</p>
+        </div>
+        <div class="feature-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+            <div class="feature-icon">🎯</div>
+            <h3>Diseño Personalizado</h3>
+            <p>Cada prótesis se adapta perfectamente a las necesidades específicas de tu mascota</p>
+        </div>
+        <div class="feature-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+            <div class="feature-icon">💙</div>
+            <h3>Atención Veterinaria</h3>
+            <p>Equipo de veterinarios especializados disponibles para consultas</p>
+        </div>
+        <div class="feature-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+            <div class="feature-icon">🚚</div>
+            <h3>Envío Rápido</h3>
+            <p>Entrega express en 24-48 horas a todo el país</p>
+        </div>
+        <div class="feature-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
+            <div class="feature-icon">🔧</div>
+            <h3>Mantenimiento</h3>
+            <p>Servicio de ajuste y mantenimiento gratuito durante el primer año</p>
+        </div>
+        <div class="feature-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+            <div class="feature-icon">💰</div>
+            <h3>Garantía Total</h3>
+            <p>Garantía de satisfacción de 90 días o te devolvemos tu dinero</p>
+        </div>
+     </div>
+   </section>
 
-     <!-- Features Section -->
-        <section class="features">
-            <h2 class="section-title">¿Por Qué Elegirnos?</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🏆</div>
-                    <h3>Calidad Premium</h3>
-                    <p>Materiales de grado médico certificados para máxima durabilidad y comodidad</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Diseño Personalizado</h3>
-                    <p>Cada prótesis se adapta perfectamente a las necesidades específicas de tu mascota</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💙</div>
-                    <h3>Atención Veterinaria</h3>
-                    <p>Equipo de veterinarios especializados disponibles para consultas</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🚚</div>
-                    <h3>Envío Rápido</h3>
-                    <p>Entrega express en 24-48 horas a todo el país</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔧</div>
-                    <h3>Mantenimiento</h3>
-                    <p>Servicio de ajuste y mantenimiento gratuito durante el primer año</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💰</div>
-                    <h3>Garantía Total</h3>
-                    <p>Garantía de satisfacción de 90 días o te devolvemos tu dinero</p>
-                </div>
-            </div>
-        </section>
   
          <!-- Products Section -->
         <section class="products" id="productos">
             <h2 class="section-title">Nuestros Productos</h2>
-            <div class="products-grid">
-                <div class="product-card">
-                    <img src="/images/frontLeg.jpg" alt="Prótesis Delantera" class="product-image">
-                    <div class="product-info">
-                        <h3>Prótesis Pata Delantera</h3>
-                        <p>Diseño ergonómico para máxima movilidad</p>
-                        <div class="product-price">$299.99</div>
-                        <button class="product-btn">Agregar al Carrito</button>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <img src="/images/backLeg.jpg" alt="Prótesis Trasera" class="product-image">
-                    <div class="product-info">
-                        <h3>Prótesis Pata Trasera</h3>
-                        <p>Soporte óptimo para patas posteriores</p>
-                        <div class="product-price">$349.99</div>
-                        <button class="product-btn">Agregar al Carrito</button>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <img src="/images/kit.jpg" alt="Kit Completo" class="product-image">
-                    <div class="product-info">
-                        <h3>Kit de Accesorios</h3>
-                        <p>Incluye fundas, almohadillas y herramientas</p>
-                        <div class="product-price">$89.99</div>
-                        <button class="product-btn">Agregar al Carrito</button>
-                    </div>
-                </div>
-            </div>
+            <!-- Contenedor dinámico para catálogo; se rellena con los datos de data/protesis.json -->
+            <div id="product-list" class="products-grid"></div>
         </section>
 
         <!-- Testimonials Section -->
-        <section class="testimonials">
-            <h2 class="section-title">Lo Que Dicen Nuestros Clientes</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Gracias a Pawssibles, mi perro Max volvió a correr como antes. La calidad es excepcional y el servicio al cliente es increíble."</p>
-                    <p class="testimonial-author">- María González</p>
-                    <div class="rating">⭐⭐⭐⭐⭐</div>
-                </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"La prótesis se adaptó perfectamente a mi Golden Retriever. El equipo fue muy profesional durante todo el proceso."</p>
-                    <p class="testimonial-author">- Carlos Ramírez</p>
-                    <div class="rating">⭐⭐⭐⭐⭐</div>
-                </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"No puedo creer la diferencia que ha hecho en la vida de Luna. Ahora puede jugar con otros perros sin problemas."</p>
-                    <p class="testimonial-author">- Ana Martínez</p>
-                    <div class="rating">⭐⭐⭐⭐⭐</div>
-                </div>
-            </div>
-        </section>
+<section class="testimonials">
+    <h2 class="section-title" data-aos="zoom-in" data-aos-duration="900" data-aos-delay="200">
+        Lo Que Dicen Nuestros Clientes
+    </h2>
+    <div class="testimonials-grid">
+        <div class="testimonial-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+            <p class="testimonial-text">"Gracias a Pawssibles, mi perro Max volvió a correr como antes. La calidad es excepcional y el servicio al cliente es increíble."</p>
+            <p class="testimonial-author">- María González</p>
+            <div class="rating">⭐⭐⭐⭐⭐</div>
+        </div>
+        <div class="testimonial-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+            <p class="testimonial-text">"La prótesis se adaptó perfectamente a mi Golden Retriever. El equipo fue muy profesional durante todo el proceso."</p>
+            <p class="testimonial-author">- Carlos Ramírez</p>
+            <div class="rating">⭐⭐⭐⭐⭐</div>
+        </div>
+        <div class="testimonial-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+            <p class="testimonial-text">"No puedo creer la diferencia que ha hecho en la vida de Luna. Ahora puede jugar con otros perros sin problemas."</p>
+            <p class="testimonial-author">- Ana Martínez</p>
+            <div class="rating">⭐⭐⭐⭐⭐</div>
+        </div>
+    </div>
+</section>
+
    
-    <script>
-        // ===== FUNCIONALIDAD AOS (ANIMATE ON SCROLL) =====
-        class AOS {
-            constructor() {
-                this.animatedElements = [];
-                this.throttleTimeout;
-                this.init();
-            }
-
-            init() {
-                this.refresh();
-                window.addEventListener('scroll', () => this.throttleScrollHandler());
-                window.addEventListener('resize', () => this.throttleScrollHandler());
-                // Trigger initial check after a small delay
-                setTimeout(() => this.handleScroll(), 100);
-            }
-
-            throttleScrollHandler() {
-                if (this.throttleTimeout) {
-                    clearTimeout(this.throttleTimeout);
-                }
-                this.throttleTimeout = setTimeout(() => this.handleScroll(), 10);
-            }
-
-            refresh() {
-                this.animatedElements = Array.from(document.querySelectorAll('[data-aos]')).map(element => ({
-                    element: element,
-                    offset: this.getOffset(element),
-                    delay: parseInt(element.getAttribute('data-aos-delay')) || 0,
-                    once: element.getAttribute('data-aos-once') !== 'false'
-                }));
-            }
-
-            getOffset(element) {
-                const rect = element.getBoundingClientRect();
-                return {
-                    top: rect.top + window.pageYOffset,
-                    bottom: rect.bottom + window.pageYOffset
-                };
-            }
-
-            handleScroll() {
-                const windowTop = window.pageYOffset;
-                const windowBottom = windowTop + window.innerHeight;
-                
-                this.animatedElements.forEach(item => {
-                    const { element, offset, delay, once } = item;
-                    
-                    // Calculate trigger point (when 80% of element is visible)
-                    const triggerPoint = offset.top + (element.offsetHeight * 0.2);
-                    
-                    if (triggerPoint <= windowBottom && !element.classList.contains('aos-animate')) {
-                        // Apply delay if specified
-                        if (delay > 0) {
-                            setTimeout(() => {
-                                if (!element.classList.contains('aos-animate')) {
-                                    element.classList.add('aos-animate');
-                                }
-                            }, delay);
-                        } else {
-                            element.classList.add('aos-animate');
-                        }
-                    } else if (!once && offset.bottom < windowTop) {
-                        // Reset animation if element is above viewport (unless once is true)
-                        element.classList.remove('aos-animate');
-                    }
-                });
-            }
-        }
-
-        // Initialize AOS
-        document.addEventListener('DOMContentLoaded', function() {
-            new AOS();
-        });
-
-        // Smooth scroll para navegación
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Animaciones adicionales para elementos interactivos
-        document.addEventListener('DOMContentLoaded', function() {
-            // Efecto hover mejorado para tarjetas
-            const cards = document.querySelectorAll('.para-quien-card, .team-member, .mision-card');
-            cards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-10px) scale(1.02)';
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0) scale(1)';
-                });
-            });
-
-            // Efecto parallax sutil para el hero
-            window.addEventListener('scroll', function() {
-                const scrolled = window.pageYOffset;
-                const heroElements = document.querySelectorAll('.hero-title, .hero-description');
-                heroElements.forEach(element => {
-                    element.style.transform = `translateY(${scrolled * 0.2}px)`;
-                });
-            });
-        });
+    <!-- Copia embebida del catálogo para funcionar sin servidor local -->
+    <script type="application/json" id="catalog-embed">
+[
+  {"id":1,"sku":"PAW-FR-PARCIAL-01","tipo":"protesis","miembro":"frontal","segmento":"parcial","nombre":"Prótesis delantera — parcial","descripcion":"Socket ligero con soporte rígido y correas dobles.","precio":2500,"stock":10,"imagenes":["images/catalog/protesis-frontal-parcial-01.png"]},
+  {"id":2,"sku":"PAW-TR-PARCIAL-01","tipo":"protesis","miembro":"trasero","segmento":"parcial","nombre":"Prótesis trasera — parcial","descripcion":"Acolchado en zonas de contacto y refuerzos de apoyo.","precio":2600,"stock":8,"imagenes":["images/catalog/protesis-trasera-parcial-01.png"]},
+  {"id":3,"sku":"PAW-FR-COMPLETA-01","tipo":"protesis","miembro":"frontal","segmento":"completa","nombre":"Prótesis delantera — completa","descripcion":"Con articulación simulada para marcha natural.","precio":4200,"stock":6,"imagenes":["images/catalog/protesis-frontal-completa-01.png"]},
+  {"id":4,"sku":"PAW-TR-COMPLETA-01","tipo":"protesis","miembro":"trasero","segmento":"completa","nombre":"Prótesis trasera — completa","descripcion":"Centro de gravedad estable y tope antideslizante.","precio":4400,"stock":5,"imagenes":["images/catalog/protesis-trasera-completa-01.png"]},
+  {"id":5,"sku":"PAW-BI-FR-PARCIAL-01","tipo":"protesis","miembro":"frontal","configuracion":"bilateral","segmento":"parcial","nombre":"Prótesis bilateral delantera — parcial","descripcion":"Par emparejado con ajuste sincronizado.","precio":4800,"stock":3,"imagenes":["images/catalog/protesis-bilateral-frontal-parcial-01.png"]},
+  {"id":6,"sku":"PAW-QUAD-PARCIAL-ROBUSTA-01","tipo":"protesis","miembro":"cuatro-extremidades","configuracion":"cuadripodal","segmento":"parcial","nombre":"Prótesis cuadripodal — parcial robusta (4 patitas)","descripcion":"Cuatro prótesis parciales reforzadas (carbono/aleación) para soportar peso completo y libertad de movimiento.","precio":7200,"stock":2,"imagenes":["images/catalog/protesis-cuatripodal-robusta-01.png"]},
+  {"id":7,"sku":"PAW-HARNESS-01","tipo":"accesorio","nombre":"Arnés de rehabilitación","descripcion":"Azul marino con ribete claro, tirantes a antebrazos y puntos de anclaje modulares.","precio":790,"stock":15,"imagenes":["images/catalog/accesorio-arnes-01.png"]},
+  {"id":8,"sku":"PAW-KIT-MANT-01","tipo":"accesorio","nombre":"Kit de mantenimiento","descripcion":"Silicona, fijador de roscas, llaves, correas y tornillería en estuche.","precio":350,"stock":25,"imagenes":["images/catalog/accesorio-kit-mantenimiento-01.png"]},
+  {"id":9,"sku":"PAW-WHEEL-AT-01","tipo":"accesorio","nombre":"Kit de ruedas todo-terreno","descripcion":"Ruedas robustas con brazos ajustables para carrito.","precio":1150,"stock":12,"imagenes":["images/catalog/accesorio-rueda-tt-01.png"]},
+  {"id":10,"sku":"PAW-SERV-AJUSTE-01","tipo":"servicio","nombre":"Servicio de ajuste y calibración","descripcion":"Ajuste fino, nivelación y confort del paciente (sesión profesional).","precio":600,"stock":null,"duracion_min":45,"imagenes":["images/catalog/servicio-ajuste-01.png"]}
+]
     </script>
+    <script src="scriptLanding.js"> </script>
+    <script src="scripts/catalog.js"></script>
+    
 </body>
 </html>
