@@ -4,9 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pawssible</title>
+    <link rel="stylesheet" href="stylesLanding.css">
 </head>
 <body>
-   <br>
-   <hr>
+    <!-- Barra de navegación principal -->
+    <nav class="navbarlanding">
+        <div class="container">
+            <div class="nav-content">
+                <!--
+                  Insertamos la imagen del logotipo junto al texto para unificar la apariencia del navbar en
+                  todas las páginas. La clase logo-img está definida en stylesLanding.css y garantiza que la
+                  imagen mantenga un tamaño y proporción coherentes. El texto permanece en mayúsculas para
+                  conservar la identidad visual de la marca.
+                -->
+                <div class="logo">
+                    <img src="images/logo.webp" alt="Logo Pawssible" class="logo-img">
+                    <span class="logo-text">PAWSSIBLE</span>
+                </div>
+                <!-- Navegación uniforme en todas las páginas: Inicio, Catálogo, Sobre Nosotros y Contacto -->
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="landing-page.html" class="nav-link">Catálogo</a></li>
+                    <li><a href="sobre-nosotros.html" class="nav-link">Sobre Nosotros</a></li>
+                    <li><a href="Contact/contact.html" class="nav-link">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        <h1>Bienvenido a Pawssible</h1>
+        <p>Este es un punto de inicio. Utiliza la navegación para explorar el sitio.</p>
+    </main>
 </body>
 </html>
