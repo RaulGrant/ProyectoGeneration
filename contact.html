@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Pawssible</title>
+    
+    <!-- Fuentes actualizadas con Nunito -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&family=Jost:wght@500;600;700;800&family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS - IMPORTANTE: navbar.css PRIMERO -->
+    <link rel="stylesheet" href="assets/css/navbar.css">
+    <link rel="stylesheet" href="assets/css/contact.css">
+</head>
+<body>
+    <!-- El navbar se insertará automáticamente aquí -->
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-inner">
+            <h1 class="hero-title">
+                <span class="title-white">Estamos aquí para ayudarte</span>
+            </h1>
+            <p class="hero-subtitle">
+                ¿Tienes preguntas sobre nuestras prótesis? ¿Necesitas una consulta? Contáctanos y te responderemos lo antes posible.
+            </p>
+            <a href="#form" class="btn-primary">Ir al formulario</a>
+        </div>
+        
+        <!-- Figuras decorativas -->
+        <div class="hero-ball"></div>
+        <div class="hero-shape-1"></div>
+        <div class="hero-shape-2"></div>
+    </section>
+
+    <!-- Tarjetas de información -->
+    <section class="info-cards">
+        <div class="container">
+            <div class="cards-grid">
+                <div class="card" data-reveal>
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Teléfono</h3>
+                    <p class="card-text">+52 (55) 1234-5678</p>
+                </div>
+
+                <div class="card" data-reveal>
+                    <div class="card-icon card-icon--accent">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Ubicación</h3>
+                    <p class="card-text">Ciudad de México, México</p>
+                </div>
+
+                <div class="card" data-reveal>
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Horario</h3>
+                    <p class="card-text">Lun - Vie: 9:00 - 18:00</p>
+                </div>
+
+                <div class="card" data-reveal>
+                    <div class="card-icon card-icon--accent">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Email</h3>
+                    <p class="card-text">contacto@pawssible.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banda intermedia -->
+    <section class="band band--secondary">
+        <div class="container">
+            <div class="band-inner" data-reveal>
+                <h2 class="band-title">Envíanos un mensaje</h2>
+                <p class="band-subtitle">Completa el formulario y nos pondremos en contacto contigo pronto</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulario de contacto -->
+    <section class="contact" id="form">
+        <div class="container">
+            <div class="contact-wrapper" data-reveal>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nombre" class="form-label">Nombre completo *</label>
+                            <input type="text" id="nombre" name="nombre" class="form-input" placeholder="Tu nombre" required>
+                            <span class="form-hint" id="nombreError"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label">Correo electrónico *</label>
+                            <input type="email" id="email" name="email" class="form-input" placeholder="tu@email.com" required>
+                            <span class="form-hint" id="emailError"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="telefono" class="form-label">Teléfono</label>
+                            <input type="tel" id="telefono" name="telefono" class="form-input" placeholder="+52 (55) 1234-5678">
+                            <span class="form-hint" id="telefonoError"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="asunto" class="form-label">Asunto *</label>
+                            <select id="asunto" name="asunto" class="form-input" required>
+                                <option value="">Selecciona un asunto</option>
+                                <option value="consulta">Consulta general</option>
+                                <option value="cotizacion">Solicitar cotización</option>
+                                <option value="seguimiento">Seguimiento de pedido</option>
+                                <option value="soporte">Soporte técnico</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                            <span class="form-hint" id="asuntoError"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group form-group-full">
+                        <label for="mensaje" class="form-label">Mensaje *</label>
+                        <textarea id="mensaje" name="mensaje" class="form-textarea" placeholder="Cuéntanos cómo podemos ayudarte..." required></textarea>
+                        <span class="form-hint" id="mensajeError"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <span class="btn-text">Enviar mensaje</span>
+                        <span class="btn-spinner"></span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ubicación -->
+    <section class="location">
+        <div class="container">
+            <div class="location-card" data-reveal>
+                <div class="location-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                </div>
+                <h3 class="location-title">Ciudad de México, México</h3>
+                <p class="location-text">Av. Insurgentes Sur 1234, Col. Del Valle</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Redes sociales -->
+    <section class="band band--primary-deep">
+        <div class="container">
+            <div class="band-inner" data-reveal>
+                <h2 class="band-title">Síguenos en redes sociales</h2>
+                <p class="band-subtitle">Mantente al día con nuestras historias de éxito y novedades</p>
+                <div class="social-rounds">
+                    <a href="#" class="social-round" aria-label="Facebook">f</a>
+                    <a href="#" class="social-round" aria-label="Instagram">📷</a>
+                    <a href="#" class="social-round" aria-label="Twitter">🐦</a>
+                    <a href="#" class="social-round" aria-label="LinkedIn">in</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-mini">
+        <div class="container">
+            <p>© 2025 Pawssible. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/navbar.js"></script>
+    <script src="assets/js/contact.js"></script>
+    
+    <!-- Script para animaciones reveal -->
+    <script>
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

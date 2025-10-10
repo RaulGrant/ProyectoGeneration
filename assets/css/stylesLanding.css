@@ -1,13 +1,12 @@
-
-/* Reset y Variables */
+/* ===== RESET Y VARIABLES ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-
 :root {
+  /* Colores */
   --color-primary: #1a4d8f;
   --color-secondary: #f29a2e;
   --color-white: #ffffff;
@@ -16,19 +15,21 @@
   --color-primary-dark: #1a4d8f;
   --color-primary-light: #1a4d8f;
 
-  --font-serif: "Jomolhari", serif;
-  --font-sans: "Jost", sans-serif;
-  --font-subtitle: "Josefin Sans", sans-serif;
+  /* Tipografía: Jost para títulos, Nunito para contenido */
+  --font-heading: "Jost", sans-serif;
+  --font-body: "Nunito", sans-serif;
 
+  /* Sombras */
   --shadow-sm: 0 2px 8px rgba(13, 13, 13, 0.1);
   --shadow-md: 0 4px 16px rgba(13, 13, 13, 0.15);
   --shadow-lg: 0 8px 32px rgba(13, 13, 13, 0.2);
 
+  /* Transición */
   --transition: all 0.3s ease;
 }
 
 body {
-  font-family: var(--font-serif);
+  font-family: var(--font-body);
   line-height: 1.6;
   color: var(--color-white);
   background-color: var(--color-primary);
@@ -254,6 +255,10 @@ body {
   transition-delay: 500ms;
 }
 
+[data-aos-delay="600"] {
+  transition-delay: 600ms;
+}
+
 /* Easings personalizados */
 [data-aos-easing="ease-in-sine"] {
   transition-timing-function: cubic-bezier(0.12, 0, 0.39, 0);
@@ -275,107 +280,7 @@ body {
   transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Navbar */
-.navbarlanding {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(34, 99, 180, 0.95);
-  backdrop-filter: blur(10px);
-  padding: 1rem 0;
-  z-index: 1000;
-  transition: var(--transition);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.navbar.scrolled {
-  background-color: rgba(34, 99, 180, 0.98);
-  box-shadow: var(--shadow-md);
-}
-
-.nav-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo-text {
-  font-family: var(--font-sans);
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: #f29a2e;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.nav-links {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-}
-
-.nav-link {
-  font-family: var(--font-subtitle);
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--color-white);
-  text-decoration: none;
-  transition: var(--transition);
-  position: relative;
-}
-
-.nav-link::after {
-  content: "";
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: var(--color-secondary);
-  transition: var(--transition);
-}
-
-.nav-link:hover {
-  color: var(--color-secondary);
-}
-
-/* Añadimos estilos para el contenedor del logotipo y la imagen dentro de la barra de navegación. Estas reglas
- * están inspiradas en el archivo styles.css para que todos los navbars compartan la misma estructura visual.
- * Con display:flex alineamos la imagen y el texto y establecemos un pequeño espacio entre ellos. La clase
- * logo-img define un tamaño coherente para el icono y mantiene las proporciones para evitar que distorsione. */
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.logo-img {
-  height: 2rem;
-  width: auto;
-  object-fit: contain;
-  transition: var(--transition);
-}
-
-.nav-link:hover::after {
-  width: 100%;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.logo-img {
-  height: 2rem;
-  width: auto;
-  object-fit: contain;
-  transition: var(--transition);
-}
-
-
-/* Hero Section */
+/* ===== HERO SECTION ===== */
 .herolanding {
   min-height: 100vh;
   display: flex;
@@ -400,12 +305,12 @@ body {
   pointer-events: none;
 }
 
-/* Contenedorpara primera columna */
+/* Contenedor para primera columna */
 .hero-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem; /* espacio entre texto y imagen */
+  gap: 3rem;
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
@@ -415,24 +320,25 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem; /* mantiene separación entre título, descripción y botón */
+  gap: 2rem;
   text-align: center;
   z-index: 1;
 }
 
-/* ===================== */
-/* Ajustes de título y descripción */
+/* Títulos con Jost */
 .hero-title {
-  font-family: var(--font-sans);
-  font-size: clamp(3rem, 6vw, 4.5rem); /* tamaño ajustable */
-  font-weight: 700;
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-weight: 800;
   color: var(--color-white);
   line-height: 1.2;
 }
 
+/* Descripción con Nunito */
 .hero-description {
-  font-family: var(--font-serif);
-  font-size: clamp(1.3rem, 2.5vw, 1.6rem); /* tamaño ajustable */
+  font-family: var(--font-body);
+  font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+  font-weight: 400;
   color: var(--color-beige);
   max-width: 700px;
   margin-left: auto;
@@ -440,18 +346,18 @@ body {
   line-height: 1.7;
 }
 
-/* Botón */
+/* Botón con Nunito */
 .btn-primary {
   display: inline-block;
-  width: fit-content;            /* ancho ajustado al contenido */
-  padding: 0.35em 0.9em;         /* ajusta el alto y ancho alrededor del texto */
-  font-size: 1.125rem;           /* tamaño del texto */
-  font-weight: 400;
-  font-family: var(--font-sans);
+  width: fit-content;
+  padding: 0.35em 0.9em;
+  font-size: 1.125rem;
+  font-weight: 700;
+  font-family: var(--font-body);
   color: var(--color-white);
   text-decoration: none;
   background: linear-gradient(135deg, var(--color-secondary) 0%, #f29a2e 100%);
-  border-radius: 15px;           /* redondeado elegante */
+  border-radius: 15px;
   box-shadow: var(--shadow-md);
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
   position: relative;
@@ -464,15 +370,14 @@ body {
   background: linear-gradient(135deg, #f29a2e 0%, var(--color-secondary) 100%);
 }
 
-
 /* Imagen y stats */
 .stats-image {
-  position: relative;  
+  position: relative;
   display: inline-block;
   text-align: center;
   width: 100%;
-  max-width: 800px; /* para cambiar tamaño de  imagen */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+  max-width: 800px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .stats-image img {
@@ -486,9 +391,8 @@ body {
 /* Hover sobre la imagen */
 .stats-image:hover img {
   transform: scale(1.05);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
 }
-
 
 /* Stats flotantes */
 .stats {
@@ -497,7 +401,7 @@ body {
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 3rem; 
+  gap: 3rem;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -517,7 +421,21 @@ body {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Parte responsivo responsivo */
+.stat-number {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 2.5rem;
+  color: var(--color-secondary);
+}
+
+.stat-label {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--color-white);
+}
+
+/* Parte responsivo */
 @media (max-width: 768px) {
   .stats {
     position: static;
@@ -527,33 +445,33 @@ body {
   }
 }
 
-
-/* Section General */
+/* ===== SECTION GENERAL ===== */
 .section {
   padding: 5rem 0;
 }
 
 .section-title {
-  font-family: var(--font-sans);
+  font-family: var(--font-heading);
   font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 700;
+  font-weight: 800;
   color: var(--color-white);
   text-align: center;
   margin-bottom: 1rem;
 }
 
 .section-subtitle {
-  font-family: var(--font-subtitle);
+  font-family: var(--font-heading);
   font-size: clamp(1.5rem, 3vw, 2rem);
-  font-weight: 400;
+  font-weight: 600;
   color: var(--color-secondary);
   text-align: center;
   margin-bottom: 3rem;
 }
 
 .section-description {
-  font-family: var(--font-serif);
+  font-family: var(--font-body);
   font-size: 1.125rem;
+  font-weight: 400;
   color: var(--color-beige);
   text-align: center;
   max-width: 800px;
@@ -561,8 +479,7 @@ body {
   line-height: 1.8;
 }
 
-/* ¿por qué elegirnos? features section*/
-
+/* ===== FEATURES SECTION ===== */
 .features {
   padding: 5rem 2rem;
   background: linear-gradient(180deg, #1a4d8f 0%, #1a4d8f 100%);
@@ -577,14 +494,6 @@ body {
   right: 0;
   height: 5px;
   background: #1a4d8f;
-}
-
-.section-title {
-  text-align: center;
-  font-size: 3rem;
-  color: #ffffff;
-  margin-bottom: 3rem;
-  text-shadow: 2px 2px 4px rgba(255, 107, 53, 0.2);
 }
 
 .features-grid {
@@ -611,11 +520,6 @@ body {
   border-color: #f29a2e;
 }
 
-/*
- * Estilizado de iconos de la sección de características.
- * Se elimina el degradado que provocaba que los emojis aparecieran cafés o apagados.
- * Ahora se colorean directamente con el color secundario de la paleta.
- */
 .feature-icon {
   font-size: 3rem;
   margin-bottom: 1rem;
@@ -625,17 +529,21 @@ body {
 }
 
 .feature-card h3 {
+  font-family: var(--font-heading);
+  font-weight: 700;
   color: #1e3a5f;
   font-size: 1.5rem;
   margin-bottom: 1rem;
 }
 
 .feature-card p {
+  font-family: var(--font-body);
+  font-weight: 400;
   color: #4a5568;
   line-height: 1.6;
 }
 
-/* ========== PRODUCTS SECTION ========== */
+/* ===== PRODUCTS SECTION ===== */
 .products {
   padding: 5rem 2rem;
   background: linear-gradient(135deg, #1a4d8f 0%, #1a4d8f 100%);
@@ -659,7 +567,7 @@ body {
   overflow: hidden;
   transition: all 0.3s;
   border: 4px solid #f29a2e;
-  box-shadow: 0 10px 30px oklab(71.867% 0.04922 0.14611 / 0.3);
+  box-shadow: 0 10px 30px rgba(242, 154, 46, 0.3);
 }
 
 .product-card:hover {
@@ -679,26 +587,35 @@ body {
 }
 
 .product-info h3 {
+  font-family: var(--font-heading);
+  font-weight: 700;
   color: #2263b4;
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
 }
 
+.product-info p {
+  font-family: var(--font-body);
+  font-weight: 400;
+}
+
 .product-price {
+  font-family: var(--font-heading);
+  font-weight: 800;
   color: #f29a2e;
   font-size: 1.8rem;
-  font-weight: bold;
   margin: 1rem 0;
 }
 
 .product-btn {
   width: 100%;
+  font-family: var(--font-body);
+  font-weight: 700;
   background: linear-gradient(135deg, #f29a2e 0%, #f29a2e 100%);
   color: white;
   border: none;
   padding: 1rem;
   border-radius: 10px;
-  font-weight: bold;
   cursor: pointer;
   transition: all 0.3s;
   border: 2px solid #f29a2e;
@@ -709,7 +626,7 @@ body {
   transform: translateY(-2px);
 }
 
-/* ========== TESTIMONIALS SECTION ========== */
+/* ===== TESTIMONIALS SECTION ===== */
 .testimonials {
   padding: 5rem 2rem;
   background: linear-gradient(180deg, #1a4d8f 0%, #1a4d8f 100%);
@@ -743,6 +660,8 @@ body {
 }
 
 .testimonial-text {
+  font-family: var(--font-body);
+  font-weight: 400;
   color: #4a5568;
   font-style: italic;
   margin-bottom: 1rem;
@@ -750,8 +669,9 @@ body {
 }
 
 .testimonial-author {
+  font-family: var(--font-body);
+  font-weight: 700;
   color: #1e3a5f;
-  font-weight: bold;
   font-size: 1.1rem;
 }
 
@@ -761,8 +681,7 @@ body {
   margin-top: 0.5rem;
 }
 
-
-/* Responsive Design */
+/* ===== RESPONSIVE DESIGN ===== */
 @media (min-width: 768px) {
   .historia-content {
     grid-template-columns: 1fr 1fr;
@@ -816,10 +735,11 @@ body {
   }
 }
 
-/* ===== ANIMACIONES ADICIONALES PARA MEJOR EXPERIENCIA ===== */
+/* ===== ANIMACIONES ADICIONALES ===== */
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
   }
   50% {
@@ -828,7 +748,8 @@ body {
 }
 
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -837,7 +758,8 @@ body {
 }
 
 @keyframes glow {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow: var(--shadow-md);
   }
   50% {
