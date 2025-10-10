@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pawssible - Tienda de Prótesis</title>
+    <link rel="stylesheet" href="/Nuestras protesis/protesis.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jomolhari&family=Jost:wght@500;700&family=Josefin+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <span class="logo-text">Pawssible</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#" class="nav-link">Inicio</a></li>
+                    <li><a href="#" class="nav-link">Sobre Nosotros</a></li>
+                    <li><a href="#" class="nav-link">Prótesis</a></li>
+                    <li><a href="#" class="nav-link carrito-link">🛒 Carrito (0)</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-title">Catálogo de Prótesis</h1>
+            <p class="hero-subtitle">Encuentra la solución perfecta para devolver la movilidad a tu mascota</p>
+        </div>
+    </section>
+
+    <!-- Sección de Filtros y Búsqueda -->
+    <section class="filters-section">
+        <div class="container">
+            <div class="filters-container">
+                <!-- Búsqueda -->
+                <div class="search-box">
+                    <input type="text" id="searchBox" placeholder="🔍 Buscar prótesis..." class="search-input">
+                </div>
+                
+                <!-- Filtros -->
+                <div class="filters-group">
+                    <select id="filterSize" class="filter-select">
+                        <option value="all">Todas las tallas</option>
+                        <option value="small">Pequeña</option>
+                        <option value="medium">Mediana</option>
+                        <option value="large">Grande</option>
+                        <option value="xlarge">Extra Grande</option>
+                    </select>
+                    
+                    <select id="sortBy" class="filter-select">
+                        <option value="name">Ordenar por Nombre</option>
+                        <option value="price-asc">Precio: Menor a Mayor</option>
+                        <option value="price-desc">Precio: Mayor a Menor</option>
+                        <option value="stock">Mayor Stock</option>
+                    </select>
+                </div>
+            </div>
+            
+            <p class="products-count" id="productsCount">Cargando productos...</p>
+        </div>
+    </section>
+
+    <!-- Main Content - Catálogo -->
+    <main class="main-content">
+        <div class="container">
+            <div class="protesis-grid" id="protesisGrid"></div>
+        </div>
+    </main>
+
+    <!-- Modal del Carrito -->
+    <div class="modal-carrito" id="modalCarrito">
+        <div class="modal-carrito-content">
+            <div class="modal-carrito-header">
+                <h2 class="modal-carrito-title">🛒 Tu Carrito</h2>
+                <button class="btn-close-carrito" id="btnCerrarCarrito">&times;</button>
+            </div>
+            
+            <div class="carrito-items" id="carritoItems">
+                <!-- Los items se cargan dinámicamente -->
+            </div>
+            
+            <div class="carrito-footer">
+                <div class="carrito-total">
+                    <span class="carrito-total-label">Total:</span>
+                    <span class="carrito-total-amount" id="totalCarrito">$0.00</span>
+                </div>
+                <div class="carrito-actions">
+                    <button class="btn-vaciar-carrito" onclick="vaciarCarrito()">
+                        🗑️ Vaciar Carrito
+                    </button>
+                    <button class="btn-finalizar-compra" onclick="finalizarCompra()">
+                        💬 Finalizar por WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/525512345678" target="_blank" class="btn-whatsapp-float" title="Contáctanos por WhatsApp">
+        <span class="whatsapp-icon">💬</span>
+    </a>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">Pawssible</h3>
+                    <p class="footer-text">Transformando vidas, una pata a la vez</p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-subtitle">Contacto</h4>
+                    <p class="footer-text">📧 info@pawssible.com</p>
+                    <p class="footer-text">📱 +52 55 1234-5678</p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-subtitle">Horarios</h4>
+                    <p class="footer-text">Lunes a Viernes: 9:00 - 18:00</p>
+                    <p class="footer-text">Sábados: 10:00 - 14:00</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2025 Pawssible. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="/Nuestras protesis/protesis.js"></script>
+</body>
+</html>
