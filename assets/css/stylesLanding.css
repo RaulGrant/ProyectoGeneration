@@ -12,8 +12,8 @@
   --color-white: #ffffff;
   --color-beige: #f7f4ef;
   --color-black: #0d0d0d;
-  --color-primary-dark: #1a4d8f;
-  --color-primary-light: #1a4d8f;
+  --color-primary-dark: #123a6b;
+  --color-primary-light: #2263b4;
 
   /* Tipografía: Jost para títulos, Nunito para contenido */
   --font-heading: "Jost", sans-serif;
@@ -287,7 +287,7 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary-light) 100%);
   padding: 6rem 2rem 4rem;
   position: relative;
   overflow: hidden;
@@ -482,7 +482,7 @@ body {
 /* ===== FEATURES SECTION ===== */
 .features {
   padding: 5rem 2rem;
-  background: linear-gradient(180deg, #1a4d8f 0%, #1a4d8f 100%);
+  background: linear-gradient(180deg, #2263b4 0%, #2263b4 100%);
   position: relative;
 }
 
@@ -493,7 +493,7 @@ body {
   left: 0;
   right: 0;
   height: 5px;
-  background: #1a4d8f;
+  background: #2263b4
 }
 
 .features-grid {
@@ -546,7 +546,7 @@ body {
 /* ===== PRODUCTS SECTION ===== */
 .products {
   padding: 5rem 2rem;
-  background: linear-gradient(135deg, #1a4d8f 0%, #1a4d8f 100%);
+  background: linear-gradient(135deg, #2263b4 0%, #2263b4 100%);
 }
 
 .products .section-title {
@@ -629,7 +629,7 @@ body {
 /* ===== TESTIMONIALS SECTION ===== */
 .testimonials {
   padding: 5rem 2rem;
-  background: linear-gradient(180deg, #1a4d8f 0%, #1a4d8f 100%);
+  background: linear-gradient(180deg, #2263b4 0%, #2263b4 100%);
 }
 
 .testimonials .section-title {
