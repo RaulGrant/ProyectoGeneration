@@ -156,65 +156,39 @@
     });
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    initializeAOS();
+  
+document.addEventListener('DOMContentLoaded', () => {
+  initializeAOS();
 
-    // Smooth scroll para anclas internas
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        e.preventDefault();
-        const tgt = document.querySelector(a.getAttribute('href'));
-        if (tgt) {
-          tgt.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
+  // Desplazamiento suave para anclas internas
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const tgt = document.querySelector(a.getAttribute('href'));
+      if (tgt) tgt.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
+  });
 
-    // Efecto navbar al hacer scroll
-    const navbar = document.querySelector('.navbar');
+  // Efecto de la barra de navegación al hacer scroll (solo clase; NO toca el menú)
+  const navbar = document.querySelector('.navbarlanding');
+  if (navbar) {
     window.addEventListener('scroll', () => {
       if (window.scrollY > 50) navbar.classList.add('scrolled');
       else navbar.classList.remove('scrolled');
     });
+  }
 
-    // Menú hamburguesa
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks  = document.querySelector('.nav-links');
-    const overlay   = document.querySelector('.menu-overlay');
-    function toggleMenu() {
-      const open = hamburger.classList.toggle('active');
-      navLinks.classList.toggle('active', open);
-      overlay.classList.toggle('active', open);
-      document.body.style.overflow = open ? 'hidden' : '';
-    }
-    function closeMenu() {
-      hamburger.classList.remove('active');
-      navLinks.classList.remove('active');
-      overlay.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-    hamburger.addEventListener('click', toggleMenu);
-    overlay.addEventListener('click', closeMenu);
-    document.querySelectorAll('.nav-link').forEach(l => l.addEventListener('click', closeMenu));
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 768) closeMenu();
-    });
+  // Efecto hover en tarjetas
+  document.querySelectorAll('.para-quien-card, .team-member, .mision-card').forEach(card => {
+    card.addEventListener('mouseenter', () => { card.style.transform = 'translateY(-10px) scale(1.02)'; });
+    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+  });
 
-    // Hover cards
-    document.querySelectorAll('.para-quien-card, .team-member, .mision-card').forEach(card => {
-      card.addEventListener('mouseenter', () => {
-        card.style.transform = 'translateY(-10px) scale(1.02)';
-      });
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
-      });
-    });
-
-    // Efecto parallax sutil en hero
-    window.addEventListener('scroll', () => {
-      const sc = window.pageYOffset * 0.2;
-      document.querySelectorAll('.hero-title, .hero-description').forEach(el => {
-        el.style.transform = `translateY(${sc}px)`;
-      });
+  // Parallax sutil en el hero
+  window.addEventListener('scroll', () => {
+    const sc = window.pageYOffset * 0.2;
+    document.querySelectorAll('.hero-title, .hero-description').forEach(el => {
+      el.style.transform = `translateY(${sc}px)`;
     });
   });
+});
