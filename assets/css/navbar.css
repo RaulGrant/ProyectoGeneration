@@ -9,7 +9,7 @@
 .navbarlanding {
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 10050;
   background-color: var(--color-primary, #1a4d8f);
   padding: 1rem 0; /* Normalizado a 1rem para todas las páginas */
   box-shadow: var(--shadow-md, 0 4px 16px rgba(13, 13, 13, 0.15));
@@ -125,7 +125,7 @@
   border: none;
   cursor: pointer;
   padding: 0.5rem;
-  z-index: 1001;
+  z-index: 10070;
   transition: all 0.3s ease;
 }
 
@@ -150,6 +150,10 @@
 }
 
 /* ===== OVERLAY DEL MENÚ MÓVIL ===== */
+:root {
+  --nav-panel-width: 280px; /* Ancho del panel; ajustable */
+}
+
 .menu-overlay {
   position: fixed;
   top: 0;
@@ -157,7 +161,7 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
+  z-index: 10005;
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s ease;
@@ -180,19 +184,24 @@
     position: fixed;
     top: 0;
     right: -100%;
-    width: 280px;
+    width: var(--nav-panel-width);
     height: 100vh;
     background-color: var(--color-primary, #1a4d8f);
     flex-direction: column;
     padding: 5rem 2rem 2rem;
     gap: 2rem;
     transition: right 0.3s ease;
-    z-index: 1000;
+    z-index: 10050;
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
   }
   
   .nav-links.active {
     right: 0;
+  }
+
+  /* Recorta el overlay para no tapar el panel */
+  .menu-overlay.active {
+    right: var(--nav-panel-width);
   }
   
   .nav-link {
@@ -237,3 +246,9 @@
 .navbarlanding .nav-links li {
   list-style: none !important;
 }
+
+
+/* (Respaldo de z-index, no críticos) */
+.nav-links.active { z-index: 10060; }
+.menu-overlay.active { z-index: 10005; }
+.hamburger { z-index: 10070; }
