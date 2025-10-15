@@ -9,7 +9,7 @@
     "descripcion": "Socket ligero con soporte rígido y correas dobles.",
     "precio": 2500,
     "stock": 10,
-    "imagenes": ["images/catalog/protesis-frontal-parcial-01.png"]
+    "imagenes": ["assets/images/catalog/protesis-frontal-parcial-01.png"]
   },
   {
     "id": 2,
@@ -21,7 +21,7 @@
     "descripcion": "Acolchado en zonas de contacto y refuerzos de apoyo.",
     "precio": 2600,
     "stock": 8,
-    "imagenes": ["images/catalog/protesis-trasera-parcial-01.png"]
+    "imagenes": ["assets/images/catalog/protesis-trasera-parcial-01.png"]
   },
   {
     "id": 3,
@@ -33,7 +33,7 @@
     "descripcion": "Con articulación simulada para marcha natural.",
     "precio": 4200,
     "stock": 6,
-    "imagenes": ["images/catalog/protesis-frontal-completa-01.png"]
+    "imagenes": ["assets/images/catalog/protesis-frontal-completa-01.png"]
   },
   {
     "id": 4,
@@ -45,7 +45,7 @@
     "descripcion": "Centro de gravedad estable y tope antideslizante.",
     "precio": 4400,
     "stock": 5,
-    "imagenes": ["images/catalog/protesis-trasera-completa-01.png"]
+    "imagenes": ["assets/images/catalog/protesis-trasera-completa-01.png"]
   },
   {
     "id": 5,
@@ -58,7 +58,7 @@
     "descripcion": "Par emparejado con ajuste sincronizado.",
     "precio": 4800,
     "stock": 3,
-    "imagenes": ["images/catalog/protesis-bilateral-frontal-parcial-01.png"]
+    "imagenes": ["assets/images/catalog/protesis-bilateral-frontal-parcial-01.png"]
   },
   {
     "id": 6,
@@ -71,7 +71,7 @@
     "descripcion": "Cuatro prótesis parciales reforzadas (carbono/aleación) para soportar peso completo y libertad de movimiento.",
     "precio": 7200,
     "stock": 2,
-    "imagenes": ["images/catalog/protesis-cuatripodal-robusta-01.png"]
+    "imagenes": ["assets/images/catalog/protesis-cuatripodal-robusta-01.png"]
   },
   {
     "id": 7,
@@ -81,7 +81,7 @@
     "descripcion": "Azul marino con ribete claro, tirantes a antebrazos y puntos de anclaje modulares.",
     "precio": 790,
     "stock": 15,
-    "imagenes": ["images/catalog/accesorio-arnes-01.png"]
+    "imagenes": ["assets/images/catalog/accesorio-arnes-01.png"]
   },
   {
     "id": 8,
@@ -91,7 +91,7 @@
     "descripcion": "Silicona, fijador de roscas, llaves, correas y tornillería en estuche.",
     "precio": 350,
     "stock": 25,
-    "imagenes": ["images/catalog/accesorio-kit-mantenimiento-01.png"]
+    "imagenes": ["assets/images/catalog/accesorio-kit-mantenimiento-01.png"]
   },
   {
     "id": 9,
@@ -101,7 +101,7 @@
     "descripcion": "Ruedas robustas con brazos ajustables para carrito.",
     "precio": 1150,
     "stock": 12,
-    "imagenes": ["images/catalog/accesorio-rueda-tt-01.png"]
+    "imagenes": ["assets/images/catalog/accesorio-rueda-tt-01.png"]
   },
   {
     "id": 10,
@@ -112,6 +112,6 @@
     "precio": 600,
     "stock": null,
     "duracion_min": 45,
-    "imagenes": ["images/catalog/servicio-ajuste-01.png"]
+    "imagenes": ["assets/images/catalog/servicio-ajuste-01.png"]
   }
 ]
