@@ -13,6 +13,9 @@
     <!-- CSS - IMPORTANTE: navbar.css PRIMERO -->
     <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="assets/css/protesis.css">
+
+  <!-- PG Catalog v3 CSS -->
+  <link rel="stylesheet" href="assets/css/pg-catalog.css">
 </head>
 <body>
     <!-- El navbar se insertará automáticamente aquí por navbar.js -->
@@ -60,11 +63,133 @@
     <!-- Main Content - Catálogo -->
     <main class="main-content">
         <div class="container">
-            <div class="protesis-grid" id="protesisGrid">
+            <!-- Grid antiguo oculto - ahora se usa solo PG Catalog -->
+            <div class="protesis-grid" id="protesisGrid" style="display: none;">
                 <!-- Los productos se cargan dinámicamente desde protesis.json -->
             </div>
         </div>
-    </main>
+    
+  <!-- PG Catalog v3 container (safe to move) -->
+  <section class="container" id="catalog-root" style="margin-top: 2rem;">
+    <h2 class="section-title">Nuestras Prótesis</h2>
+    <div id="pg-catalog-grid" class="protesis-grid"></div>
+  </section>
+
+  <!-- Catálogo inicial con los 10 productos -->
+  <script id="pg-default-catalog" type="application/json">[
+    {
+      "id": "paw-001",
+      "name": "Prótesis delantera — parcial",
+      "sku": "PAW-FR-PARCIAL-01",
+      "category": "protesis",
+      "price": 2500.00,
+      "stock": 10,
+      "image": "assets/images/catalog/protesis-frontal-parcial-01.png",
+      "description": "Socket ligero con soporte rígido y correas dobles.",
+      "createdAt": "2025-10-16T00:00:00.000Z"
+    },
+    {
+      "id": "paw-002",
+      "name": "Prótesis trasera — parcial",
+      "sku": "PAW-TR-PARCIAL-01",
+      "category": "protesis",
+      "price": 2600.00,
+      "stock": 8,
+      "image": "assets/images/catalog/protesis-trasera-parcial-01.png",
+      "description": "Acolchado en zonas de contacto y refuerzos de apoyo.",
+      "createdAt": "2025-10-16T00:00:00.000Z"
+    },
+    {
+      "id": "paw-003",
+      "name": "Prótesis delantera — completa",
+      "sku": "PAW-FR-COMPLETA-01",
+      "category": "protesis",
+      "price": 4200.00,
+      "stock": 6,
+      "image": "assets/images/catalog/protesis-frontal-completa-01.png",
+      "description": "Con articulación simulada para marcha natural.",
+      "createdAt": "2025-10-16T00:00:00.000Z"
+    },
+    {
+      "id": "paw-004",
+      "name": "Prótesis trasera — completa",
+      "sku": "PAW-TR-COMPLETA-01",
+      "category": "protesis",
+      "price": 4400.00,
+      "stock": 5,
+      "image": "assets/images/catalog/protesis-trasera-completa-01.png",
+      "description": "Centro de gravedad estable y tope antideslizante.",
+      "createdAt": "2025-10-16T00:00:00.000Z"
+    },
+    {
+      "id": "paw-005",
+      "name": "Prótesis bilateral delantera — parcial",
+      "sku": "PAW-BI-FR-PARCIAL-01",
+      "category": "protesis",
+      "price": 4800.00,
+      "stock": 3,
+      "image": "assets/images/catalog/protesis-bilateral-frontal-parcial-01.png",
+      "description": "Par emparejado con ajuste sincronizado.",
+      "createdAt": "2025-10-16T00:00:00.000Z"
+    },
+    {
+      "id": "paw-006",
+      "name": "Prótesis cuadripodal — parcial robusta (4 patitas)",
+      "sku": "PAW-QUAD-PARCIAL-ROBUSTA-01",
+      "category": "protesis",
+      "price": 7200.00,
+      "stock": 2,
+      "image": "assets/images/catalog/protesis-cuatripodal-robusta-01.png",
+      "description": "Cuatro prótesis parciales reforzadas (carbono/aleación) para soportar peso completo y libertad de movimiento.",
+      "createdAt": "2025-10-16T00:00:00.000Z"
+    },
+    {
+      "id": "paw-007",
+      "name": "Arnés de rehabilitación",
+      "sku": "PAW-HARNESS-01",
+      "category": "accesorio",
+      "price": 790.00,
+      "stock": 15,
+      "image": "assets/images/catalog/accesorio-arnes-01.png",
+      "description": "Azul marino con ribete claro, tirantes a antebrazos y puntos de anclaje modulares.",
+      "createdAt": "2025-10-16T00:00:00.000Z"
+    },
+    {
+      "id": "paw-008",
+      "name": "Kit de mantenimiento",
+      "sku": "PAW-KIT-MANT-01",
+      "category": "accesorio",
+      "price": 350.00,
+      "stock": 25,
+      "image": "assets/images/catalog/accesorio-kit-mantenimiento-01.png",
+      "description": "Silicona, fijador de roscas, llaves, correas y tornillería en estuche.",
+      "createdAt": "2025-10-16T00:00:00.000Z"
+    },
+    {
+      "id": "paw-009",
+      "name": "Kit de ruedas todo-terreno",
+      "sku": "PAW-WHEEL-AT-01",
+      "category": "accesorio",
+      "price": 1150.00,
+      "stock": 12,
+      "image": "assets/images/catalog/accesorio-rueda-tt-01.png",
+      "description": "Ruedas robustas con brazos ajustables para carrito.",
+      "createdAt": "2025-10-16T00:00:00.000Z"
+    },
+    {
+      "id": "paw-010",
+      "name": "Servicio de ajuste y calibración",
+      "sku": "PAW-SERV-AJUSTE-01",
+      "category": "servicio",
+      "price": 600.00,
+      "stock": null,
+      "image": "assets/images/catalog/servicio-ajuste-01.png",
+      "description": "Ajuste fino, nivelación y confort del paciente (sesión profesional).",
+      "createdAt": "2025-10-16T00:00:00.000Z"
+    }
+  ]</script>
+
+</main>
 
     <!-- Modal del Carrito -->
     <div class="modal-carrito" id="modalCarrito">
@@ -135,5 +260,17 @@
     <!-- Scripts - IMPORTANTE: navbar.js PRIMERO -->
     <script src="assets/js/navbar.js"></script>
     <script src="assets/js/protesis.js"></script>
+
+  <!-- PG Catalog v3 JS -->
+  <script src="assets/js/pg-catalog.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var params = new URLSearchParams(location.search);
+      if (params.get('admin') === '1') {
+        var ap = document.getElementById('pg-admin-panel');
+        if (ap) ap.style.display = 'block';
+      }
+    });
+  </script>
 </body>
 </html>
