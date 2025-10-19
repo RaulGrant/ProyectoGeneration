@@ -1,0 +1,12 @@
+[
+  {
+    "id": "seed-001",
+    "name": "Prótesis de Rodilla K9",
+    "sku": "KNEE-K9-01",
+    "category": "rodilla",
+    "price": 2499.0,
+    "stock": 5,
+    "image": "assets/images/catalog/rodilla-k9.jpeg",
+    "description": "Prótesis ligera diseñada para movilidad diaria."
+  }
+]

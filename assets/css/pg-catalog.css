@@ -1,0 +1,164 @@
+/* PG Catalog v3 – namespaced to avoid collisions */
+/* Grid ahora usa las clases de protesis.css */
+
+/* Botones de administración en las tarjetas (ocultos por defecto) */
+.pg-admin-buttons {
+    display: none !important;
+}
+
+/* Mostrar botones solo cuando el panel de admin está visible */
+#pg-admin-panel:not([style*="display: none"]) ~ * .pg-admin-buttons,
+body.pg-admin-mode .pg-admin-buttons {
+    display: flex !important;
+}
+
+.pg-btn-edit,
+.pg-btn-delete {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 10px;
+    font-family: var(--font-body, "Nunito", sans-serif);
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(13, 13, 13, 0.1);
+}
+
+.pg-btn-edit {
+    background: #f39c12;
+    color: #fff;
+}
+
+.pg-btn-edit:hover {
+    background: #e67e22;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(243, 156, 18, 0.3);
+}
+
+.pg-btn-delete {
+    background: #e74c3c;
+    color: #fff;
+}
+
+.pg-btn-delete:hover {
+    background: #c0392b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+}
+
+/* Panel de administración */
+#pg-admin-panel { 
+    display: none; 
+    margin: 2rem 0; 
+    padding: 2rem;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 4px 16px rgba(13, 13, 13, 0.15);
+}
+
+#pg-admin-panel h3 {
+    font-family: var(--font-heading, "Jost", sans-serif);
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--color-primary, #1a4d8f);
+    margin-bottom: 1.5rem;
+}
+
+/* Formulario de administración */
+.pg-form { 
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 1rem; 
+}
+
+.pg-form .pg-full { 
+    grid-column: 1 / -1; 
+}
+
+.pg-form label {
+    display: block;
+    font-family: var(--font-body, "Nunito", sans-serif);
+    font-weight: 600;
+    color: var(--color-black, #0d0d0d);
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.pg-form input,
+.pg-form textarea {
+    width: 100%;
+    padding: 0.875rem 1.25rem;
+    border: 2px solid #e6e9ef;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-family: var(--font-body, "Nunito", sans-serif);
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.pg-form input:focus,
+.pg-form textarea:focus {
+    border-color: var(--color-primary, #1a4d8f);
+    box-shadow: 0 0 0 4px rgba(26, 77, 143, 0.1);
+}
+
+.pg-form button {
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: 12px;
+    font-family: var(--font-body, "Nunito", sans-serif);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(13, 13, 13, 0.1);
+}
+
+.pg-form button[type="submit"] {
+    background: linear-gradient(135deg, var(--color-primary, #1a4d8f) 0%, var(--color-primary-light, #2263b4) 100%);
+    color: #fff;
+}
+
+.pg-form button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(26, 77, 143, 0.3);
+}
+
+.pg-form button[type="button"] {
+    background: #95a5a6;
+    color: #fff;
+}
+
+.pg-form button[type="button"]:hover {
+    background: #7f8c8d;
+    transform: translateY(-2px);
+}
+
+#pg-export-btn {
+    background: #27ae60;
+    color: #fff;
+}
+
+#pg-export-btn:hover {
+    background: #229954;
+    transform: translateY(-2px);
+}
+
+/* Importación de archivos */
+.pg-form input[type="file"] {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+}
+
+/* Responsive para el panel */
+@media (max-width: 768px) {
+    .pg-form {
+        grid-template-columns: 1fr;
+    }
+    
+    #pg-admin-panel {
+        padding: 1.5rem;
+    }
+}

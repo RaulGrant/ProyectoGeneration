@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Catálogo - Pawssible</title>
+    
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&family=Jost:wght@500;600;700;800&family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/protesis.css">
+    <link rel="stylesheet" href="assets/css/pg-catalog.css">
+    
+    <style>
+        body {
+            background: #f7f4ef;
+            padding: 2rem 0;
+        }
+        .test-header {
+            text-align: center;
+            padding: 2rem;
+            background: #1a4d8f;
+            color: white;
+            margin-bottom: 2rem;
+        }
+        .test-header h1 {
+            font-family: var(--font-heading);
+            margin: 0;
+        }
+        .test-header p {
+            margin: 0.5rem 0 0;
+            opacity: 0.9;
+        }
+        .test-info {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 2rem auto;
+            max-width: 800px;
+            box-shadow: 0 4px 16px rgba(13, 13, 13, 0.15);
+        }
+        .test-info h2 {
+            font-family: var(--font-heading);
+            color: #1a4d8f;
+            margin-top: 0;
+        }
+        .test-info code {
+            background: #f7f4ef;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        .clear-storage-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            margin: 1rem 0;
+        }
+        .clear-storage-btn:hover {
+            background: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-header">
+        <h1>🧪 Prueba del Catálogo PG v3.2</h1>
+        <p>Verificación de estilos y funcionalidad del sistema de catálogo con localStorage</p>
+    </div>
+
+    <div class="container">
+        <div class="test-info">
+            <h2>📋 Instrucciones de Prueba</h2>
+            <ol style="line-height: 2;">
+                <li>Los 10 productos deberían cargarse automáticamente desde el seed inicial</li>
+                <li>Presiona <code>Ctrl + Alt + A</code> para mostrar/ocultar el panel de administración</li>
+                <li>O agrega <code>?admin=1</code> a la URL</li>
+                <li>Cuando el panel de admin esté visible, verás botones "Editar" y "Eliminar" en cada tarjeta</li>
+                <li>Agrega un nuevo producto y verifica que tenga el mismo formato que los otros 10</li>
+            </ol>
+            
+            <button class="clear-storage-btn" onclick="clearStorageAndReload()">
+                🗑️ Limpiar localStorage y recargar
+            </button>
+            
+            <p style="margin-top: 1rem; color: #666; font-size: 0.9rem;">
+                <strong>Nota:</strong> Si ya tienes datos en localStorage, presiona el botón de arriba para empezar de nuevo con los 10 productos originales.
+            </p>
+        </div>
+    </div>
+
+    <!-- Catálogo PG -->
+    <section class="container" id="catalog-root" style="margin-top: 2rem;">
+        <h2 class="section-title" style="font-family: var(--font-heading); font-size: 2.5rem; color: #1a4d8f; text-align: center; margin-bottom: 2rem;">
+            Catálogo de Prótesis
+        </h2>
+        <div id="pg-catalog-grid" class="protesis-grid"></div>
+    </section>
+
+    <!-- Seed de 10 productos -->
+    <script id="pg-default-catalog" type="application/json">[
+        {
+            "id": "paw-001",
+            "name": "Prótesis delantera — parcial",
+            "sku": "PAW-FR-PARCIAL-01",
+            "category": "protesis",
+            "price": 2500.00,
+            "stock": 10,
+            "image": "assets/images/catalog/protesis-frontal-parcial-01.png",
+            "description": "Socket ligero con soporte rígido y correas dobles."
+        },
+        {
+            "id": "paw-002",
+            "name": "Prótesis trasera — parcial",
+            "sku": "PAW-TR-PARCIAL-01",
+            "category": "protesis",
+            "price": 2600.00,
+            "stock": 8,
+            "image": "assets/images/catalog/protesis-trasera-parcial-01.png",
+            "description": "Acolchado en zonas de contacto y refuerzos de apoyo."
+        },
+        {
+            "id": "paw-003",
+            "name": "Prótesis delantera — completa",
+            "sku": "PAW-FR-COMPLETA-01",
+            "category": "protesis",
+            "price": 4200.00,
+            "stock": 6,
+            "image": "assets/images/catalog/protesis-frontal-completa-01.png",
+            "description": "Con articulación simulada para marcha natural."
+        },
+        {
+            "id": "paw-004",
+            "name": "Prótesis trasera — completa",
+            "sku": "PAW-TR-COMPLETA-01",
+            "category": "protesis",
+            "price": 4400.00,
+            "stock": 5,
+            "image": "assets/images/catalog/protesis-trasera-completa-01.png",
+            "description": "Centro de gravedad estable y tope antideslizante."
+        },
+        {
+            "id": "paw-005",
+            "name": "Prótesis bilateral delantera — parcial",
+            "sku": "PAW-BI-FR-PARCIAL-01",
+            "category": "protesis",
+            "price": 4800.00,
+            "stock": 3,
+            "image": "assets/images/catalog/protesis-bilateral-frontal-parcial-01.png",
+            "description": "Par emparejado con ajuste sincronizado."
+        },
+        {
+            "id": "paw-006",
+            "name": "Prótesis cuadripodal — parcial robusta (4 patitas)",
+            "sku": "PAW-QUAD-PARCIAL-ROBUSTA-01",
+            "category": "protesis",
+            "price": 7200.00,
+            "stock": 2,
+            "image": "assets/images/catalog/protesis-cuatripodal-robusta-01.png",
+            "description": "Cuatro prótesis parciales reforzadas (carbono/aleación) para soportar peso completo."
+        },
+        {
+            "id": "paw-007",
+            "name": "Arnés de rehabilitación",
+            "sku": "PAW-HARNESS-01",
+            "category": "accesorio",
+            "price": 790.00,
+            "stock": 15,
+            "image": "assets/images/catalog/accesorio-arnes-01.png",
+            "description": "Azul marino con ribete claro, tirantes a antebrazos y puntos de anclaje modulares."
+        },
+        {
+            "id": "paw-008",
+            "name": "Kit de mantenimiento",
+            "sku": "PAW-KIT-MANT-01",
+            "category": "accesorio",
+            "price": 350.00,
+            "stock": 25,
+            "image": "assets/images/catalog/accesorio-kit-mantenimiento-01.png",
+            "description": "Silicona, fijador de roscas, llaves, correas y tornillería en estuche."
+        },
+        {
+            "id": "paw-009",
+            "name": "Kit de ruedas todo-terreno",
+            "sku": "PAW-WHEEL-AT-01",
+            "category": "accesorio",
+            "price": 1150.00,
+            "stock": 12,
+            "image": "assets/images/catalog/accesorio-rueda-tt-01.png",
+            "description": "Ruedas robustas con brazos ajustables para carrito."
+        },
+        {
+            "id": "paw-010",
+            "name": "Servicio de ajuste y calibración",
+            "sku": "PAW-SERV-AJUSTE-01",
+            "category": "servicio",
+            "price": 600.00,
+            "stock": null,
+            "image": "assets/images/catalog/servicio-ajuste-01.png",
+            "description": "Ajuste fino, nivelación y confort del paciente (sesión profesional)."
+        }
+    ]</script>
+
+    <!-- Scripts -->
+    <script src="assets/js/pg-catalog.js"></script>
+    <script>
+        function clearStorageAndReload() {
+            if (confirm('¿Estás seguro? Esto eliminará todos los datos del catálogo y recargará con los 10 productos originales.')) {
+                localStorage.removeItem('pg_catalog_v3');
+                location.reload();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var params = new URLSearchParams(location.search);
+            if (params.get('admin') === '1') {
+                // El panel ya se mostrará automáticamente
+                console.log('✅ Modo administrador activado');
+            }
+            
+            // Mensaje de bienvenida en consola
+            console.log('🐾 Catálogo PG v3.2 - Sistema de prueba cargado');
+            console.log('📦 Productos en localStorage:', localStorage.getItem('pg_catalog_v3') ? 'SI' : 'NO (se cargará seed)');
+        });
+    </script>
+</body>
+</html>

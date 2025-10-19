@@ -1,0 +1,18 @@
+<!doctype html><html lang="es"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Smoke PG Catalog</title>
+<link rel="stylesheet" href="assets/css/protesis.css">
+<link rel="stylesheet" href="assets/css/pg-catalog.css">
+<style>body{font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;margin:20px}</style>
+</head><body>
+<h1>Smoke test</h1>
+<p>Abre con <code>?admin=1</code> para mostrar el panel.</p>
+<section class="container" id="catalog-root" style="margin-top: 2rem;">
+  <h2 class="section-title">Nuestras Prótesis</h2>
+  <div id="pg-catalog-grid" class="protesis-grid"></div>
+</section>
+<script id="pg-default-catalog" type="application/json">[
+  {"id":"seed-001","sku":"KNEE-K9-01","name":"Prótesis Rodilla K9","category":"rodilla","price":1999,"stock":3,"image":"assets/img/placeholder.jpg","description":"Semilla de prueba"}
+]</script>
+<script src="assets/js/pg-catalog.js"></script>
+</body></html>
