@@ -56,6 +56,8 @@ class NavbarComponent {
               <li><a href="sobre-nosotros.html" class="nav-link" data-page="sobre-nosotros">Sobre Nosotros</a></li>
               <li><a href="nuestras-protesis.html" class="nav-link" data-page="nuestras-protesis">Catálogo</a></li>
               <li><a href="contact.html" class="nav-link" data-page="contact">Contacto</a></li>
+              <li><a href="Login.html" class="nav-link" data-page="login">Login</a></li>
+
             </ul>
           </div>
         </div>

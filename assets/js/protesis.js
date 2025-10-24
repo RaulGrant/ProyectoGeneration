@@ -212,43 +212,59 @@ function actualizarContadorCarrito() {
 }
 
 function agregarAlCarrito(idProducto) {
-    const producto = todosLosProductos.find(p => p.id === idProducto);
+    let producto = todosLosProductos.find(p => String(p.id) === String(idProducto));
     
+    // Si no está en el catálogo original, busca en PG Catalog
+    if (!producto && window.pgGetCatalog) {
+        const pgList = window.pgGetCatalog();
+        const pgProd = pgList.find(p => String(p.id) === String(idProducto));
+        
+        if (pgProd) {
+            // Mapear formato PG a formato de carrito y catálogo original
+            producto = {
+                id: pgProd.id,
+                nombreProtesis: pgProd.name || pgProd.nombreProtesis || '(Sin nombre)',
+                precio: Number(pgProd.price || pgProd.precio || 0),
+                cantidad: 1,
+                imagen: pgProd.image || pgProd.imagen || 'assets/images/placeholder.png',
+                imagenes: [pgProd.image || pgProd.imagen || 'assets/images/placeholder.png'],
+                sku: pgProd.sku || '',
+                descripcion: pgProd.description || pgProd.descripcion || '',
+                stock: typeof pgProd.stock === 'number' ? pgProd.stock : (parseInt(pgProd.stock) || 0),
+                size: pgProd.size || 'medium',
+                tipo: pgProd.tipo || '',
+                miembro: pgProd.miembro || '',
+                segmento: pgProd.segmento || ''
+            };
+        }
+    }
     if (!producto) {
+        console.error('❌ Producto no encontrado con ID:', idProducto);
         mostrarMensaje('❌ Producto no encontrado', 'error');
         return;
     }
     
     if (producto.stock === 0 || producto.stock === null) {
+        console.warn('⚠️ Producto sin stock');
         mostrarMensaje('❌ Producto no disponible', 'error');
         return;
     }
-    
     // Verificar si ya existe en el carrito
-    const itemExistente = carrito.find(item => item.id === idProducto);
-    
+    const itemExistente = carrito.find(item => String(item.id) === String(idProducto));
     if (itemExistente) {
         // Verificar stock antes de incrementar
-        if (itemExistente.cantidad < producto.stock) {
+        if (itemExistente.cantidad < (producto.stock || 99)) {
             itemExistente.cantidad++;
             mostrarMensaje(`✅ Cantidad actualizada: ${producto.nombreProtesis}`, 'success');
         } else {
+            console.warn('⚠️ Stock máximo alcanzado');
             mostrarMensaje(`⚠️ Stock máximo alcanzado (${producto.stock} unidades)`, 'warning');
             return;
         }
     } else {
-        // Agregar nuevo item
-        carrito.push({
-            id: producto.id,
-            nombreProtesis: producto.nombreProtesis,
-            precio: producto.precio,
-            cantidad: 1,
-            imagen: producto.imagenes[0] || 'assets/images/placeholder.png',
-            sku: producto.sku || ''
-        });
+        carrito.push(producto);
         mostrarMensaje(`✅ Agregado al carrito: ${producto.nombreProtesis}`, 'success');
     }
-    
     guardarCarrito();
 }
 
@@ -452,8 +468,6 @@ function actualizarContadorProductos(cantidad) {
         contador.textContent = `Mostrando ${cantidad} producto${cantidad !== 1 ? 's' : ''}`;
     }
 }
-
-// ===== INICIALIZAR EVENTOS =====
 function inicializarEventos() {
     // Botón del carrito flotante
     const btnCarritoFloat = document.getElementById('btnCarritoFloat');
@@ -494,7 +508,36 @@ function inicializarEventos() {
     if (sortBy) {
         sortBy.addEventListener('change', filtrarProductos);
     }
+    
+    // ========================================
+    // TOGGLE DE FILTROS - SIN ROTACIONES
+    // ========================================
+    const filtersToggleBtn = document.getElementById('filtersToggleBtn');
+    const filtersDropdown = document.getElementById('filtersDropdown');
+    
+    if (filtersToggleBtn && filtersDropdown) {
+        filtersToggleBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Solo toggle del dropdown, SIN modificar la flecha
+            const estaActivo = filtersDropdown.classList.contains('active');
+            
+            if (estaActivo) {
+                filtersDropdown.classList.remove('active');
+                // NO modificar filtersArrow
+            } else {
+                filtersDropdown.classList.add('active');
+                // NO modificar filtersArrow
+            }
+        });
+    } else {
+        console.error('❌ Error: No se encontraron los elementos del toggle de filtros');
+        if (!filtersToggleBtn) console.error('   - Falta: #filtersToggleBtn');
+        if (!filtersDropdown) console.error('   - Falta: #filtersDropdown');
+    }
 }
+
 
 // ===== MOSTRAR MENSAJES =====
 function mostrarMensaje(mensaje, tipo = 'success') {
