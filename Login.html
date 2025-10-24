@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Double Slider Login / Registration Form</title>
+  <link rel="stylesheet" href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/Login.css">
+</head>
+<body>
+  <div class="container" id="container">
+
+    <div class="form-container register-container">
+      <form action="#">
+        <h1>Registrate aqui</h1>
+        <input type="text" placeholder="Name">
+        <input type="email" placeholder="Email">
+        <input type="password" placeholder="Password">
+        <button>Registrate</button>
+        <span>o ingresa aqui si ya tienes una cuenta</span>
+        <div class="social-container">
+            <a href="#" class="social"><i class="lni lni-facebook-fill"></i></a>
+            <a href="#" class="social"><i class="lni lni-google"></i></a>
+            <a href="#" class="social"><i class="lni lni-linkedin-original"></i></a>
+        </div>
+      </form>
+    </div>
+
+    <div class="form-container login-container">
+      <form action="#">
+        <h1>Ingresa aqui</h1>
+        <input type="email" placeholder="Email">
+        <input type="password" placeholder="Password">
+        <div class="content">
+          <div class="checkbox">
+            <input type="checkbox" name="checkbox" id="checkbox">
+            <label>Recuerdame por 30 dias</label>
+          </div>
+          <div class="pass-link">
+            <a href="#">¿Olvidaste tu contraseña?</a>
+          </div>
+        </div>
+        <button>Login</button>
+        <span>o ingresa aqui si ya tienes una cuenta</span>
+        <div class="social-container">
+          <a href="#" class="social"><i class="lni lni-facebook-fill"></i></a>
+          <a href="#" class="social"><i class="lni lni-google"></i></a>
+          <a href="#" class="social"><i class="lni lni-linkedin-original"></i></a>
+        </div>
+      </form>
+    </div>
+
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-left">
+          <h1 class="title">Bienvenidos<br>a Pawssible</h1>
+          <p>Inicia sesión para una mejor experiencia</p>
+          <button class="ghost" id="login">Login
+            <i class="lni lni-arrow-left login"></i>
+          </button>
+        </div>
+        <div class="overlay-panel overlay-right">
+          <h1 class="title">Unete a esta<br>Gran familia</h1>
+          <p>¿Aun no tienes cuenta? Registrate para ser parte de la familia</p>
+          <button class="ghost" id="register">Registrate aqui
+            <i class="lni lni-arrow-right register"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  
+
+<script src="assets/js/Login.js"></script>
+
+</body>
+</html>

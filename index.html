@@ -121,11 +121,52 @@
         </div>
     </section>
 
+    <!-- Modal del Carrito -->
+    <div class="modal-carrito" id="modalCarrito">
+        <div class="modal-carrito-content">
+            <div class="modal-carrito-header">
+                <h2 class="modal-carrito-title">🛒 Tu Carrito</h2>
+                <button class="btn-close-carrito" id="btnCerrarCarrito">&times;</button>
+            </div>
+            
+            <div class="carrito-items" id="carritoItems">
+                <!-- Los items se cargan dinámicamente -->
+            </div>
+            
+            <div class="carrito-footer">
+                <div class="carrito-total">
+                    <span class="carrito-total-label">Total:</span>
+                    <span class="carrito-total-amount" id="totalCarrito">$0.00</span>
+                </div>
+                <div class="carrito-actions">
+                    <button class="btn-vaciar-carrito" onclick="vaciarCarritoIndex()">
+                        🗑️ Vaciar Carrito
+                    </button>
+                    <button class="btn-finalizar-compra" onclick="finalizarCompraIndex()">
+                        💬 Finalizar por WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botón flotante del carrito -->
+    <button class="btn-carrito-float" id="btnCarritoFloat" title="Ver carrito">
+        🛒
+        <span class="carrito-badge" id="carritoBadge">0</span>
+    </button>
+
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/525512345678" target="_blank" class="btn-whatsapp-float" title="Contáctanos por WhatsApp">
+        💬
+    </a>
+
     <!-- Catálogo embebido -->
     <script type="application/json" id="catalog-embed">
     [
       {"id":1,"sku":"PAW-FR-PARCIAL-01","tipo":"protesis","miembro":"frontal","segmento":"parcial","nombre":"Prótesis delantera — parcial","descripcion":"Socket ligero con soporte rígido y correas dobles.","precio":2500,"stock":10,"imagenes":["assets/images/catalog/protesis-frontal-parcial-01.png"]},
-      {"id":2,"sku":"PAW-TR-PARCIAL-01","tipo":"protesis","miembro":"trasero","segmento":"parcial","nombre":"Prótesis trasera — parcial","descripcion":"Acolchado en zonas de contacto y refuerzos de apoyo.","precio":2600,"stock":8,"imagenes":["assets/images/catalog/protesis-trasera-parcial-01.png"]}
+      {"id":2,"sku":"PAW-TR-PARCIAL-01","tipo":"protesis","miembro":"trasero","segmento":"parcial","nombre":"Prótesis trasera — parcial","descripcion":"Acolchado en zonas de contacto y refuerzos de apoyo.","precio":2600,"stock":8,"imagenes":["assets/images/catalog/protesis-trasera-parcial-01.png"]},
+      {"id":3,"sku":"PAW-FR-COMPLETA-01","tipo":"protesis","miembro":"frontal","segmento":"completa","nombre":"Prótesis delantera — completa","descripcion":"Con articulación simulada para marcha natural.","precio":4200,"stock":6,"imagenes":["assets/images/catalog/protesis-frontal-completa-01.png"]}
     ]
     </script>
     
