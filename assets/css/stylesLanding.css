@@ -42,6 +42,124 @@ body {
   padding: 0 2rem;
 }
 
+.container {
+    width: 100%;
+    height: 100%;
+
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.gallery-container {
+    padding: 75px 0;
+    margin: 0 auto;
+    width: 900px;
+}
+.gallery-container .gallery-wrap {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 70vh;
+}
+.gallery-container .gallery-wrap .item {
+    flex: 1;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: none;
+    transition: .5s ease;
+}
+.gallery-container .gallery-wrap .item:hover {
+    flex: 7;
+}
+.gallery-container .item:first-of-type {
+  background-image: url(/assets/images/Perrito\ 1.jpg);
+  border-radius: 10px;
+}
+.gallery-container .item:nth-of-type(2){
+  background-image: url(/assets/images/Perrito\ 2.jpg);
+  border-radius: 10px;
+}
+.gallery-container .item:nth-of-type(3){
+  background-image:url(/assets/images/perrito\ 3.jpg);
+  border-radius: 10px;
+}
+.gallery-container .item:nth-of-type(4){
+  background-image: url(/assets/images/Perrito\ 4.jpg);
+  border-radius: 10px;
+  }
+.gallery-container .item:nth-of-type(5){
+  background-image: url(/assets/images/Perrito\ 5.jpg);
+  border-radius: 10px;
+  }
+.gallery-container .item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  transition: 0.5s ease;
+}
+
+.gallery-container .item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: 0.5s ease;
+  z-index: 1;
+  filter: blur(0) brightness(1);
+}
+
+.gallery-container .item:first-of-type::before {
+  background-image: url(/assets/images/Perrito\ 1.jpg);
+}
+.gallery-container .item:nth-of-type(2)::before {
+  background-image: url(/assets/images/Perrito\ 2.jpg);
+}
+.gallery-container .item:nth-of-type(3)::before {
+  background-image: url(/assets/images/perrito\ 3.jpg);
+}
+.gallery-container .item:nth-of-type(4)::before {
+  background-image: url(/assets/images/Perrito\ 4.jpg);
+}
+.gallery-container .item:nth-of-type(5)::before {
+  background-image: url(/assets/images/Perrito\ 5.jpg);
+}
+
+.gallery-container .item:hover::before {
+  filter: blur(5px) brightness(0.6);
+}
+
+.overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  text-align: center;
+  pointer-events: none;
+  z-index: 2;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+}
+
+.gallery-container .item:hover .overlay-text {
+  opacity: 1;
+}
+
+
+
+  
 /* ===== ANIMACIONES ESTILO AOS ===== */
 
 /* Elementos animables - estado inicial (oculto) */
