@@ -452,8 +452,6 @@ function actualizarContadorProductos(cantidad) {
         contador.textContent = `Mostrando ${cantidad} producto${cantidad !== 1 ? 's' : ''}`;
     }
 }
-
-// ===== INICIALIZAR EVENTOS =====
 function inicializarEventos() {
     // Botón del carrito flotante
     const btnCarritoFloat = document.getElementById('btnCarritoFloat');
@@ -494,7 +492,36 @@ function inicializarEventos() {
     if (sortBy) {
         sortBy.addEventListener('change', filtrarProductos);
     }
+    
+    // ========================================
+    // TOGGLE DE FILTROS - SIN ROTACIONES
+    // ========================================
+    const filtersToggleBtn = document.getElementById('filtersToggleBtn');
+    const filtersDropdown = document.getElementById('filtersDropdown');
+    
+    if (filtersToggleBtn && filtersDropdown) {
+        filtersToggleBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Solo toggle del dropdown, SIN modificar la flecha
+            const estaActivo = filtersDropdown.classList.contains('active');
+            
+            if (estaActivo) {
+                filtersDropdown.classList.remove('active');
+                // NO modificar filtersArrow
+            } else {
+                filtersDropdown.classList.add('active');
+                // NO modificar filtersArrow
+            }
+        });
+    } else {
+        console.error('❌ Error: No se encontraron los elementos del toggle de filtros');
+        if (!filtersToggleBtn) console.error('   - Falta: #filtersToggleBtn');
+        if (!filtersDropdown) console.error('   - Falta: #filtersDropdown');
+    }
 }
+
 
 // ===== MOSTRAR MENSAJES =====
 function mostrarMensaje(mensaje, tipo = 'success') {
