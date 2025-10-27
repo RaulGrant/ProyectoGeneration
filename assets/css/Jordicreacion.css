@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+body {
+    background-color: #ffe6a7;
+    font-family: Poppins, sans-serif;
+
+}
+
+.texto1{
+    margin-top: 250px;
+
+}
+
+.Jordi-azul {
+    position: absolute;
+    bottom: 120;
+    left: 0;
+    width: 300px;
+    height: auto;
+}
+
+.logo-naranja {
+    position: absolute;
+    bottom: 120;
+    left: 0;
+    width: 300px;
+    height: auto;
+}
