@@ -27,26 +27,7 @@
   /* Transición */
   --transition: all 0.3s ease;
 }
-/* Jordi en la entrada del index */
-.imagen-derecha {
-  position: absolute;
-  right: -570px;
-  width: 700px;
-}
-@keyframes entrarDerecha {
-  from {
-    opacity: 0;
-    transform: translateX(100px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
 
-.imagen-derecha{
-  animation: entrarDerecha 2s ease-out;
-}
 
 
 body {
@@ -430,7 +411,7 @@ body {
   background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary-light) 100%);
   padding: 6rem 2rem 4rem;
   position: relative;
-  overflow: hidden;
+  overflow: visi;
 }
 
 .hero::before {
@@ -509,6 +490,7 @@ body {
   box-shadow: var(--shadow-lg);
   background: linear-gradient(135deg, #f29a2e 0%, var(--color-secondary) 100%);
 }
+
 
 /* Imagen y stats */
 .stats-image {
@@ -1386,4 +1368,61 @@ body {
         width: 100%;
         margin-top: 0.5rem;
     }
+}
+
+/* ===== IMAGEN JORDI ===== */
+
+.imagen-jordi {
+  display:grid;
+}
+
+
+@media (min-width: 768px) {
+  .herolanding {
+    position: relative;
+    overflow: visible; 
+  }
+  
+  .imagen-jordi {
+    display: block;
+    position: fixed;
+    top:10%;
+    right: 0; 
+    bottom: 0; 
+    width: 400px;
+    height: auto;
+    z-index: 1; 
+    pointer-events: none;
+    max-height: 100vh;
+    transform: scale(0.40);
+    transform-origin: right
+  }
+  
+
+  .herolanding ~ * {
+    position: relative;
+    z-index: 10;
+    background: var(--color-primary); 
+  }
+  
+  .hero-container,
+  .hero-text {
+    position: relative;
+    z-index: 10;
+  }
+}
+
+
+@media (min-width: 1024px) {
+  .imagen-jordi {
+    width: 700px;
+    top: 5%;
+  }
+}
+
+@media (min-width: 1440px) {
+  .imagen-jordi {
+    width: 800px;
+    top: 5%;
+  }
 }
