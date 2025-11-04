@@ -28,8 +28,6 @@
   --transition: all 0.3s ease;
 }
 
-
-
 body {
   font-family: var(--font-body);
   line-height: 1.6;
@@ -48,7 +46,6 @@ body {
 .container {
     width: 100%;
     height: 100%;
-
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
@@ -79,26 +76,31 @@ body {
     transition: .5s ease;
 }
 .gallery-container .gallery-wrap .item:hover {
-    flex: 7;
+    flex: 4;
 }
-.gallery-container .item:first-of-type {
-  background-image: url(/assets/images/Perrito\ 1.jpg);
+
+/*Estos contenedores tienen cada una de las funcionalidades del carrusel NO de las imaghenes
+El carrusel funciona de manera independiente sin embargo cada una de 
+Las imagenes puede ser editada de manera independiente*/
+
+.gallery-container .item:first-of-type {                         
+  background-image: url(/assets/images/PerritoProtesis1.jpg);        
   border-radius: 10px;
 }
 .gallery-container .item:nth-of-type(2){
-  background-image: url(/assets/images/Perrito\ 2.jpg);
+  background-image: url(/assets/images/PerritoProtesis2.jpg);
   border-radius: 10px;
 }
 .gallery-container .item:nth-of-type(3){
-  background-image:url(/assets/images/perrito\ 3.jpg);
+  background-image:url(/assets/images/PerritoProtesis3.jpg);
   border-radius: 10px;
 }
 .gallery-container .item:nth-of-type(4){
-  background-image: url(/assets/images/Perrito\ 4.jpg);
+  background-image: url(/assets/images/PerritoProtesis4.jpg);
   border-radius: 10px;
   }
 .gallery-container .item:nth-of-type(5){
-  background-image: url(/assets/images/Perrito\ 5.jpg);
+  background-image: url(/assets/images/PerritoProtesis5.jpg);
   border-radius: 10px;
   }
 .gallery-container .item {
@@ -121,24 +123,30 @@ body {
 }
 
 .gallery-container .item:first-of-type::before {
-  background-image: url(/assets/images/Perrito\ 1.jpg);
+  background-image: url(/assets/images/PerritoProtesis1.jpg);
 }
 .gallery-container .item:nth-of-type(2)::before {
-  background-image: url(/assets/images/Perrito\ 2.jpg);
+  background-image: url(/assets/images/PerritoProtesis2.jpg);
 }
 .gallery-container .item:nth-of-type(3)::before {
-  background-image: url(/assets/images/perrito\ 3.jpg);
+  background-image: url(/assets/images/PerritoProtesis3.jpg);
 }
 .gallery-container .item:nth-of-type(4)::before {
-  background-image: url(/assets/images/Perrito\ 4.jpg);
+  background-image: url(/assets/images/PerritoProtesis4.jpg);
 }
 .gallery-container .item:nth-of-type(5)::before {
-  background-image: url(/assets/images/Perrito\ 5.jpg);
+  background-image: url(/assets/images/PerritoProtesis5.jpg);
 }
 
+/*Esta parte controla el efecto de blur que se le da a la imagen 
+Junto con el brillo de esta, el efecto before (Antes de) hace que se refleje al momento
+de que se inicie la animacion de apertura*/
+
 .gallery-container .item:hover::before {
-  filter: blur(5px) brightness(0.6);
+  filter: blur(2px) brightness(0.8);
 }
+
+/*Esta parte controla el texto dentro de las imagenes*/
 
 .overlay-text {
   position: absolute;
@@ -149,7 +157,9 @@ body {
   font-size: 1.5rem;
   font-weight: bold;
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.6s ease 0.2s;
+  transform: 0.6s ease 0.2s;
+  top: 0.6s ease 0.2s;
   text-align: center;
   pointer-events: none;
   z-index: 2;
