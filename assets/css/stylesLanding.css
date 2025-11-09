@@ -36,12 +36,143 @@ body {
   overflow-x: hidden;
 }
 
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
 }
 
+.container {
+    width: 100%;
+    height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.gallery-container {
+    padding: 75px 0;
+    margin: 0 auto;
+    width: 900px;
+}
+.gallery-container .gallery-wrap {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 70vh;
+}
+.gallery-container .gallery-wrap .item {
+    flex: 1;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: none;
+    transition: .5s ease;
+}
+.gallery-container .gallery-wrap .item:hover {
+    flex: 4;
+}
+
+/*Estos contenedores tienen cada una de las funcionalidades del carrusel NO de las imaghenes
+El carrusel funciona de manera independiente sin embargo cada una de 
+Las imagenes puede ser editada de manera independiente*/
+
+.gallery-container .item:first-of-type {                         
+  background-image: url(/assets/images/PerritoProtesis1.jpg);        
+  border-radius: 10px;
+}
+.gallery-container .item:nth-of-type(2){
+  background-image: url(/assets/images/PerritoProtesis2.jpg);
+  border-radius: 10px;
+}
+.gallery-container .item:nth-of-type(3){
+  background-image:url(/assets/images/PerritoProtesis3.jpg);
+  border-radius: 10px;
+}
+.gallery-container .item:nth-of-type(4){
+  background-image: url(/assets/images/PerritoProtesis4.jpg);
+  border-radius: 10px;
+  }
+.gallery-container .item:nth-of-type(5){
+  background-image: url(/assets/images/PerritoProtesis5.jpg);
+  border-radius: 10px;
+  }
+.gallery-container .item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  transition: 0.5s ease;
+}
+
+.gallery-container .item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: 0.5s ease;
+  z-index: 1;
+  filter: blur(0) brightness(1);
+}
+
+.gallery-container .item:first-of-type::before {
+  background-image: url(/assets/images/PerritoProtesis1.jpg);
+}
+.gallery-container .item:nth-of-type(2)::before {
+  background-image: url(/assets/images/PerritoProtesis2.jpg);
+}
+.gallery-container .item:nth-of-type(3)::before {
+  background-image: url(/assets/images/PerritoProtesis3.jpg);
+}
+.gallery-container .item:nth-of-type(4)::before {
+  background-image: url(/assets/images/PerritoProtesis4.jpg);
+}
+.gallery-container .item:nth-of-type(5)::before {
+  background-image: url(/assets/images/PerritoProtesis5.jpg);
+}
+
+/*Esta parte controla el efecto de blur que se le da a la imagen 
+Junto con el brillo de esta, el efecto before (Antes de) hace que se refleje al momento
+de que se inicie la animacion de apertura*/
+
+.gallery-container .item:hover::before {
+  filter: blur(2px) brightness(0.8);
+}
+
+/*Esta parte controla el texto dentro de las imagenes*/
+
+.overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.6s ease 0.2s;
+  transform: 0.6s ease 0.2s;
+  top: 0.6s ease 0.2s;
+  text-align: center;
+  pointer-events: none;
+  z-index: 2;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+}
+
+.gallery-container .item:hover .overlay-text {
+  opacity: 1;
+}
+
+
+
+  
 /* ===== ANIMACIONES ESTILO AOS ===== */
 
 /* Elementos animables - estado inicial (oculto) */
@@ -290,7 +421,7 @@ body {
   background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary-light) 100%);
   padding: 6rem 2rem 4rem;
   position: relative;
-  overflow: hidden;
+  overflow: visi;
 }
 
 .hero::before {
@@ -369,6 +500,7 @@ body {
   box-shadow: var(--shadow-lg);
   background: linear-gradient(135deg, #f29a2e 0%, var(--color-secondary) 100%);
 }
+
 
 /* Imagen y stats */
 .stats-image {
@@ -1246,4 +1378,61 @@ body {
         width: 100%;
         margin-top: 0.5rem;
     }
+}
+
+/* ===== IMAGEN JORDI ===== */
+
+.imagen-jordi {
+  display:grid;
+}
+
+
+@media (min-width: 768px) {
+  .herolanding {
+    position: relative;
+    overflow: visible; 
+  }
+  
+  .imagen-jordi {
+    display: block;
+    position: fixed;
+    top:10%;
+    right: 0; 
+    bottom: 0; 
+    width: 400px;
+    height: auto;
+    z-index: 1; 
+    pointer-events: none;
+    max-height: 100vh;
+    transform: scale(0.40);
+    transform-origin: right
+  }
+  
+
+  .herolanding ~ * {
+    position: relative;
+    z-index: 10;
+    background: var(--color-primary); 
+  }
+  
+  .hero-container,
+  .hero-text {
+    position: relative;
+    z-index: 10;
+  }
+}
+
+
+@media (min-width: 1024px) {
+  .imagen-jordi {
+    width: 700px;
+    top: 5%;
+  }
+}
+
+@media (min-width: 1440px) {
+  .imagen-jordi {
+    width: 800px;
+    top: 5%;
+  }
 }

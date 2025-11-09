@@ -1,0 +1,177 @@
+/* 🌈 CONFIGURACIÓN GENERAL */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #fff7e0;
+  color: #3b2c1a;
+  background-image: url("https://i.ibb.co/F7sh7fW/paw-pattern.png");
+  background-repeat: repeat;
+  background-size: 8%;
+}
+
+h1 {
+  color: #ff7f32;
+  font-size: 220%;
+  margin-bottom: 1%;
+}
+
+p {
+  max-width: 60%;
+  margin: 0 auto 3%;
+  line-height: 1.6;
+  color: #5c4033;
+  text-align: center;
+}
+
+/* 🔸 NAVBAR */
+.navbar {
+  width: 100%;
+  background-color: rgba(255, 179, 71, 0.9);
+  position: fixed;
+  top: 0;
+  left: 15;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5% 5%;
+  z-index: 999;
+  backdrop-filter: blur(8px);
+}
+
+.logo {
+  font-weight: bold;
+  color: white;
+  font-size: 140%;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 5%;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #fff2df;
+}
+
+.menu-toggle {
+  display: none;
+  color: white;
+  font-size: 180%;
+  cursor: pointer;
+}
+
+/* 🧡 SECCIONES */
+.section {
+  padding: 10% 5%;
+  text-align: center;
+  background-color: #fff7e0;
+}
+
+.section.alt {
+  background-color: #ffe6c2;
+}
+
+.section img {
+  width: 60%;
+  height: auto;
+  border-radius: 3%;
+}
+
+/* 🐾 CARRUSELES */
+.carousel {
+  position: relative;
+  width: 70%;
+  margin: 2% auto;
+  overflow: hidden;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.8s ease-in-out;
+}
+
+.slide {
+  min-width: 100%;
+  transition: opacity 1s ease;
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+  border-radius: 3%;
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 127, 50, 0.7);
+  border: none;
+  color: white;
+  font-size: 180%;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 5%;
+  height: 9%;
+  transition: background 0.3s;
+}
+
+.prev:hover,
+.next:hover {
+  background-color: rgba(255, 127, 50, 0.9);
+}
+
+.prev {
+  left: 2%;
+}
+.next {
+  right: 2%;
+}
+
+/* FOOTER */
+footer {
+  background-color: #ffb347;
+  text-align: center;
+  color: white;
+  padding: 2% 0;
+  font-weight: 500;
+}
+
+/* 📱 RESPONSIVO */
+@media (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 179, 71, 0.95);
+    flex-direction: column;
+    display: none;
+    padding: 3% 0;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  p {
+    max-width: 90%;
+  }
+
+  .carousel {
+    width: 90%;
+  }
+}
