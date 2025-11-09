@@ -13,7 +13,7 @@
   --color-beige: #f7f4ef;
   --color-black: #0d0d0d;
   --color-primary-dark: #123a6b;
-  --color-primary-light: #2263b4;
+  --color-primary-light: #2264b4;
 
   /* Tipografía: Jost para títulos, Nunito para contenido */
   --font-heading: "Jost", sans-serif;
@@ -1372,37 +1372,53 @@ body {
 
 /* ===== IMAGEN JORDI ===== */
 
+
+.imagen-jordi-mobile {
+  display: block;
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  margin: 2rem auto 0;
+  border-radius: 16px;
+  bottom: 0%;
+}
+
 .imagen-jordi {
-  display:grid;
+  display: none;
 }
 
 
 @media (min-width: 768px) {
+
+  .imagen-jordi-mobile {
+    display: none;
+  }
+  
   .herolanding {
     position: relative;
-    overflow: visible; 
+    overflow: visible;
   }
   
   .imagen-jordi {
     display: block;
     position: fixed;
-    top:10%;
-    right: 0; 
-    bottom: 0; 
+    top: 10%;
+    right: 0;
     width: 400px;
     height: auto;
-    z-index: 1; 
+    z-index: 1;
     pointer-events: none;
     max-height: 100vh;
     transform: scale(0.40);
-    transform-origin: right
+    transform-origin: right;
   }
   
-
-  .herolanding ~ * {
+  
+  .features,
+  .products,
+  .testimonials {
     position: relative;
-    z-index: 10;
-    background: var(--color-primary); 
+    z-index: 11; 
   }
   
   .hero-container,
@@ -1419,6 +1435,7 @@ body {
     top: 5%;
   }
 }
+
 
 @media (min-width: 1440px) {
   .imagen-jordi {
