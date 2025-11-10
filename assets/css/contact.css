@@ -851,3 +851,21 @@ select.form-input:focus {
         padding: 1.5rem 0;
     }
 }
+/* jordi con telefono */
+.imagen-telefono {
+  position: fixed;
+  right: 1450px;
+  width: 500px;
+  bottom: -100px;
+  animation: entrarIzquierda 1s ease-out forwards;
+}
+@keyframes entrarIzquierda {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

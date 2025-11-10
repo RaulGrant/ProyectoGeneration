@@ -189,7 +189,7 @@ body {
     height: 250px;
     border-radius: 16px;
     overflow: hidden;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem; 
     background: var(--color-beige);
 }
 
@@ -203,6 +203,7 @@ body {
 .protesis-card:hover .protesis-image {
     transform: scale(1.05);
 }
+
 
 .badge-stock {
     position: absolute;
