@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&family=Jost:wght@500;600;700;800&family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/stylesLanding.css">
@@ -68,32 +68,32 @@
         </h2>
         <div class="features-grid">
             <div class="feature-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
-                <div class="feature-icon"><i data-lucide="trophy"></i></div>
+                <div class="feature-icon"><i data-lucide="trophy" style="width: 40px; height: 40px;"></i></div>
                 <h3>Calidad Premium</h3>
                 <p>Materiales de grado médico certificados para máxima durabilidad y comodidad</p>
             </div>
             <div class="feature-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-                <div class="feature-icon"><i data-lucide="pen-tool"></i></div>
+                <div class="feature-icon"><i data-lucide="pen-tool" style="width: 40px; height: 40px;"></i></div>
                 <h3>Diseño Personalizado</h3>
                 <p>Cada prótesis se adapta perfectamente a las necesidades específicas de tu mascota</p>
             </div>
             <div class="feature-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
-                <div class="feature-icon">💙</div>
+                <div class="feature-icon"><i data-lucide="dog" style="width: 40px; height: 40px;"></i></div>
                 <h3>Atención Veterinaria</h3>
                 <p>Equipo de veterinarios especializados disponibles para consultas</p>
             </div>
             <div class="feature-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
-                <div class="feature-icon">🚚</div>
+                <div class="feature-icon"><i data-lucide="truck" style="width: 40px; height: 40px;"></i></div>
                 <h3>Envío Rápido</h3>
                 <p>Entrega express en 24-48 horas a todo el país</p>
             </div>
             <div class="feature-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
-                <div class="feature-icon">🔧</div>
+                <div class="feature-icon"><i data-lucide="wrench" style="width: 40px; height: 40px;"></i></div>
                 <h3>Mantenimiento</h3>
                 <p>Servicio de ajuste y mantenimiento gratuito durante el primer año</p>
             </div>
             <div class="feature-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
-                <div class="feature-icon">💰</div>
+                <div class="feature-icon"><i data-lucide="hand-coins" style="width: 40px; height: 40px;"></i></div>
                 <h3>Garantía Total</h3>
                 <p>Garantía de satisfacción de 90 días o te devolvemos tu dinero</p>
             </div>
@@ -115,17 +115,35 @@
             <div class="testimonial-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
                 <p class="testimonial-text">"Gracias a Pawssibles, mi perro Max volvió a correr como antes. La calidad es excepcional y el servicio al cliente es increíble."</p>
                 <p class="testimonial-author">- María González</p>
-                <div class="rating">⭐⭐⭐⭐⭐</div>
+                <div class="rating">
+                    <i data-lucide="star"></i>
+                    <i data-lucide="star"></i>
+                    <i data-lucide="star"></i>
+                    <i data-lucide="star"></i>
+                    <i data-lucide="star"></i>
+                </div>
             </div>
             <div class="testimonial-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
                 <p class="testimonial-text">"La prótesis se adaptó perfectamente a mi Golden Retriever. El equipo fue muy profesional durante todo el proceso."</p>
                 <p class="testimonial-author">- Carlos Ramírez</p>
-                <div class="rating">⭐⭐⭐⭐⭐</div>
+                <div class="rating">
+                    <i data-lucide="star"></i>
+                    <i data-lucide="star"></i>
+                    <i data-lucide="star"></i>
+                    <i data-lucide="star"></i>
+                    <i data-lucide="star"></i>
+                </div>
             </div>
             <div class="testimonial-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
                 <p class="testimonial-text">"No puedo creer la diferencia que ha hecho en la vida de Luna. Ahora puede jugar con otros perros sin problemas."</p>
                 <p class="testimonial-author">- Ana Martínez</p>
-                <div class="rating">⭐⭐⭐⭐⭐</div>
+                <div class="rating">
+                    <i data-lucide="star"></i>
+                    <i data-lucide="star"></i>
+                    <i data-lucide="star"></i>
+                    <i data-lucide="star"></i>
+                    <i data-lucide="star"></i>
+                </div>
             </div>
         </div>
     </section>
@@ -149,10 +167,10 @@
                 </div>
                 <div class="carrito-actions">
                     <button class="btn-vaciar-carrito" onclick="vaciarCarritoIndex()">
-                        🗑️ Vaciar Carrito
+                        <i data-lucide="trash-2" style="stroke:#ffffff;width:18px;height:18px;vertical-align:middle;margin-right:6px;margin-bottom:5px;"></i>  Vaciar Carrito
                     </button>
                     <button class="btn-finalizar-compra" onclick="finalizarCompraIndex()">
-                        💬 Finalizar por WhatsApp
+                        <i data-lucide="messages-square" style="stroke:#ffffff;width:18px;height:18px;vertical-align:middle;margin-right:6px;"></i> Finalizar por WhatsApp
                     </button>
                 </div>
             </div>
@@ -161,13 +179,13 @@
 
     <!-- Botón flotante del carrito -->
     <button class="btn-carrito-float" id="btnCarritoFloat" title="Ver carrito">
-        🛒
+        <i data-lucide="shopping-cart"></i>
         <span class="carrito-badge" id="carritoBadge">0</span>
     </button>
 
     <!-- Botón flotante de WhatsApp -->
     <a href="https://wa.me/525512345678" target="_blank" class="btn-whatsapp-float" title="Contáctanos por WhatsApp">
-        💬
+        <i data-lucide="messages-square"></i>
     </a>
 
     <!-- Catálogo embebido -->
@@ -187,6 +205,8 @@
     <script>
     lucide.createIcons();
     </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
 
 
 </body>

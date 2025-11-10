@@ -109,7 +109,7 @@
                                             carrito.push(item);
                                         }
                                         localStorage.setItem('carritoPatitas', JSON.stringify(carrito));
-                                        if(window.mostrarMensaje){ window.mostrarMensaje('✅ Agregado al carrito: '+(p.name||'(Sin nombre)'),'success'); }
+                                        if(window.mostrarMensaje){ window.mostrarMensaje('Agregado al carrito: '+(p.name||'(Sin nombre)'),'success'); }
                                     }catch(e){
                                         console.error('❌ Fallback addToCartViaProtesis error:', e);
                                     }
@@ -330,13 +330,23 @@
                                                                                                 skuP.appendChild(DOC.createTextNode('SKU: '+(p.sku||'-')));
                                                                                                 
                                                                                                 // Add to cart button (cliente)
-                                                                                                var addB=DOC.createElement('button');
-                                                                                                addB.className='btn-add-cart';
-                                                                                                var noStock=(p.stock===0 || p.stock===null);
-                                                                                                if(noStock){ addB.disabled=true; addB.appendChild(DOC.createTextNode('❌ Sin Stock')); }
-                                                                                                else{ addB.appendChild(DOC.createTextNode('🛒 Agregar al Carrito')); }
-                                                                                                addB.addEventListener('click',function(){ addToCartViaProtesis(p.id); });
-                                                                                                
+                                                                                                var addB = DOC.createElement('button');
+                                                                                                addB.className = 'btn-add-cart';
+                                                                                                var noStock = (p.stock === 0 || p.stock === null);
+                                                                                                if (noStock) {
+                                                                                                addB.disabled = true;
+                                                                                                addB.innerHTML = `
+                                                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-x-circle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
+                                                                                                    Sin Stock
+                                                                                                `;
+                                                                                                } else {
+                                                                                                addB.innerHTML = `
+                                                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-shopping-cart" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61l1.38-7.39H6"/></svg>
+                                                                                                    Agregar al Carrito
+                                                                                                `;
+                                                                                                }
+                                                                                                addB.addEventListener('click', function() { addToCartViaProtesis(p.id); });
+
                                                                                                 // Admin buttons container (solo visible en modo admin)
                                                                                                 var btnW=DOC.createElement('div');
                                                                                                 btnW.className='pg-admin-buttons';

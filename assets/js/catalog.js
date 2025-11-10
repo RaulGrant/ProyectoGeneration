@@ -58,13 +58,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       
       const btn = document.createElement('button');
+      lucide.createIcons();
       btn.className = 'product-btn';
-      btn.textContent = '🛒 Agregar al Carrito';
+      btn.innerHTML = '<i data-lucide="shopping-cart" style="stroke: white"></i> Agregar al Carrito';
       btn.addEventListener('click', () => {
         agregarAlCarritoIndex(item);
       });
       info.appendChild(btn);
-      
       card.appendChild(info);
       listEl.appendChild(card);
     });
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.href = 'nuestras-protesis.html';
     btn.className = 'btn-ver-todos';
     btn.innerHTML = `
-      <span class="btn-ver-todos-icon">🐾</span>
+      <span class="btn-ver-todos-icon"><i data-lucide="paw-print" color="#ffffff"></i></span>
       <span class="btn-ver-todos-text">Ver Todos Nuestros Productos</span>
       <span class="btn-ver-todos-arrow">→</span>
     `;
@@ -152,7 +152,7 @@ function agregarAlCarritoIndex(producto) {
       imagen: (producto.imagenes && producto.imagenes[0]) || 'assets/images/placeholder.png',
       sku: producto.sku || ''
     });
-    mostrarNotificacion(`✅ Agregado al carrito: ${producto.nombre}`, 'success');
+    mostrarNotificacion(`Agregado al carrito: ${producto.nombre}`, 'success');
   }
   
   guardarCarrito();
@@ -212,7 +212,7 @@ function mostrarModalCarrito() {
   if (carrito.length === 0) {
     carritoItems.innerHTML = `
       <div style="text-align: center; padding: 3rem 1rem; color: #999;">
-        <p style="font-size: 3rem; margin-bottom: 1rem;">🛒</p>
+        <p style="font-size: 3rem; margin-bottom: 1rem;"></p>
         <p style="font-size: 1.2rem;">Tu carrito está vacío</p>
       </div>
     `;
@@ -250,7 +250,7 @@ function crearItemCarrito(item) {
           <span style="font-weight: 700; min-width: 40px; text-align: center;">${item.cantidad}</span>
           <button class="btn-quantity" onclick="cambiarCantidadIndex(${item.id}, 1)">+</button>
           <button class="btn-remove-item" onclick="eliminarDelCarritoIndex(${item.id})">
-            🗑️ Eliminar
+            Eliminar
           </button>
         </div>
       </div>
@@ -289,15 +289,57 @@ function eliminarDelCarritoIndex(idProducto) {
 }
 
 function vaciarCarritoIndex() {
-  if (carrito.length === 0) return;
-  
-  if (confirm('¿Estás seguro de que deseas vaciar el carrito?')) {
-    carrito = [];
-    guardarCarrito();
-    mostrarModalCarrito();
-    mostrarNotificacion('🗑️ Carrito vaciado', 'info');
+  if (carrito.length === 0) {
+    Toastify({
+      text: "El carrito ya está vacío",
+      duration: 2000,
+      gravity: "top",
+      position: "center",
+      style: {
+        background: "#2263b4",
+        color: "#fff",
+        borderRadius: "10px",
+      }
+    }).showToast();
+    return;
   }
+
+  Toastify({
+    text: "Click aquí para confirmar que deseas vaciar el carrito",
+    duration: 3000,
+    gravity: "top",
+    position: "center",
+    close: true,
+    stopOnFocus: true,
+    style: {
+      background: '#e74c3c',
+      color: "#fff",
+      borderRadius: "10px",
+      fontWeight: "500",
+      cursor: "pointer"
+    },
+    onClick: function() {
+      carrito = [];
+      guardarCarrito();
+      mostrarModalCarrito();
+
+      Toastify({
+        text: "Carrito vaciado correctamente",
+        duration: 2500,
+        gravity: "bottom",
+        position: "center",
+        style: {
+          background: "#25D366",
+          color: "#fff",
+          borderRadius: "10px",
+          fontWeight: "500"
+        }
+      }).showToast();
+    }
+  }).showToast();
 }
+
+
 
 function cerrarCarrito() {
   const modal = document.getElementById('modalCarrito');
@@ -323,7 +365,11 @@ function actualizarTotalCarrito() {
 
 function finalizarCompraIndex() {
   if (carrito.length === 0) {
-    mostrarNotificacion('🛒 El carrito está vacío', 'warning');
+    mostrarNotificacion(
+      '<i data-lucide="shopping-cart" style="stroke:#2263b4;width:18px;height:18px;vertical-align:middle;margin-right:6px;"></i> El carrito está vacío',
+      'warning'
+    );
+    lucide.createIcons(); // 🔥 Importante para renderizar el icono SVG
     return;
   }
   

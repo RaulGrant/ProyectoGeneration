@@ -120,38 +120,51 @@ function crearCardProtesis(protesis) {
     const tallaTexto = traducirSize(protesis.size);
     
     return `
-        <article class="protesis-card" data-id="${protesis.id}">
-            <div class="protesis-image-container">
-                <img 
-                    src="${imagen}" 
-                    alt="${protesis.nombreProtesis}" 
-                    class="protesis-image"
-                    onerror="this.src='assets/images/placeholder.png'"
-                >
-                ${stockBadge}
+    <article class="protesis-card" data-id="${protesis.id}">
+        <div class="protesis-image-container">
+            <img 
+                src="${imagen}" 
+                alt="${protesis.nombreProtesis}" 
+                class="protesis-image"
+                onerror="this.src='assets/images/placeholder.png'"
+            >
+            ${stockBadge}
+        </div>
+        
+        <div class="protesis-info">
+            <h3 class="protesis-name">${protesis.nombreProtesis}</h3>
+            <p class="protesis-description">${protesis.descripcion}</p>
+            
+            <div class="protesis-details">
+                <span class="protesis-price">
+                    <i data-lucide="tag"></i> ${precioFormateado}
+                </span>
+                <span class="protesis-sku">
+                    <i data-lucide="ruler"></i> Talla: ${tallaTexto}
+                </span>
             </div>
             
-            <div class="protesis-info">
-                <h3 class="protesis-name">${protesis.nombreProtesis}</h3>
-                <p class="protesis-description">${protesis.descripcion}</p>
-                
-                <div class="protesis-details">
-                    <span class="protesis-price">${precioFormateado}</span>
-                    <span class="protesis-sku">Talla: ${tallaTexto}</span>
-                </div>
-                
-                ${protesis.sku ? `<p class="protesis-sku">SKU: ${protesis.sku}</p>` : ''}
-                
-                <button 
-                    class="btn-add-cart" 
-                    onclick="agregarAlCarrito(${protesis.id})"
-                    ${deshabilitado ? 'disabled' : ''}
-                >
-                    ${deshabilitado ? '❌ Sin Stock' : '🛒 Agregar al Carrito'}
-                </button>
-            </div>
-        </article>
-    `;
+            ${protesis.sku ? `
+                <p class="protesis-sku">
+                    <i data-lucide="barcode"></i> SKU: ${protesis.sku}
+                </p>` : ''
+            }
+            
+            <button 
+                class="btn-add-cart" 
+                onclick="agregarAlCarrito(${protesis.id})"
+                ${deshabilitado ? 'disabled' : ''}
+            >
+                ${
+                    deshabilitado 
+                    ? `<i data-lucide="x-circle"></i> Sin Stock` 
+                    : `<i data-lucide="shopping-cart"></i> Agregar al Carrito`
+                }
+            </button>
+        </div>
+    </article>
+`;
+
 }
 
 // ===== OBTENER BADGE DE STOCK =====
@@ -206,9 +219,11 @@ function actualizarContadorCarrito() {
     
     // Actualizar contador del navbar (si existe)
     const carritoLink = document.querySelector('.carrito-link');
-    if (carritoLink) {
-        carritoLink.textContent = `🛒 Carrito (${totalItems})`;
-    }
+if (carritoLink) {
+    carritoLink.innerHTML = `<i data-lucide="shopping-cart"></i> Carrito (${totalItems})`;
+    lucide.createIcons(); 
+}
+
 }
 
 function agregarAlCarrito(idProducto) {
@@ -263,7 +278,7 @@ function agregarAlCarrito(idProducto) {
         }
     } else {
         carrito.push(producto);
-        mostrarMensaje(`✅ Agregado al carrito: ${producto.nombreProtesis}`, 'success');
+        mostrarMensaje(`Agregado al carrito: ${producto.nombreProtesis}`, 'success');
     }
     guardarCarrito();
 }
@@ -282,7 +297,7 @@ function mostrarModalCarrito() {
     if (carrito.length === 0) {
         carritoItems.innerHTML = `
             <div style="text-align: center; padding: 3rem 1rem; color: #999;">
-                <p style="font-size: 3rem; margin-bottom: 1rem;">🛒</p>
+                <p style="font-size: 3rem; margin-bottom: 1rem;"><i data-lucide="shopping-cart"></i></p>
                 <p style="font-size: 1.2rem;">Tu carrito está vacío</p>
             </div>
         `;
@@ -320,7 +335,7 @@ function crearItemCarrito(item) {
                     <span style="font-weight: 700; min-width: 40px; text-align: center;">${item.cantidad}</span>
                     <button class="btn-quantity" onclick="cambiarCantidad(${item.id}, 1)">+</button>
                     <button class="btn-remove-item" onclick="eliminarDelCarrito(${item.id})">
-                        🗑️ Eliminar
+                        Eliminar
                     </button>
                 </div>
             </div>
@@ -355,19 +370,61 @@ function eliminarDelCarrito(idProducto) {
     carrito = carrito.filter(item => item.id !== idProducto);
     guardarCarrito();
     mostrarModalCarrito();
-    mostrarMensaje('🗑️ Producto eliminado del carrito', 'info');
+    mostrarMensaje('Producto eliminado del carrito', 'info');
 }
 
 function vaciarCarrito() {
-    if (carrito.length === 0) return;
-    
-    if (confirm('¿Estás seguro de que deseas vaciar el carrito?')) {
-        carrito = [];
-        guardarCarrito();
-        mostrarModalCarrito();
-        mostrarMensaje('🗑️ Carrito vaciado', 'info');
+  if (carrito.length === 0) {
+    Toastify({
+      text: "El carrito ya está vacío",
+      duration: 2000,
+      gravity: "top",
+      position: "center",
+      style: {
+        background: "#2263b4",
+        color: "#fff",
+        borderRadius: "10px",
+        fontWeight: "500",
+      }
+    }).showToast();
+    return;
+  }
+
+  Toastify({
+    text: "Haz clic aquí para confirmar que deseas vaciar el carrito",
+    duration: 3000,
+    gravity: "top",
+    position: "center",
+    close: true,
+    stopOnFocus: true,
+    style: {
+      background: '#e74c3c',
+      color: "#fff",
+      borderRadius: "10px",
+      fontWeight: "500",
+      cursor: "pointer"
+    },
+    onClick: function() {
+      carrito = [];
+      guardarCarrito();
+      mostrarModalCarrito();
+
+      Toastify({
+        text: "Carrito vaciado correctamente",
+        duration: 2500,
+        gravity: "bottom",
+        position: "center",
+        style: {
+          background: "#25D366",
+          color: "#fff",
+          borderRadius: "10px",
+          fontWeight: "500"
+        }
+      }).showToast();
     }
+  }).showToast();
 }
+
 
 function cerrarCarrito() {
     const modal = document.getElementById('modalCarrito');
@@ -393,10 +450,16 @@ function actualizarTotalCarrito() {
 
 // ===== FINALIZAR COMPRA POR WHATSAPP =====
 function finalizarCompra() {
+    function finalizarCompra() {
     if (carrito.length === 0) {
-        mostrarMensaje('🛒 El carrito está vacío', 'warning');
+        mostrarMensaje('<i data-lucide="shopping-cart"></i> El carrito está vacío', 'warning');
+        lucide.createIcons(); // Renderiza el ícono SVG
         return;
     }
+
+    // ... resto de la lógica
+}
+
     
     const mensaje = construirMensajeWhatsApp();
     const numeroWhatsApp = '525512345678'; // Cambia este número
