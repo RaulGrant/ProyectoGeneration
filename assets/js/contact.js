@@ -44,48 +44,166 @@
   }
 })();
 
-// Validación simple + estado de envío simulado
+// Inicializar EmailJS
+(function(){
+  // Inicializar EmailJS con tu Public Key
+  emailjs.init("Z3Q_Tub1bAMljQLWd"); // Reemplaza con tu Public Key real
+})();
+
+// Validación de formulario + envío con EmailJS
 (function(){
   const form = document.getElementById('contactForm');
   if(!form) return;
-  const btn  = document.getElementById('submitBtn');
-  const status = document.getElementById('formStatus');
-
-  const setError = (name, msg)=>{
-    const hint = form.querySelector(`[data-error="${name}"]`);
-    if(hint) hint.textContent = msg || '';
-  };
+  
   const clearErrors = ()=>{
-    ['name','email','topic','message'].forEach(n=>setError(n,''));
-    if(status) status.textContent = '';
+    document.getElementById('nombreError').textContent = '';
+    document.getElementById('emailError').textContent = '';
+    document.getElementById('asuntoError').textContent = '';
+    document.getElementById('mensajeError').textContent = '';
   };
-  const isEmail = v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  
+  const setError = (elementId, message)=>{
+    const errorElement = document.getElementById(elementId);
+    if(errorElement) errorElement.textContent = message;
+  };
+  
+  const isEmail = (email) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  };
 
   form.addEventListener('submit', async (e)=>{
     e.preventDefault();
     clearErrors();
 
-    const fd = new FormData(form);
-    const name = (fd.get('name')||'').toString().trim();
-    const email = (fd.get('email')||'').toString().trim();
-    const topic = (fd.get('topic')||'').toString().trim();
-    const message = (fd.get('message')||'').toString().trim();
+    const formData = new FormData(form);
+    const nombre = formData.get('nombre')?.toString().trim() || '';
+    const email = formData.get('email')?.toString().trim() || '';
+    const telefono = formData.get('telefono')?.toString().trim() || '';
+    const asunto = formData.get('asunto')?.toString().trim() || '';
+    const mensaje = formData.get('mensaje')?.toString().trim() || '';
 
-    let ok = true;
-    if(!name){ setError('name','Escribe tu nombre.'); ok = false; }
-    if(!email || !isEmail(email)){ setError('email','Ingresa un email válido.'); ok = false; }
-    if(!topic){ setError('topic','Escribe el asunto.'); ok = false; }
-    if(!message){ setError('message','Escribe tu mensaje.'); ok = false; }
-    if(!ok) return;
+    let isValid = true;
 
-    btn.classList.add('loading'); btn.disabled = true;
-    if(status) status.textContent = 'Enviando...';
+    // Validaciones
+    if (!nombre) {
+      setError('nombreError', 'El nombre es obligatorio');
+      isValid = false;
+    }
 
-    // Simulación de envío (reemplaza con fetch real si quieres)
-    await new Promise(r=>setTimeout(r, 1200));
+    if (!email) {
+      setError('emailError', 'El email es obligatorio');
+      isValid = false;
+    } else if (!isEmail(email)) {
+      setError('emailError', 'Ingresa un email válido');
+      isValid = false;
+    }
 
-    btn.classList.remove('loading'); btn.disabled = false;
-    form.reset();
-    if(status) status.textContent = '¡Gracias! Tu mensaje ha sido enviado.';
+    if (!asunto) {
+      setError('asuntoError', 'Selecciona un asunto');
+      isValid = false;
+    }
+
+    if (!mensaje) {
+      setError('mensajeError', 'El mensaje es obligatorio');
+      isValid = false;
+    }
+
+    if (!isValid) return;
+
+    // Cambiar estado del botón
+    const btn = form.querySelector('button[type="submit"]');
+    const btnText = btn.querySelector('.btn-text');
+    const btnSpinner = btn.querySelector('.btn-spinner');
+    
+    btn.disabled = true;
+    btn.classList.add('loading');
+    btnText.textContent = 'Enviando...';
+
+    try {
+      // Configurar parámetros para EmailJS
+      const templateParams = {
+        from_name: nombre,
+        from_email: email,
+        phone: telefono || 'No proporcionado',
+        subject: asunto,
+        message: mensaje,
+        to_email: 'vqrgashernandezrauldejesus@gmail.com',
+         current_date: new Date().toLocaleDateString('es-ES', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        })
+      };
+
+
+        // 1. Enviar auto-respuesta al cliente
+      const autoReplyResponse = await emailjs.send(
+        'service_9z269i2',     // Tu Service ID
+        'template_g9e4cmp',    // Template de auto-respuesta
+        templateParams
+      );
+
+      // 2. Enviar notificación interna a ti
+      const internalResponse = await emailjs.send(
+        'service_9z269i2',     // El mismo Service ID
+        'template_b28pyxi',      // Reemplaza con el ID de tu template interno
+        templateParams
+      );
+
+
+      console.log('Auto-respuesta enviada:', autoReplyResponse);
+      console.log('Notificación interna enviada:', internalResponse);
+      
+      // Éxito
+      form.reset();
+      btnText.textContent = '¡Enviado!';
+      
+      // Mostrar mensaje de éxito
+      const successMessage = document.createElement('div');
+      successMessage.className = 'success-message';
+      successMessage.innerHTML = `
+        <div style="background: #4CAF50; color: white; padding: 15px; border-radius: 8px; margin: 20px 0; text-align: center;">
+          <h3 style="margin: 0 0 10px 0;">¡Mensaje enviado correctamente!</h3>
+          <p style="margin: 0;">Gracias por contactarnos. Te responderemos pronto.</p>
+        </div>
+      `;
+      form.parentNode.insertBefore(successMessage, form);
+      
+      // Remover mensaje después de 5 segundos
+      setTimeout(() => {
+        successMessage.remove();
+        btnText.textContent = 'Enviar mensaje';
+      }, 5000);
+
+    } catch (error) {
+      console.error('Error al enviar email:', error);
+      
+      // Error
+      btnText.textContent = 'Error al enviar';
+      
+      // Mostrar mensaje de error
+      const errorMessage = document.createElement('div');
+      errorMessage.className = 'error-message';
+      errorMessage.innerHTML = `
+        <div style="background: #f44336; color: white; padding: 15px; border-radius: 8px; margin: 20px 0; text-align: center;">
+          <h3 style="margin: 0 0 10px 0;">Error al enviar el mensaje</h3>
+          <p style="margin: 0;">Por favor, inténtalo de nuevo o contáctanos directamente.</p>
+        </div>
+      `;
+      form.parentNode.insertBefore(errorMessage, form);
+      
+      // Remover mensaje después de 5 segundos
+      setTimeout(() => {
+        errorMessage.remove();
+        btnText.textContent = 'Enviar mensaje';
+      }, 5000);
+    } finally {
+      // Restaurar estado del botón
+      btn.disabled = false;
+      btn.classList.remove('loading');
+    }
   });
 })();
