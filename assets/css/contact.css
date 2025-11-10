@@ -854,9 +854,10 @@ select.form-input:focus {
 /* jordi con telefono */
 .imagen-telefono {
   position: fixed;
-  right: 1450px;
-  width: 500px;
-  bottom: -100px;
+  right: 1300px;
+  width: 600px;
+  bottom: -80px;
+  width: 350px;
   animation: entrarIzquierda 1s ease-out forwards;
 }
 @keyframes entrarIzquierda {
