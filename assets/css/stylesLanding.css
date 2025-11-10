@@ -82,23 +82,23 @@ body {
     flex: 7;
 }
 .gallery-container .item:first-of-type {
-  background-image: url(/assets/images/Perrito\ 1.jpg);
+  background-image: url(/assets/images/PerritoProtesis1.jpg);
   border-radius: 10px;
 }
 .gallery-container .item:nth-of-type(2){
-  background-image: url(/assets/images/Perrito\ 2.jpg);
+  background-image: url(/assets/images/PerritoProtesis2.jpg);
   border-radius: 10px;
 }
 .gallery-container .item:nth-of-type(3){
-  background-image:url(/assets/images/perrito\ 3.jpg);
+  background-image:url(/assets/images/PerritoProtesis3.jpg);
   border-radius: 10px;
 }
 .gallery-container .item:nth-of-type(4){
-  background-image: url(/assets/images/Perrito\ 4.jpg);
+  background-image: url(/assets/images/PerritoProtesis4.jpg);
   border-radius: 10px;
   }
 .gallery-container .item:nth-of-type(5){
-  background-image: url(/assets/images/Perrito\ 5.jpg);
+  background-image: url(/assets/images/PerritoProtesis5.jpg);
   border-radius: 10px;
   }
 .gallery-container .item {
@@ -121,19 +121,19 @@ body {
 }
 
 .gallery-container .item:first-of-type::before {
-  background-image: url(/assets/images/Perrito\ 1.jpg);
+  background-image: url(/assets/images/PerritoProtesis1.jpg);
 }
 .gallery-container .item:nth-of-type(2)::before {
-  background-image: url(/assets/images/Perrito\ 2.jpg);
+  background-image: url(/assets/images/PerritoProtesis2.jpg);
 }
 .gallery-container .item:nth-of-type(3)::before {
-  background-image: url(/assets/images/perrito\ 3.jpg);
+  background-image: url(/assets/images/PerritoProtesis3.jpg);
 }
 .gallery-container .item:nth-of-type(4)::before {
-  background-image: url(/assets/images/Perrito\ 4.jpg);
+  background-image: url(/assets/images/PerritoProtesis4.jpg);
 }
 .gallery-container .item:nth-of-type(5)::before {
-  background-image: url(/assets/images/Perrito\ 5.jpg);
+  background-image: url(/assets/images/PerritoProtesis5.jpg);
 }
 
 .gallery-container .item:hover::before {
