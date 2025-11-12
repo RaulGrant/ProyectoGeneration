@@ -21,7 +21,24 @@
                         return 'MXN $'+x.toFixed(2)
                     }
                 }
-                        function readDefaultSeed(){
+                        
+    // Función para verificar si el usuario actual es administrador
+    function isCurrentUserAdmin() {
+        var session = null;
+        try {
+            session = JSON.parse(localStorage.getItem('session')) || 
+                      JSON.parse(sessionStorage.getItem('session'));
+        } catch(e) {
+            return false;
+        }
+
+        // Validar que la sesión tenga isAdmin: true y email: "admin@pawssible.com"
+        return session && 
+               session.isAdmin === true && 
+               session.email === 'admin@pawssible.com';
+    }
+
+    function readDefaultSeed(){
                             var el=$id('pg-default-catalog');
                             if(!el)
                                 return[];
@@ -31,6 +48,7 @@
                                 return[]
                             }
                         }
+                        
                         // Merge the default seed into localStorage so the 10 baseline items always appear
                         function mergeSeedIntoLocalStorage(){
                             var current=[];
@@ -609,51 +627,110 @@
                                                                                                                             )
                                                                                                                         }
                                                                                                                         function setAdminVisibility(show){
-                                                                                                                            var p=ensureAdminPanel();
-                                                                                                                            p.style.display=show?'block':'none';
-                                                                                                                            if(show){
-                                                                                                                                DOC.body.classList.add('pg-admin-mode')
-                                                                                                                            }else{
-                                                                                                                                DOC.body.classList.remove('pg-admin-mode')
-                                                                                                                            }
-                                                                                                                        }
+    // Validar que el usuario sea admin antes de mostrar
+    if (show && !isCurrentUserAdmin()) {
+        console.warn('⛔ Intento de activar modo admin sin permisos');
+        return;
+    }
+
+    var p=ensureAdminPanel();
+    p.style.display=show?'block':'none';
+
+    if(show){
+        DOC.body.classList.add('pg-admin-mode')
+    }else{
+        DOC.body.classList.remove('pg-admin-mode')
+    }
+}
                                                                                                                         document.addEventListener('DOMContentLoaded',function(){
-                                                                                                                            var s=document.location.search||'';
-                                                                                                                            var pr={};
-                                                                                                                            if(s.indexOf('?')===0)
-                                                                                                                                s=s.slice(1);
-                                                                                                                            var parts=s.split('&');
-                                                                                                                            for(var i=0;i<parts.length;i++){
-                                                                                                                                if(!parts[i])
-                                                                                                                                    continue;
-                                                                                                                                var kv=parts[i].split('=');
-                                                                                                                                pr[decodeURIComponent(kv[0]||'')]=decodeURIComponent(kv[1]||'')
-                                                                                                                            }
-                                                                                                                            // Always merge seed so the baseline 10 items are present
-                                                                                                                            mergeSeedIntoLocalStorage();
-                                                                                                                                ensureContainer();
-                                                                                                                                ensureAdminPanel();
-                                                                                                                                setAdminVisibility(pr['admin']==='1');
-                                                                                                                                bindForm();
-                                                                                                                                // Conectar filtros/búsqueda si existen
-                                                                                                                                var sb=$id('searchBox');
-                                                                                                                                var fs=$id('filterSize');
-                                                                                                                                var so=$id('sortBy');
-                                                                                                                                if(sb) sb.addEventListener('input', applyFiltersAndRender);
-                                                                                                                                if(fs) fs.addEventListener('change', applyFiltersAndRender);
-                                                                                                                                if(so) so.addEventListener('change', applyFiltersAndRender);
-                                                                                                                                applyFiltersAndRender();
-                                                                                                                                document.addEventListener('keydown',function(e){
-                                                                                                                                    var k=e&&(e.key||e.keyCode);
-                                                                                                                                    if(e.ctrlKey&&e.altKey&&(k==='a'||k==='A'||k===65)){
-                                                                                                                                        var panel=$id('pg-admin-panel');
-                                                                                                                                        var visible=panel&&panel.style.display!=='none';
-                                                                                                                                        setAdminVisibility(!visible)
-                                                                                                                                    }
-                                                                                                                                }
-                                                                                                                            )
-                                                                                                                        }
-                                                                                                                    )
+    var s=document.location.search||'';
+    var pr={};
+    if(s.indexOf('?')===0)
+        s=s.slice(1);
+    var parts=s.split('&');
+    for(var i=0;i<parts.length;i++){
+        if(!parts[i])
+            continue;
+        var kv=parts[i].split('=');
+        pr[decodeURIComponent(kv[0]||'')]=decodeURIComponent(kv[1]||'')
+    }
+
+    mergeSeedIntoLocalStorage();
+    ensureContainer();
+    ensureAdminPanel();
+
+    // VALIDACIÓN: Solo mostrar modo admin si el usuario es admin
+    var showAdmin = pr['admin'] === '1' && isCurrentUserAdmin();
+    setAdminVisibility(showAdmin);
+
+    bindForm();
+
+    var sb=$id('searchBox');
+    var fs=$id('filterSize');
+    var so=$id('sortBy');
+    if(sb) sb.addEventListener('input', applyFiltersAndRender);
+    if(fs) fs.addEventListener('change', applyFiltersAndRender);
+    if(so) so.addEventListener('change', applyFiltersAndRender);
+
+    applyFiltersAndRender();
+
+    // Atajo Ctrl+Alt+A con validación de permisos
+    document.addEventListener('keydown',function(e){
+        var k=e&&(e.key||e.keyCode);
+        if(e.ctrlKey&&e.altKey&&(k==='a'||k==='A'||k===65)){
+            e.preventDefault();
+
+            if (!isCurrentUserAdmin()) {
+                console.warn('Acceso denegado: Se requieren permisos de administrador');
+
+                if (typeof Toastify !== 'undefined') {
+                    Toastify({
+                        text: "Acceso denegado - Redirigiendo...",
+                        duration: 2000,
+                        close: true,
+                        gravity: "top",
+                        position: "center",
+                        stopOnFocus: true,
+                        style: {
+                            background: "linear-gradient(135deg, #d23a3aff 0%, #cd730cff 100%)",
+                            borderRadius: "8px",
+                            fontSize: "16px",
+                            fontWeight: "600",
+                            padding: "16px 24px"
+                        }
+                    }).showToast();
+                }
+
+                setTimeout(function() {
+                    window.location.href = 'forbidden.html';
+                }, 1000);
+
+                return;
+            }
+
+            var panel=$id('pg-admin-panel');
+            var visible=panel&&panel.style.display!=='none';
+            setAdminVisibility(!visible);
+
+            if (typeof Toastify !== 'undefined') {
+                Toastify({
+                    text: visible ? "Modo administrador desactivado" : "Modo administrador activado",
+                    duration: 2000,
+                    gravity: "top",
+                    position: "center",
+                    style: {
+                        background: visible 
+                            ? "linear-gradient(135deg, #d23a3aff 0%, #cd730cff 100%)"
+                            : "linear-gradient(135deg, #0ba360 0%, #3cba92 100%)",
+                        borderRadius: "8px",
+                        padding: "12px 20px"
+                    }
+                }).showToast();
+            }
+        }
+    });
+});
+                                                                                                                    
                                                                                                                 }
                                                                                                             )
                                                                                                             (
