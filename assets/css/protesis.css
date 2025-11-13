@@ -992,3 +992,33 @@ body {
     }
 }
 
+/* ===== BOTÓN ADMIN FLOTANTE ===== */
+.btn-admin-float {
+  position: fixed;
+  bottom: 120px; /* justo arriba del carrito */
+  right: 20px;
+  background: #3498db; /* azul Pawssible */
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(52, 152, 219, 0.4);
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+.btn-admin-float:hover {
+  background: #2980b9;
+  transform: scale(1.08);
+}
+
+.btn-admin-float i {
+  stroke-width: 2;
+  width: 24px;
+  height: 24px;
+}

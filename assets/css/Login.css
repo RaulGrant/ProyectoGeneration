@@ -26,8 +26,8 @@ h1.title {
   font-size: 45px;
   line-height: 45px;
   margin: 0;
-  text-shadow: 0 0 20px rgba(206, 127, 23, 0.873);
-  color: #030200;
+  text-shadow: 0 0 20px rgba(37, 49, 156, 0.873);
+  color: #000000;
 }
 
 p {
@@ -36,8 +36,14 @@ p {
   line-height: 20px;
   letter-spacing: 0.5px;
   margin: 20px 0 30px;
-  text-shadow: 0 0 10px rgba(5, 5, 5, 0.5);
+  color: #fefefe;
+  text-shadow:
+    0 2px 4px rgba(82, 60, 24, 0.758),     /* sombra base */
+    0 4px 10px rgba(127, 102, 12, 0.63),    /* sombra más profunda */
+    0 0 10px rgb(0, 0, 0),/* glow suave */
+    0 0 20px rgb(5, 5, 10);/* glow más fuerte */
 }
+
 
 span {
   font-size: 14px;
@@ -55,6 +61,7 @@ a {
 a:hover {
   color: aquamarine;
 }
+
 
 .content {
   display: flex;
@@ -245,7 +252,7 @@ input {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0 0;
-  filter: blur(2px);
+  filter: blur(5px);
   z-index: -2;
 }
 
@@ -370,6 +377,7 @@ input {
   opacity: 0;
   transform: translateY(50%) rotateX(90deg);
 }
+
 
 
 

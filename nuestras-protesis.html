@@ -272,15 +272,7 @@
 
   <!-- PG Catalog v3 JS -->
   <script src="assets/js/pg-catalog.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      var params = new URLSearchParams(location.search);
-      if (params.get('admin') === '1') {
-        var ap = document.getElementById('pg-admin-panel');
-        if (ap) ap.style.display = 'block';
-      }
-    });
-  </script>
+ 
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
   <script>
     lucide.createIcons();
