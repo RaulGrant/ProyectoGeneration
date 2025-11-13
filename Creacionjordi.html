@@ -1,24 +1,411 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creación Jordi</title>
-    <link rel="stylesheet" href="assets/css/Jordicreacion.css">
+    <title>Galería de Creación | E-commerce</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/Jordicreacion.css"> 
 </head>
 <body>
-    <h1>¡Conoce de donde vengo!</h1>
-    <p class="section-description">Jordi es una mezcla de distintas ideas en conjunto, puede aparentar ser un perro naranja pero su historia es mas profunda.</p>
-    <div>
-        <img src="assets/images/jordi brazo azul sin fondo.png" alt="Jordi azul" class="Jordi-azul">
-        <span class="overlay-text">¿Sabías que Jordi iba a ser azul?</span>
-    </div>
-    <p class="texto1">Antes de crear a Jordi se tuvo la idea de relacionar un logo con nuestro idealismo sobre el producto que queriamos presentar. Se preguntarán 
-        ¿Y el logo que tiene que ver con Jordi? Bueno es que Jordi nace del logo.</p>
-        <h2>Creación del logo</h2>
-        <img src="assets/images/PAWWSIBLE-removebg-preview.png" alt="logo" class="logo-naranja">
-        <p>El logo no solo refleja el gusto que tenemos sino también nuestro lado más humano ya que cada una de las partes del logo esta inspirado en nuestros al rededores</p>
+    <section id="carrusel-inicio" class="carousel-section">
+        <div class="carousel-container">
+            <div class="carousel-wrapper">
+                <div class="carousel-track">
+                    
+                    <div class="carousel-item">
+                        <img src="/assets/images/Boeto Jordi y sus amigos 1.png" alt="Boceto de trazos iniciales en lápiz.">
+                        <div class="caption">Cada trazo tiene una historia que contar</div>
+                    </div>
+                    
+                    <div class="carousel-item">
+                        <img src="/assets/images/paww-tipogrtafias.jpg" alt="Conoce el logo">
+                        <div class="caption">¿Conoce cómo se creo el logo?</div>
+                    </div>
+                    
+                    <div class="carousel-item">
+                        <img src="/assets/images/inspiracion.jpg" alt="Imagenes de inspiracion">
+                        <div class="caption">¿De dónde viene la inspiración?</div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/assets/images/antes-de.jpg" alt="Lo que pudo ser">
+                        <div class="caption">Antes de Jordi existío... </div>
+                    </div>
+                    </div>
+            </div>
+        <button class="carousel-control prev-button" onclick="navigateCarousel(-1)">&#10094;</button>
+        <button class="carousel-control next-button" onclick="navigateCarousel(1)">&#10095;</button>
+            <div class="carousel-dots"></div> 
+        </div>
+    </section>
+    <header class="main-header">
+        <nav class="gallery-nav">
+            <a href="#inspiracion" class="nav-button" data-color="red" data-icon="lightbulb">
+                <span class="material-icons">lightbulb</span> Inspiración
+            </a>
+            <a href="#bocetos" class="nav-button" data-color="blue" data-icon="brush">
+                <span class="material-icons">brush</span> Bocetos
+            </a>
+            <a href="#curiosidades" class="nav-button" data-color="green" data-icon="auto_awesome">
+                <span class="material-icons">auto_awesome</span> Curiosidades
+            </a>
+            <a href="#creacion" class="nav-button" data-color="yellow" data-icon="code">
+                <span class="material-icons">code</span> Creación
+            </a>
+            <a href="#logo" class="nav-button" data-color="purple" data-icon="diamond">
+                <span class="material-icons">diamond</span> Logo
+            </a>
+        </nav>
+    </header>
+    <main>
+        <section id="inspiracion" class="gallery-content">
+            <section id="inspiracion" class="gallery-content">
+    <h2><span class="material-icons">palette</span>¿De dónde viene la inspiración hacia Jordi?</h2>
+    <p class="section-description">Jordi no se creo de un día para otro, puede parecer un simple perro naranja pero todo lo que lo rodea es mera inspiración. Aquí te compartimos como fue pensado</p>
+    <div class="inspiration-grid">
         
+        <div class="inspiration-card flip-card" onclick="flipCard(this)">
+            <div class="flip-card-inner">
+                <div class="flip-card-front card-1">
+                    <img src="/assets/images/Perrito saludando sin fondo.png" alt="perrito-dibujo1">
+                    <h3>Perrito Saludando</h3>
+                </div>
+                <div class="flip-card-back card-back">
+                    <div class="card-text">
+                        <h4>Inspiración 1 </h4>
+                        <p>Este perrito es parte fundamental de la creación de Jordi, al ser un tema sensible como lo es prótesis caninas quisimos reflejar un perrito saludando que da la bienvenida al usuario</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inspiration-card flip-card" onclick="flipCard(this)">
+            <div class="flip-card-inner">
+                <div class="flip-card-front card-2">
+                    <img src="/assets/images/Perrito-asomandose sin fondo.jpg" alt="Perrito Asomandose">
+                    <h3>Perrito Asomandose</h3>
+                </div>
+                <div class="flip-card-back card-back">
+                    <div class="card-text">
+                        <h4>Perrito Asomandose</h4>
+                        <p>En los primeros comienzos de la página. Existian muchos bordes y recuadros por lo que se pensó en un perrito asomandose por estos recuadros, es así como se buscó algun perrito saludando como inspiración</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inspiration-card flip-card" onclick="flipCard(this)">
+            <div class="flip-card-inner">
+                <div class="flip-card-front card-3">
+                    <img class="akita" src="/assets/images/akita bueno.jpg" alt="Raza de Jordi">
+                    <h3>Raza de Jordi</h3>
+                </div>
+                <div class="flip-card-back card-back">
+                    <div class="card-text">
+                        <h4>Su Raza</h4>
+                        <p>¡Así es! Aunque sea diferente por estar inspirado en muchas cosas Jordi tiene una raza, los colores que representan nuestra ideología son el azul y el naranja. Sin embargo, no hay un perro azul pero si uno naranja y que demuesra confianza. ¡Sí! Jordi es un Akita. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inspiration-card flip-card" onclick="flipCard(this)">
+            <div class="flip-card-inner">
+                <div class="flip-card-front card-4">
+                    <img src="/assets/images/primerjordi.png" alt="Primer-jordi">
+                    <h3>Primer Diseño con IA</h3>
+                </div>
+                <div class="flip-card-back card-back">
+                    <div class="card-text">
+                        <h4>Referencia</h4>
+                        <p>Al inicio no se le tomó mucha importancia al arte de la página por lo que se uso IA para hacer este perrito, sin embargo bajo la influencia de uno de los miembros del equipo, se decidió mejor diseñar uno a mano ya con el concepto hecho, eso no quita que aun extrañamos a este pequeño</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inspiration-card flip-card" onclick="flipCard(this)">
+            <div class="flip-card-inner">
+                <div class="flip-card-front card-5">
+                    <img src="/assets/images/segundojordi.png" alt="Jordi-malhecho">
+                    <h3>Un jordi y ¿¡ESO!?</h3>
+                </div>
+                <div class="flip-card-back card-back">
+                    <div class="card-text">
+                        <h4>No es lo que parece</h4>
+                        <p>Si, sabemos lo que estan pensando. Sin embargo, este error le dio un giro completamente al diseño creativo no solo de Jordi sino de la página en general. Aún no se definía una prótesis como tal, así que el departamento del Front se puso manos a la obra a diseñar y ya no usar la IA para el diseño</p>
+                    </div>
+                </div>
+            </div>
+        </div>       
+        <div class="inspiration-card flip-card" onclick="flipCard(this)">
+            <div class="flip-card-inner">
+                <div class="flip-card-front card-6">
+                    <img src="/assets/images/Patitadejordi (1).png" alt="Modelo-3d">
+                    <h3>Modelo 3D</h3>
+                </div>
+                <div class="flip-card-back card-back">
+                    <div class="card-text">
+                        <h4>Modelo 3D</h4>
+                        <p>Jordi tiene una prótesis en su pata delantera en honor a este modelo 3D, el cual inicio todo. De aquí sale el primer prototipo que dió vida a Jordi. Esta imagen representa una gran idea, aunquq se le cambió a la otra patita solo por diseño.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> </section>
+    </div>
+</section>
+        </section>
+        <section id="bocetos" class="gallery-content">
+            <section id="bocetos" class="gallery-content">
+    <h2><span class="material-icons">draw</span> Bocetos y Trazos Iniciales</h2>
+    <p class="section-description">El origen de todo. Esperamos disfrutes esta galeria de bocetos realizados para la página de Pawwsible</p>
+    <div class="bocetos-list">
+        
+        <div class="boceto-item left">
+            <div class="boceto-image">
+                <img src="/assets/images/paww-tipogrtafias.jpg" alt="Primer vistazo a las fuentes del logo">
+            </div>
+            <div class="boceto-info">
+                <h3>01. Primeras Fuentes</h3>
+                <p>Aún mantenemos lo clásico, simplista y retro. Al momento de pensar en fuentes nuestro equipo prefirió diseñar a mano antes de hacer algún cambio en digital. Este es uno de los primeros bocetos sobre el nombre "Pawssible".</p>
+            </div>
+        </div>
+        <div class="boceto-item right">
+            <div class="boceto-info">
+                <h3>02. Lo que pudo ser</h3>
+                <p>Antes de definir la página hubo una lluvia de ideas variadas, dando así al bocetaje de distintas mascotas. Pues en un inicio no se sabía si era solo de perros o de mascotas en general. Podemos ver a Anivia el perico, Kira la perrita (del diseñador), Zac el lince y un guiño a nuestro profe Josué.</p>
+            </div>
+            <div class="boceto-image">
+                <img src="/assets/images/mascotas.jpg" alt="Boceto de la composición de tres personajes.">
+            </div>
+        </div>
+        <div class="boceto-item left">
+            <div class="boceto-image">
+                <img src="/assets/images/wireframebueno.jpg" alt="Prueba de color digital sobre un personaje.">
+            </div>
+            <div class="boceto-info">
+                <h3>03. ¿Un Wire...qué? </h3>
+                <p>El diseñador antes del bootcamp no sabia que era un Wireframe (curioso) así qué antes de empezar a utilizar Figma cuando sucedian las lluvias de ideas se ponía a dibujar la web en papel.</p>
+            </div>
+        </div>
+        <div class="boceto-item right">
+            <div class="boceto-info">
+                <h3>04. Amigos</h3>
+                <p>Antes de decidir que fueran la parte visual del logo, estos perritos eran solo una idea para una sección que finalmente no se terminó incorporando, pero ¿sabías qué tienen su propia historia?.</p>
+            </div>
+            <div class="boceto-image">
+                <img src="/assets/images/amigosjordi.jpg" alt="Varios bocetos de diferentes expresiones faciales.">
+            </div>
+        </div>
+        <div class="boceto-item left">
+            <div class="boceto-image">
+                <img src="/assets/images/boceto5.jpg" alt="Diseño de un accesorio o herramienta para los personajes.">
+            </div>
+            <div class="boceto-info">
+                <h3>05. Diseños distintos</h3>
+                <p>Como pudieron ver en algunas zonas de la página hay diferentes Jordis, estos también fueron planeados a mano o al menos la gran mayoria. Lamentablemente hubo un accidente en otros bocetos con el mayor enemigo de las hojas, el café.</p>
+            </div>
+        </div>
+        </div>
+        </section>
+        </section>
+        <section id="curiosidades" class="gallery-content">
+            <h2><span class="material-icons">auto_awesome</span> Curiosidades</h2> 
+            <p class="section-description">Toda creación tiene distintas maneras de realizar algún trabajo, pero ¿sabías qué hay cosas que no se vieron? a continación te las contamos.</p>
+            <div class="curiosity-shelf">
+            <div class="curiosity-item" onclick="toggleExpand(this)">
+            <img src="/assets/images/Nami.jpg" alt="Miniatura de Curiosidad 1">
+            <div class="curiosity-content">
+                <h3>La gatita del profe Josué</h3>
+                <p>Antes de definir que nuestra página tendría un perro, en una conversación junto a dos compañeras (Lety y la China) se mencionó un gusto grande por los gatos, curiosamente ese dia la gatita de nuestro profe no lo dejaba trabajar. Esto dio origen a la idea que la mascota fuera la gata Nami, desafortunadamente esta gatita fue descartada después al enfocarnos únicamente en prótesis caninas.</p>
+            </div>
+        </div>
+        <div class="curiosity-item" onclick="toggleExpand(this)">
+            <img src="/assets/images/Perritos-amigos.jpg" alt="Miniatura de Curiosidad 2">
+            <div class="curiosity-content">
+                <h3>Las tres razas de los amigos de Jordi</h3>
+                <p>Los amigos de Jordi estan inspirados en estas tres posturas, aunque se decidío simplificarlos en bolitas para diferenciarlos de Jordi</p>
+            </div>
+        </div>
+        <div class="curiosity-item" onclick="toggleExpand(this)">
+            <img src="/assets/images/Paww y sus amigos bien.png" alt="Miniatura de Curiosidad 3">
+            <div class="curiosity-content">
+                <h3>¿Sabías que los amigos también tienen historia?</h3>
+                <p>Así es. Estos tres amigos tienen nombre, el de color miel se llama Coco y es un beagel, el cafe es Eco y es un labrador y el beige se llama Foster y es un cocker. </p>
+            </div>
+        </div>
+        <div class="curiosity-item" onclick="toggleExpand(this)">
+            <img src="/assets/images/JordiAZUL.jpg" alt="Miniatura de Curiosidad 4">
+            <div class="curiosity-content">
+                <h3>Un color diferente</h3>
+                <p>Jordi originalmente iba a ser azul, pues se pensaba que el fondo iba a ser blanca. Luego con el tiempo y muchas sesiones creativas, el equipo se decidió por un fondo azul lo que significó un cambio de color a nuestro querido amigo.</p>
+            </div>
+        </div>
+        <div class="curiosity-item" onclick="toggleExpand(this)">
+        <img src="/assets/images/Negociossinfondo.png" alt="Miniatura de Curiosidad 5"> <div class="curiosity-content">
+            <h3>La sección perdida</h3>
+            <p>Cuando la página aún estaba en pañales, existía una sección plenamente dedicada a los negocios con otras empresas con el paso del tiempo esta sección fue descartada y los diseños pensados, fueron olvidados.</p>
+        </div>
+    </div> <div class="curiosity-item" onclick="toggleExpand(this)">
+        <img src="/assets/images/pawwww.jpg" alt="Miniatura de Curiosidad 6"> <div class="curiosity-content">
+            <h3>Primer Nombre</h3>
+            <p>Jordi nació oficialmente el 28 de Septiembre 2025, pero su nombre no era Jordi este dato llegó después. Su primer nombre fue PAWW, pero como todo buen perrito de casa, ha recibido muchos nombres de cariño por parte de los miembros del equipo, entre ellos: Pépe o Jorge </p>
+        </div>
+    </div> <div class="curiosity-item" onclick="toggleExpand(this)">
+        <img src="/assets/images/Zorro-1.jpg" alt="Miniatura de Curiosidad 7"> <div class="curiosity-content">
+            <h3>Un zorro olvidado</h3>
+            <p>Antes de cualquier avance en la página lo único que sabiamos era que se harían prótesis para mascotas y al ser el naranja uno de nuestros colores principales, el primer diseño para la mascota fue un zorro dormido (por gustos del diseñador). Pero al no tener historia ni relación con el producto fue descartado rápidamente.</p>
+        </div>
+        </div>
+        </div>
+        </section>
+        </section>
+        <section id="creacion" class="gallery-content">
+            <section id="creacion" class="gallery-content">   
+            <h2><span class="material-icons">code</span> Creación</h2>
+            <p class="section-description">Un viaje visual a través de las diferentes versiones y etapas de diseño de nuestra página web.</p>   
+            <div class="creation-timeline">      
+            <div class="creation-step">
+            <div class="step-image">
+                <img src="/assets/images/Wireframe 1.PNG" alt="Captura de pantalla de la Versión 1 de la página web">
+            </div>
+            <div class="step-info">
+                <h3>El inicio de todo</h3>
+                <p>Nuestra primera idea de como se vería. Todavía recordamos que no sabíamos como mover cosas en Figma. Aún aprendiendo logramos sacar nuestro primer wireframe.</p>
+            </div>
+        </div>      
+        <div class="creation-step reverse">
+            <div class="step-image">
+                <img src="/assets/images/Wireframe 2.PNG" alt="Captura de pantalla de la Versión 2 de la página web">
+            </div>
+            <div class="step-info">
+                <h3>Motion Makers</h3>
+                <p>Motion Makers llegó a tener un logo propio sin embargo, esto solo fue visual. Nuestra página contenía más texto del actual, era mucho más seria y sin color.</p>
+            </div>
+        </div>     
+        <div class="creation-step">
+            <div class="step-image">
+                <img src="/assets/images/wireframe 3.PNG" alt="Captura de pantalla de la Versión 3 de la página web">
+            </div>
+            <div class="step-info">
+                <h3>Primer Login</h3>
+                <p>Un enfoque al pasado, la primer idea de Login que tuvimos un estilo clásico y un tanto aburrido en comparación de lo que tenemos hoy en día.</p>
+            </div>
+        </div>       
+        <div class="creation-step reverse">
+            <div class="step-image">
+                <img src="/assets/images/wireframe 4.PNG" alt="Captura de pantalla de la Versión 4 (Final) de la página web">
+            </div>
+            <div class="step-info">
+                <h3>Un vistazo a lo diferente</h3>
+                <p>Una de las varias páginas que se fueron descartando con el tiempo. Este formato era aburrido y con poca creatividad visual, representa muy bien nuestra evolución como equipo. Fuimos siendo más cercanos y conocernos mejor, logrando juntar nuestras ideas en un proyecto terminado hoy en día.</p>
+            </div>
+        </div>
+    </div>
+</section>
+        </section>
+    <section id="logo" class="gallery-content">
+    <h2><span class="material-icons">diamond</span> Logo</h2>
+    <p class="section-description">Descubre la historia, inspiración y los secretos ocultos detrás del diseño de nuestro logo.</p>
     
+    <div class="carousel-container logo-carousel-container-simple"> 
+        
+        <div class="carousel-track logo-carousel-track-simple"> 
+            
+            <div class="carousel-item logo-carousel-item-simple">
+                <img src="/assets/images/logosinfondo.png" alt="Paso 1 del Logo">
+                <div class="logo-caption">
+                    <h3>1. La idea original</h3>
+                    <p>Este es la idea principal de Pawssible, un logo que refleja nuestra metnalidad y cómo fue creciendo...</p>
+                </div>
+            </div>
+            
+            <div class="carousel-item logo-carousel-item-simple">
+                <img src="/assets/images/colchon.jpg" alt="8. Mockup Final">
+                <div class="logo-caption">
+                    <h3>2. El colchón</h3>
+                    <p>La parte baja del logo donde esta descansando a palabra "Pawssible" es el colchón de la perrita de nuestro editor dando a entender que todo lo Pawssible se apoya sobre nosotros.</p>
+                </div>
+            </div>
+            <div class="carousel-item logo-carousel-item-simple">
+                <img src="/assets/images/fondo.jpg" alt="Paso 1 del Logo">
+                <div class="logo-caption">
+                    <h3>3. La inspiración principal</h3>
+                    <p>La imagen principal de Pawssible es esta imagen, que da a entender la trancisión que viven los perritos al tener una pótesis y hacer entender a los dueños que su perrito no es otro por portar una prótesis</p>
+                </div>
+            </div>
+            
+            <div class="carousel-item logo-carousel-item-simple">
+                <img src="/assets/images/Perritos.jpg" alt="Paso 1 del Logo">
+                <div class="logo-caption">
+                    <h3>4. La huella perruna</h3>
+                    <p>La huella de un perro, un clásico en el diseño ya que representa a los perros en general. Sin embargo, para nosotros representa nuestra vida tan cercana con ellos y por ende el amor que les tenemos (Los perros de la foto acompañaron al diseñador por 12 años)</p>
+                </div>
+            </div>
+            
+            
+            <div class="carousel-item logo-carousel-item-simple">
+                <img src="/assets/images/primeraprotesis.jpg" alt="Paso 1 del Logo">
+                <div class="logo-caption">
+                    <h3>5. La primera prótesis</h3>
+                    <p>Como pueden ver, este logo tiene una prótesis completamente diferente a la que vimos con Jordi. Ya que al inicio del proyecto no teniamos una referencia real pero decidimos dejarlo para representar nuestros inicios.</p>
+                </div>
+            </div>
+            
+            <div class="carousel-item logo-carousel-item-simple">
+                <img src="/assets/images/Kira.jpg" alt="Paso 1 del Logo">
+                <div class="logo-caption">
+                    <h3>6. Los dos corazones</h3>
+                    <p>Estos demuestran nuestro amor y cariño por los animales y representan las dos manchitas que tiene la actual perrita del diseñador llamada Kira</p>
+                </div>
+            </div>
+            
+        </div> <button class="carousel-control prev-button" onclick="navigateLogoSimple(-1)">&#10094;</button>
+        <button class="carousel-control next-button" onclick="navigateLogoSimple(1)">&#10095;</button>
+        <div class="carousel-dots logo-simple-dots"></div>
+        
+    </div> 
+    </section>
+    </main>
+    </main> 
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h3>Agradecimientos</h3>
+                <p>Muchas gracias por ver nuestro sitio web. Esperamos que la hayan disfrutado y que se entretuvieran con esta galeria. Agradecemos a nuestros instructores Josué, Mariana y Maara; ya que sin ellos esto no hubiese sido posible. Gracias especiales a los alumnos y compañeros de la Cohorte 59 por haber hecho este curso emocionante. De parte del equipo de Motion Makers por su atencion ¡Gracias!</p>
+                <div class="footer-logo">
+                    <img src="/assets/images/logosinfondo.png" alt="Pawssible Logo" style="width: 80px; margin-top: 15px;">
+                </div>
+            </div>
+            <div class="footer-section links">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="#inspiracion">Inspiración</a></li>
+                    <li><a href="#bocetos">Bocetos</a></li>
+                    <li><a href="#curiosidades">Curiosidades</a></li>
+                    <li><a href="#creacion">Creación</a></li>
+                    <li><a href="#logo">Logo</a></li>
+                </ul>
+            </div>
+            <div class="footer-section social">
+                <h3>Síguenos</h3>
+                <div class="social-icons">
+                    <a href="#" target="_blank" class="social-icon instagram" aria-label="Instagram">
+                        <img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png" alt="Instagram">
+                    </a>
+                    <a href="#" target="_blank" class="social-icon linkedin" aria-label="LinkedIn">
+                        <img src="https://img.icons8.com/ios-filled/50/ffffff/linkedin.png" alt="LinkedIn">
+                    </a>
+                    <a href="#" target="_blank" class="social-icon google" aria-label="Google">
+                        <img src="https://img.icons8.com/ios-filled/50/ffffff/google-plus.png" alt="Google">
+                    </a>
+                    <a href="#" target="_blank" class="social-icon github" aria-label="GitHub">
+                        <img src="https://img.icons8.com/ios-filled/50/ffffff/github.png" alt="GitHub">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; <span id="current-year"></span> Pawssible. Todos los derechos reservados.
+        </div>
+    </footer>
+    <script src="/assets/js/creacionjordi.js"></script> 
 </body>
 </html>
