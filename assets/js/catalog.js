@@ -1,3 +1,12 @@
+/*
+ * Archivo: assets/js/catalog.js
+ * Propósito: Renderizado y lógica del catálogo en páginas index y secciones relacionadas; integración con carrito.
+ * Autor: Equipo ProyectoGeneration
+ * Fecha: 2025-11-13
+ * Descripción: Presenta tarjetas de productos, controla la adición al carrito desde el listado, y maneja la persistencia
+ *              en localStorage. Se inserta únicamente la cabecera de comentario; no se modifica la funcionalidad.
+ */
+
 // catalog.js
 // Sistema de catálogo con carrito funcional integrado
 
@@ -69,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
       listEl.appendChild(card);
     });
 
-    // Agregar botón "Ver todos los productos" después de las cards
+    // Agregar botón "Ver todos los productos" después de las tarjetas
     agregarBotonVerTodos(listEl);
   }
 

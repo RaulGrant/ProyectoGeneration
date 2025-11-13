@@ -1,8 +1,20 @@
-/* Login.js
-   Lógica para registro e inicio de sesión con toasters modernos
-*/
+/*
+ * Archivo: assets/js/Login.js
+ * Propósito: Gestión de la interfaz de autenticación (registro e inicio de sesión) en la página de login.
+ * Autor: Equipo ProyectoGeneration
+ * Fecha: 2025-11-13
+ * Descripción: Maneja registro, inicio de sesión, persistencia de usuarios en localStorage y la visualización
+ *              de notificaciones (Toastify). Únicamente se añade un bloque de cabecera de comentario;
+ *              no se tocan ni reestructura las funciones existentes.
+ */
 
 // -------------------- Helper para Toast --------------------
+/**
+ * showToast(message, type)
+ * @param {String} message - Texto a mostrar en el toast.
+ * @param {String} [type='info'] - Tipo de notificación: 'info'|'success'|'error'|'warning'.
+ * - Muestra un toast usando Toastify con estilos según el tipo.
+ */
 function showToast(message, type = "info") {
   let bgColor = "#3498db"; // azul por defecto
   if(type === "success") bgColor = "#2ecc71";
@@ -26,15 +38,20 @@ const registerForm = document.querySelector(".register-container form");
 const loginForm = document.querySelector(".login-container form");
 
 // -------------------- Eventos para cambiar panel --------------------
+// Listener para alternar al panel de registro
+// - Abre el panel derecho de la UI de autenticación.
 document.getElementById('register').addEventListener('click', () => {
   container.classList.add('right-panel-active');
 });
 
+// Listener para alternar al panel de inicio de sesión
 document.getElementById('login').addEventListener('click', () => {
   container.classList.remove('right-panel-active');
 });
 
 // -------------------- Registro de usuario --------------------
+// Handler de envío del formulario de registro
+// - Valida campos, evita duplicados por email y almacena el usuario en localStorage.
 registerForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
@@ -68,6 +85,8 @@ registerForm.addEventListener('submit', (e) => {
 });
 
 // -------------------- Login de usuario --------------------
+// Handler de envío del formulario de login
+// - Valida credenciales contra usuarios almacenados en localStorage y crea sesión.
 loginForm.addEventListener('submit', (e) => {
   e.preventDefault();
 

@@ -1,3 +1,12 @@
+/*
+ * Archivo: assets/js/contact.js
+ * Propósito: Lógica del formulario de contacto y utilidades UI (EmailJS, validaciones, menú y reveal-on-scroll).
+ * Autor: Equipo ProyectoGeneration
+ * Fecha: 2025-11-13
+ * Descripción: Valida y envía el formulario de contacto mediante EmailJS, maneja errores, muestra notificaciones
+ *              y contiene utilidades de interacción en la página de contacto. Solo se añade un comentario de cabecera;
+ *              no se altera la implementación existente.
+ */
 // Menú hamburguesa + overlay (igual a la plantilla)
 (function(){
   const hamburger = document.querySelector('.hamburger');
@@ -26,7 +35,7 @@
   window.addEventListener('resize', ()=>{ if(window.innerWidth>820) close(); });
 })();
 
-// Reveal on scroll (AOS-lite)
+// Revelado al hacer scroll (AOS-lite)
 (function(){
   const items = document.querySelectorAll('[data-reveal]');
   if('IntersectionObserver' in window){
@@ -140,16 +149,16 @@
 
 
         // 1. Enviar auto-respuesta al cliente
-      const autoReplyResponse = await emailjs.send(
-        'service_9z269i2',     // Tu Service ID
-        'template_g9e4cmp',    // Template de auto-respuesta
-        templateParams
-      );
+        const autoReplyResponse = await emailjs.send(
+          'service_9z269i2',     // ID de servicio (EmailJS)
+          'template_g9e4cmp',    // ID de la plantilla de auto-respuesta
+          templateParams
+        );
 
-      // 2. Enviar notificación interna a ti
+      // 2. Enviar notificación interna al administrador
       const internalResponse = await emailjs.send(
-        'service_9z269i2',     // El mismo Service ID
-        'template_b28pyxi',      // Reemplaza con el ID de tu template interno
+        'service_9z269i2',     // Mismo ID de servicio (EmailJS)
+        'template_b28pyxi',    // Reemplaza con el ID de tu plantilla interna
         templateParams
       );
 

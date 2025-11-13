@@ -1,4 +1,21 @@
-// ===== ANIMATE ON SCROLL (AOS) =====
+/*
+ * Archivo: assets/js/scriptLanding.js
+ * Propósito: Scripts generales de la landing (carruseles, navegación, utilidades y AOS ligero).
+ * Autor: Equipo ProyectoGeneration
+ * Fecha: 2025-11-13
+ * Descripción: Contiene la implementación de animaciones al hacer scroll, control
+ *              de carruseles en el inicio, utilidades para footer y manejo de elementos
+ *              interactivos de la landing page. Solo se añade un comentario de cabecera;
+ *              no se modifica la lógica existente.
+ */
+// ===== ANIMACIONES AL HACER SCROLL (AOS) =====
+/**
+ * AOS ligero: detecta elementos con `data-aos` y aplica la clase `aos-animate`.
+ * Métodos principales:
+ * - constructor(): crea la instancia y llama a `init()`.
+ * - init(): registra listeners y realiza el primer chequeo.
+ * - checkElements(): verifica visibilidad y aplica/remueve clases según atributos.
+ */
 class AOS {
     constructor() {
         this.elements = [];
@@ -13,7 +30,7 @@ class AOS {
             window.addEventListener(evt, () => this.checkElements());
         });
 
-        // Trigger inicial
+        // Comprobación inicial
         this.checkElements();
     }
 

@@ -1,9 +1,37 @@
-// ===== CATÁLOGO DE PRÓTESIS PAWSSIBLE =====
+/*
+    protesis.js
 
-// Variables globales
+    Archivo principal para la gestión del catálogo y carrito de compras.
+
+    Variables exportadas / globales:
+    - todosLosProductos: Array — catálogo cargado desde `assets/data/protesis.json`.
+    - productosFiltrados: Array — lista actual filtrada para renderizado.
+    - carrito: Array — estado del carrito (persistido en localStorage `carritoPatitas`).
+
+    Funciones públicas (expuestas en `window` al final del archivo):
+    - agregarAlCarrito(idProducto): Añade un producto al carrito (usado por botones de añadir y por `pg-catalog.js`).
+    - cambiarCantidad(idProducto, cambio): Incrementa/decrementa cantidad en el modal del carrito.
+    - eliminarDelCarrito(idProducto): Elimina un artículo del carrito.
+    - vaciarCarrito(): Vacía el carrito (UI: botón vaciar).
+    - finalizarCompra(): Construye URL de WhatsApp y abre ventana para finalizar compra.
+    - verCarrito(): Muestra el modal del carrito.
+    - mostrarModalCarrito(), cerrarCarrito(): Control del modal.
+
+    Nota: Este archivo contiene comentarios y documentación en español para facilitar mantenimiento.
+*/
+// ===== CATÁLOGO DE PRÓTESIS PAWSSIBLE =====
+// Variables globales (comentarios en español)
 let todosLosProductos = [];
 let productosFiltrados = [];
+// El carrito se persiste en localStorage bajo la clave 'carritoPatitas'
 let carrito = JSON.parse(localStorage.getItem('carritoPatitas')) || [];
+// Normalizar items cargados (asegurar propiedad `cantidad` numérica)
+if (Array.isArray(carrito)) {
+    carrito = carrito.map(it => ({
+        ...it,
+        cantidad: Number(it.cantidad) || 1
+    }));
+}
 
 // ===== INICIALIZACIÓN =====
 document.addEventListener('DOMContentLoaded', () => {
@@ -13,6 +41,13 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ===== CARGAR PRODUCTOS DESDE JSON =====
+/**
+ * cargarProductosDesdeJSON()
+ * - Lee `assets/data/protesis.json` y adapta cada entrada al formato interno esperado.
+ * - Actualiza las variables globales: `todosLosProductos` y `productosFiltrados`.
+ * - Llama a `renderizarProtesis` y `actualizarContadorProductos`.
+ * No recibe parámetros.
+ */
 async function cargarProductosDesdeJSON() {
     try {
         const response = await fetch('assets/data/protesis.json');
@@ -50,6 +85,11 @@ async function cargarProductosDesdeJSON() {
 }
 
 // Determinar talla basado en el tipo de prótesis (función auxiliar)
+/**
+ * determinarTalla(producto)
+ * @param {Object} producto - Objeto con propiedades que determinan la talla (miembro,tipo,segmento,configuracion).
+ * @returns {String} - Clave de talla: 'small'|'medium'|'large'|'xlarge'|'all'.
+ */
 function determinarTalla(producto) {
     if (producto.miembro === 'cuatro-extremidades') return 'xlarge';
     if (producto.tipo === 'servicio') return 'all';
@@ -59,6 +99,10 @@ function determinarTalla(producto) {
 }
 
 // ===== MOSTRAR ERROR DE CARGA =====
+/**
+ * mostrarErrorCarga()
+ * - Inserta en el DOM un mensaje visual cuando no se puede cargar el catálogo.
+ */
 function mostrarErrorCarga() {
     const grid = document.getElementById('protesisGrid');
     if (grid) {
@@ -82,6 +126,10 @@ function mostrarErrorCarga() {
 }
 
 // ===== RENDERIZAR PRÓTESIS =====
+/**
+ * renderizarProtesis(protesis)
+ * @param {Array} protesis - Lista de objetos producto a renderizar en `#protesisGrid`.
+ */
 function renderizarProtesis(protesis) {
     const grid = document.getElementById('protesisGrid');
     
@@ -103,6 +151,11 @@ function renderizarProtesis(protesis) {
 }
 
 // ===== CREAR CARD DE PRÓTESIS =====
+/**
+ * crearCardProtesis(protesis)
+ * @param {Object} protesis - Producto con propiedades necesarias para crear la tarjeta.
+ * @returns {String} HTML de la tarjeta.
+ */
 function crearCardProtesis(protesis) {
     const stockBadge = obtenerBadgeStock(protesis.stock);
     const imagen = protesis.imagenes && protesis.imagenes[0] 
@@ -168,6 +221,11 @@ function crearCardProtesis(protesis) {
 }
 
 // ===== OBTENER BADGE DE STOCK =====
+/**
+ * obtenerBadgeStock(stock)
+ * @param {Number|null} stock - Cantidad disponible o null para servicios.
+ * @returns {String} HTML con la etiqueta de stock.
+ */
 function obtenerBadgeStock(stock) {
     if (stock === null || stock === undefined) {
         return '<span class="badge-stock">Servicio</span>';
@@ -181,6 +239,11 @@ function obtenerBadgeStock(stock) {
 }
 
 // ===== TRADUCIR TALLAS =====
+/**
+ * traducirSize(size)
+ * @param {String} size - Clave de talla (en inglés).
+ * @returns {String} Texto traducido al español.
+ */
 function traducirSize(size) {
     const traducciones = {
         'small': 'Pequeña',
@@ -193,17 +256,32 @@ function traducirSize(size) {
 }
 
 // ===== GESTIÓN DEL CARRITO =====
+/**
+ * obtenerCarrito()
+ * @returns {Array} - Referencia al array `carrito` en memoria.
+ */
 function obtenerCarrito() {
     return carrito;
 }
 
+/**
+ * guardarCarrito()
+ * - Persiste el array `carrito` en localStorage bajo la clave `carritoPatitas`.
+ * - Llama a `actualizarContadorCarrito` para sincronizar UI.
+ */
 function guardarCarrito() {
+    // Guardar en localStorage y actualizar contador (asegurar valores numéricos)
     localStorage.setItem('carritoPatitas', JSON.stringify(carrito));
     actualizarContadorCarrito();
 }
 
+/**
+ * actualizarContadorCarrito()
+ * - Recalcula la suma de cantidades del carrito y actualiza el badge y el enlace del navbar.
+ */
 function actualizarContadorCarrito() {
-    const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
+    // Sumar cantidades robustamente (por si item.cantidad no está definido)
+    const totalItems = carrito.reduce((sum, item) => sum + (Number(item.cantidad) || 0), 0);
     
     // Actualizar badge del carrito flotante
     const badge = document.getElementById('carritoBadge');
@@ -226,6 +304,12 @@ if (carritoLink) {
 
 }
 
+/**
+ * agregarAlCarrito(idProducto)
+ * @param {String|Number} idProducto - Identificador del producto a añadir.
+ * - Si el producto no existe en `todosLosProductos`, intenta buscarlo en `pgGetCatalog`.
+ * - Maneja verificación de stock y normaliza el objeto antes de añadirlo al carrito.
+ */
 function agregarAlCarrito(idProducto) {
     let producto = todosLosProductos.find(p => String(p.id) === String(idProducto));
     
@@ -267,18 +351,36 @@ function agregarAlCarrito(idProducto) {
     // Verificar si ya existe en el carrito
     const itemExistente = carrito.find(item => String(item.id) === String(idProducto));
     if (itemExistente) {
-        // Verificar stock antes de incrementar
-        if (itemExistente.cantidad < (producto.stock || 99)) {
-            itemExistente.cantidad++;
+        // Verificar stock antes de incrementar (usar stock del item o del producto)
+        const stockDisponible = (typeof itemExistente.stock === 'number') ? itemExistente.stock : (producto ? producto.stock : 99);
+        if ((Number(itemExistente.cantidad) || 0) < (stockDisponible || 99)) {
+            itemExistente.cantidad = (Number(itemExistente.cantidad) || 0) + 1;
             mostrarMensaje(`✅ Cantidad actualizada: ${producto.nombreProtesis}`, 'success');
         } else {
             console.warn('⚠️ Stock máximo alcanzado');
-            mostrarMensaje(`⚠️ Stock máximo alcanzado (${producto.stock} unidades)`, 'warning');
+            mostrarMensaje(`⚠️ Stock máximo alcanzado (${stockDisponible} unidades)`, 'warning');
             return;
         }
     } else {
-        carrito.push(producto);
-        mostrarMensaje(`Agregado al carrito: ${producto.nombreProtesis}`, 'success');
+        // Mapear un objeto seguro para el carrito, asegurando la propiedad `cantidad` y `imagen`
+        const itemParaCarrito = {
+            id: producto.id,
+            nombreProtesis: producto.nombreProtesis || producto.nombre || '(Sin nombre)',
+            precio: Number(producto.precio) || 0,
+            cantidad: 1,
+            imagen: producto.imagen || (producto.imagenes && producto.imagenes[0]) || 'assets/images/placeholder.png',
+            imagenes: producto.imagenes || [producto.imagen || 'assets/images/placeholder.png'],
+            sku: producto.sku || '',
+            descripcion: producto.descripcion || '',
+            stock: typeof producto.stock === 'number' ? producto.stock : (producto.stock ? Number(producto.stock) : undefined),
+            size: producto.size || 'medium',
+            tipo: producto.tipo || '',
+            miembro: producto.miembro || '',
+            segmento: producto.segmento || ''
+        };
+
+        carrito.push(itemParaCarrito);
+        mostrarMensaje(`Agregado al carrito: ${itemParaCarrito.nombreProtesis}`, 'success');
     }
     guardarCarrito();
 }
@@ -288,6 +390,10 @@ function verCarrito() {
     mostrarModalCarrito();
 }
 
+/**
+ * mostrarModalCarrito()
+ * - Muestra el modal del carrito y renderiza los items con `crearItemCarrito`.
+ */
 function mostrarModalCarrito() {
     const modal = document.getElementById('modalCarrito');
     const carritoItems = document.getElementById('carritoItems');
@@ -310,7 +416,14 @@ function mostrarModalCarrito() {
     document.body.style.overflow = 'hidden';
 }
 
+/**
+ * crearItemCarrito(item)
+ * @param {Object} item - Item del carrito. Propiedades usadas: id, nombreProtesis, precio, cantidad, imagen, imagenes.
+ * @returns {String} - HTML de cada fila del carrito dentro del modal.
+ */
 function crearItemCarrito(item) {
+    // Calcular subtotales y formateos
+    const cantidadItem = Number(item.cantidad) || 1;
     const subtotal = new Intl.NumberFormat('es-MX', {
         style: 'currency',
         currency: 'MXN',
@@ -322,19 +435,24 @@ function crearItemCarrito(item) {
         currency: 'MXN',
         minimumFractionDigits: 2
     }).format(item.precio);
-    
+    // Asegurar que mostramos alguna imagen aunque el objeto venga con diferente propiedad
+    const imagenMostrada = item.imagen || (item.imagenes && item.imagenes[0]) || 'assets/images/placeholder.png';
+
+        // Pasar el id como string escapado para que el atributo onclick no se rompa por comillas
+    const idSeguro = String(item.id).replace(/'/g, "\\'");
+
     return `
         <div class="carrito-item">
-            <img src="${item.imagen}" alt="${item.nombreProtesis}" class="carrito-item-image" onerror="this.src='assets/images/placeholder.png'">
+            <img src="${imagenMostrada}" alt="${item.nombreProtesis}" class="carrito-item-image" onerror="this.src='assets/images/placeholder.png'">
             <div class="carrito-item-info">
                 <h4 class="carrito-item-name">${item.nombreProtesis}</h4>
                 <p style="font-size: 0.9rem; color: #999; margin-bottom: 0.5rem;">${precioUnitario} c/u</p>
                 <p class="carrito-item-price">${subtotal}</p>
                 <div class="carrito-item-quantity">
-                    <button class="btn-quantity" onclick="cambiarCantidad(${item.id}, -1)">-</button>
-                    <span style="font-weight: 700; min-width: 40px; text-align: center;">${item.cantidad}</span>
-                    <button class="btn-quantity" onclick="cambiarCantidad(${item.id}, 1)">+</button>
-                    <button class="btn-remove-item" onclick="eliminarDelCarrito(${item.id})">
+                    <button class="btn-quantity" onclick="cambiarCantidad('${idSeguro}', -1)">-</button>
+                    <span style="font-weight: 700; min-width: 40px; text-align: center;">${cantidadItem}</span>
+                    <button class="btn-quantity" onclick="cambiarCantidad('${idSeguro}', 1)">+</button>
+                    <button class="btn-remove-item" onclick="eliminarDelCarrito('${idSeguro}')">
                         Eliminar
                     </button>
                 </div>
@@ -343,36 +461,56 @@ function crearItemCarrito(item) {
     `;
 }
 
+/**
+ * cambiarCantidad(idProducto, cambio)
+ * @param {String|Number} idProducto - Id del artículo en el carrito.
+ * @param {Number} cambio - +1 o -1 para incrementar o decrementar la cantidad.
+ */
 function cambiarCantidad(idProducto, cambio) {
-    const item = carrito.find(i => i.id === idProducto);
-    const producto = todosLosProductos.find(p => p.id === idProducto);
-    
-    if (!item || !producto) return;
-    
-    const nuevaCantidad = item.cantidad + cambio;
-    
+    // Buscar item en carrito (coerción a string para evitar problemas de tipo)
+    const item = carrito.find(i => String(i.id) === String(idProducto));
+    // Intentar encontrar el producto en el catálogo principal (puede no existir si vino de otro origen)
+    const producto = todosLosProductos.find(p => String(p.id) === String(idProducto));
+
+    if (!item) return; // Si no existe el item en el carrito, nada que hacer
+
+    const nuevaCantidad = (Number(item.cantidad) || 0) + Number(cambio);
+
     if (nuevaCantidad <= 0) {
+        // Si la nueva cantidad es 0 o menor, eliminar del carrito
         eliminarDelCarrito(idProducto);
         return;
     }
-    
-    if (producto.stock && nuevaCantidad > producto.stock) {
-        mostrarMensaje(`⚠️ Stock máximo: ${producto.stock} unidades`, 'warning');
+
+    // Determinar stock disponible: preferir stock del propio item, luego del catálogo, si no existe asumir ilimitado
+    const stockDisponible = (typeof item.stock === 'number') ? item.stock : (producto ? producto.stock : Infinity);
+
+    if (Number.isFinite(stockDisponible) && nuevaCantidad > stockDisponible) {
+        mostrarMensaje(`⚠️ Stock máximo: ${stockDisponible} unidades`, 'warning');
         return;
     }
-    
+
     item.cantidad = nuevaCantidad;
     guardarCarrito();
     mostrarModalCarrito();
 }
 
+/**
+ * eliminarDelCarrito(idProducto)
+ * @param {String|Number} idProducto - Id del artículo a eliminar del carrito.
+ * - Actualiza almacenamiento y UI al finalizar.
+ */
 function eliminarDelCarrito(idProducto) {
-    carrito = carrito.filter(item => item.id !== idProducto);
+    carrito = carrito.filter(item => String(item.id) !== String(idProducto));
     guardarCarrito();
     mostrarModalCarrito();
     mostrarMensaje('Producto eliminado del carrito', 'info');
 }
 
+/**
+ * vaciarCarrito()
+ * - Muestra una notificación de confirmación (Toastify). Si el usuario confirma, vacía el carrito.
+ */
 function vaciarCarrito() {
   if (carrito.length === 0) {
     Toastify({
@@ -426,6 +564,10 @@ function vaciarCarrito() {
 }
 
 
+/**
+ * cerrarCarrito()
+ * - Oculta el modal del carrito y restaura el scroll del body.
+ */
 function cerrarCarrito() {
     const modal = document.getElementById('modalCarrito');
     if (modal) {
@@ -434,6 +576,10 @@ function cerrarCarrito() {
     }
 }
 
+/**
+ * actualizarTotalCarrito()
+ * - Recalcula y actualiza el total mostrado en el pie del modal.
+ */
 function actualizarTotalCarrito() {
     const total = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
     const totalFormateado = new Intl.NumberFormat('es-MX', {
@@ -449,25 +595,29 @@ function actualizarTotalCarrito() {
 }
 
 // ===== FINALIZAR COMPRA POR WHATSAPP =====
+/**
+ * finalizarCompra()
+ * - Construye el mensaje para WhatsApp con el resumen del carrito y abre la URL.
+ */
 function finalizarCompra() {
-    function finalizarCompra() {
     if (carrito.length === 0) {
         mostrarMensaje('<i data-lucide="shopping-cart"></i> El carrito está vacío', 'warning');
         lucide.createIcons(); // Renderiza el ícono SVG
         return;
     }
 
-    // ... resto de la lógica
-}
-
-    
     const mensaje = construirMensajeWhatsApp();
     const numeroWhatsApp = '525512345678'; // Cambia este número
     const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
-    
+
     window.open(urlWhatsApp, '_blank');
 }
 
+/**
+ * construirMensajeWhatsApp()
+ * - Recorre `carrito` y construye el texto formateado para enviar por WhatsApp.
+ * @returns {String} - Mensaje con resumen y total.
+ */
 function construirMensajeWhatsApp() {
     let mensaje = '🐾 *PEDIDO PAWSSIBLE* 🐾\n\n';
     
@@ -487,6 +637,10 @@ function construirMensajeWhatsApp() {
 }
 
 // ===== FILTROS Y BÚSQUEDA =====
+/**
+ * filtrarProductos()
+ * - Lee los controles de búsqueda/filtro/orden y actualiza `productosFiltrados`.
+ */
 function filtrarProductos() {
     const searchTerm = document.getElementById('searchBox')?.value.toLowerCase() || '';
     const sizeFilter = document.getElementById('filterSize')?.value || 'all';
@@ -525,12 +679,21 @@ function filtrarProductos() {
     actualizarContadorProductos(productosFiltrados.length);
 }
 
+/**
+ * actualizarContadorProductos(cantidad)
+ * @param {Number} cantidad - Número de productos mostrados.
+ * - Actualiza el texto del contador `#productsCount`.
+ */
 function actualizarContadorProductos(cantidad) {
     const contador = document.getElementById('productsCount');
     if (contador) {
         contador.textContent = `Mostrando ${cantidad} producto${cantidad !== 1 ? 's' : ''}`;
     }
 }
+/**
+ * inicializarEventos()
+ * - Añade los listeners para los controles globales de la página (carrito flotante, cierre de modal, búsqueda, filtros, etc.).
+ */
 function inicializarEventos() {
     // Botón del carrito flotante
     const btnCarritoFloat = document.getElementById('btnCarritoFloat');

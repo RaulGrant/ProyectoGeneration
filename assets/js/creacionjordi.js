@@ -1,3 +1,11 @@
+/*
+ * Archivo: assets/js/creacionjordi.js
+ * Propósito: Comportamientos y utilidades JS para la sección 'Creación Jordi' (carruseles y UI específica).
+ * Autor: Equipo ProyectoGeneration
+ * Fecha: 2025-11-13
+ * Descripción: Maneja carruseles, flip-cards, sección de curiosidades y actualizaciones del footer.
+ *              Se añade únicamente un comentario de cabecera; no se modifica la lógica existente.
+ */
 document.addEventListener('DOMContentLoaded', () => {
     const carouselTrackInicio = document.querySelector('#carrusel-inicio .carousel-track');
     const carouselItemsInicio = document.querySelectorAll('#carrusel-inicio .carousel-item');
@@ -24,6 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
         carouselDotsContainerInicio.appendChild(dot);
     }
     const dotsInicio = document.querySelectorAll('#carrusel-inicio .dot');
+    /**
+     * updateCarouselInicio()
+     * - Actualiza la posición del carrusel principal según `currentIndexInicio`.
+     * - Usa `carouselItemsInicio` para calcular el ancho del slide y `carouselTrackInicio` para aplicar la transformación.
+     * - También sincroniza los indicadores (dots) en `dotsInicio`.
+     */
     function updateCarouselInicio() {
         const itemWidth = carouselItemsInicio[0].clientWidth;
         const offset = -currentIndexInicio * itemWidth;
@@ -32,6 +46,11 @@ document.addEventListener('DOMContentLoaded', () => {
             dot.classList.toggle('active', index === currentIndexInicio);
         });
     }
+    /**
+     * startAutoRotateInicio()
+     * - Inicia un intervalo que avanza el carrusel cada `rotationSpeed` milisegundos.
+     * - Guarda la referencia en `autoRotateInterval` para poder cancelarlo.
+     */
     function startAutoRotateInicio() {
         autoRotateInterval = setInterval(() => {
             currentIndexInicio = (currentIndexInicio + 1) % totalItemsInicio;
@@ -39,25 +58,44 @@ document.addEventListener('DOMContentLoaded', () => {
         }, rotationSpeed);
     }
     
+    /**
+     * resetAutoRotateInicio()
+     * - Reinicia el temporizador del auto-rotado cancelando el intervalo previo y arrancando uno nuevo.
+     */
     function resetAutoRotateInicio() {
         clearInterval(autoRotateInterval);
         startAutoRotateInicio();
     }
     updateCarouselInicio();
     startAutoRotateInicio();
+    /**
+     * navigateCarousel(direction)
+     * @param {Number} direction - `1` para siguiente, `-1` para anterior.
+     * - Calcula el nuevo índice y actualiza el carrusel, además de reiniciar el auto-rotado.
+     */
     window.navigateCarousel = (direction) => {
         currentIndexInicio = (currentIndexInicio + direction + totalItemsInicio) % totalItemsInicio;
         updateCarouselInicio();
         resetAutoRotateInicio();
     };
     window.addEventListener('resize', updateCarouselInicio);
-    // 3. Función del Flip Card
+    // 3. Función de voltear tarjeta
+    /**
+     * flipCard(cardElement)
+     * @param {HTMLElement} cardElement - Elemento de tarjeta que recibirá la clase `flipped`.
+     * - Alterna la clase `flipped` para mostrar la cara posterior/anterior de la tarjeta.
+     */
     window.flipCard = (cardElement) => {
         cardElement.classList.toggle('flipped');
     }
     
 }); 
 
+/**
+ * initializeLogoCarousel()
+ * - Inicializa un carrusel de logos si existe el contenedor `#logo`.
+ * - Expone `window.navigateLogoSimple(direction)` para controlar la navegación.
+ */
 function initializeLogoCarousel() {
     const trackLogoSimple = document.querySelector('#logo .logo-carousel-track-simple');
     const itemsLogoSimple = document.querySelectorAll('#logo .carousel-item.logo-carousel-item-simple');
@@ -91,6 +129,10 @@ const dots = document.querySelectorAll('.dot');
 const totalSlides = items.length;
 let currentIndex = 0;
 
+/**
+ * updateDots()
+ * - Sin parámetros. Sincroniza la clase `active` en los puntos (dots) en base a `currentIndex`.
+ */
 function updateDots() {
     dots.forEach((dot, index) => {
         dot.classList.remove('active');
@@ -101,6 +143,11 @@ function updateDots() {
 }
 
 // Función principal para mover el carrusel
+/**
+ * moveToSlide(index)
+ * @param {Number} index - Índice de la diapositiva objetivo.
+ * - Actualiza `currentIndex`, aplica la transformación CSS en `track` y actualiza los dots.
+ */
 function moveToSlide(index) {
     if (index >= totalSlides) {
         index = 0; 
@@ -116,6 +163,10 @@ function moveToSlide(index) {
 }
 
 // Función pública llamada por los botones (HTML onclick="navigateCarousel(1)")
+/**
+ * navigateCarousel(direction)
+ * @param {Number} direction - `1` para siguiente, `-1` para anterior.
+ */
 function navigateCarousel(direction) {
     // direction será -1 (prev) o 1 (next)
     moveToSlide(currentIndex + direction);
@@ -133,14 +184,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //Seccion de Curiosidades
 function toggleExpand(element) {
-    //Quita la clase 'expanded' de cualquier otro elemento que la tenga
+    /**
+     * toggleExpand(element)
+     * @param {HTMLElement} element - Elemento `.curiosity-item` a expandir/colapsar.
+     * - Asegura que solo un elemento dentro del estante (`.curiosity-shelf`) esté expandido.
+     */
+    // Quita la clase 'expanded' de cualquier otro elemento que la tenga
     const shelf = element.closest('.curiosity-shelf');
     const currentlyExpanded = shelf.querySelector('.curiosity-item.expanded');
     // Esto cierra otro slide que este abierto para que no choquen
     if (currentlyExpanded && currentlyExpanded !== element) {
         currentlyExpanded.classList.remove('expanded');
     }
-    element.classList.toggle('expanded'); //Esto hace que con hacer click se active la expansion
+    element.classList.toggle('expanded'); // Esto hace que con hacer click se active la expansion
 }
 
 //Aqui empieza la zona de logo 

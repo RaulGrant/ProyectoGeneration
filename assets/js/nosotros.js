@@ -1,4 +1,13 @@
-// ===== FUNCIONALIDAD AOS AVANZADA (ANIMATE ON SCROLL) =====
+/*
+ * Archivo: assets/js/nosotros.js
+ * Propósito: Gestión de animaciones on-scroll (AOS) y comportamientos UI para la página "Sobre Nosotros".
+ * Autor: Equipo ProyectoGeneration
+ * Fecha: 2025-11-13
+ * Descripción: Implementa una clase ligera de AOS (Animate On Scroll) que detecta
+ *              elementos con `data-aos`, controla su animación, optimiza el rendimiento
+ *              con IntersectionObserver cuando está disponible y añade efectos UI
+ *              específicos para la página de "Nosotros" (hover en tarjetas, parallax y scroll suave).
+ */
   class AOS {
     constructor() {
       this.animatedElements = [];
@@ -14,7 +23,7 @@
       this.refresh();
       window.addEventListener('scroll', () => this.throttleScrollHandler());
       window.addEventListener('resize', () => this.refresh());
-      // Trigger initial check
+      // Ejecutar verificación inicial (chequeo para animaciones al cargar)
       setTimeout(() => this.handleScroll(), 100);
     }
 
