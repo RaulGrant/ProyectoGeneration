@@ -323,6 +323,7 @@ function crearItemCarrito(item) {
         minimumFractionDigits: 2
     }).format(item.precio);
     
+    // IMPORTANTE: Agregar comillas simples alrededor de ${item.id} porque sin ellas piensa que es una variable o expresion en vez de texto literal.
     return `
         <div class="carrito-item">
             <img src="${item.imagen}" alt="${item.nombreProtesis}" class="carrito-item-image" onerror="this.src='assets/images/placeholder.png'">
@@ -331,10 +332,10 @@ function crearItemCarrito(item) {
                 <p style="font-size: 0.9rem; color: #999; margin-bottom: 0.5rem;">${precioUnitario} c/u</p>
                 <p class="carrito-item-price">${subtotal}</p>
                 <div class="carrito-item-quantity">
-                    <button class="btn-quantity" onclick="cambiarCantidad(${item.id}, -1)">-</button>
+                    <button class="btn-quantity" onclick="cambiarCantidad('${item.id}', -1)">-</button>
                     <span style="font-weight: 700; min-width: 40px; text-align: center;">${item.cantidad}</span>
-                    <button class="btn-quantity" onclick="cambiarCantidad(${item.id}, 1)">+</button>
-                    <button class="btn-remove-item" onclick="eliminarDelCarrito(${item.id})">
+                    <button class="btn-quantity" onclick="cambiarCantidad('${item.id}', 1)">+</button>
+                    <button class="btn-remove-item" onclick="eliminarDelCarrito('${item.id}')">
                         Eliminar
                     </button>
                 </div>
@@ -344,10 +345,17 @@ function crearItemCarrito(item) {
 }
 
 function cambiarCantidad(idProducto, cambio) {
-    const item = carrito.find(i => i.id === idProducto);
-    const producto = todosLosProductos.find(p => p.id === idProducto);
+    const idStr = String(idProducto); //AQUI CAMBIAMOS A TEXTO!! 
+    const item = carrito.find(i => String(i.id) === idStr); //AQUI CAMBIAMOS A TEXTO!! 
+
+    //SE BUSCA EN EL CATALOGO ORIGINAL, SI NO SE ENCUENTRA NADA SE PASA AL PG.
+    let producto = todosLosProductos.find(p => String(p.id) === idStr);
+    if (!producto && window.pgGetCatalog) {
+        const pgList = window.pgGetCatalog();
+        producto = pgList.find(p => String(p.id) === idStr);
+}
     
-    if (!item || !producto) return;
+    if (!item || !producto) return; //Aqui la funcion termina si no existe ni uno ni otro.
     
     const nuevaCantidad = item.cantidad + cambio;
     
@@ -356,8 +364,10 @@ function cambiarCantidad(idProducto, cambio) {
         return;
     }
     
-    if (producto.stock && nuevaCantidad > producto.stock) {
-        mostrarMensaje(`⚠️ Stock máximo: ${producto.stock} unidades`, 'warning');
+ //Aqui vamos a verificar el stock y mandar un mensaje   
+    const stock = producto.stock || producto.stock === 0 ? producto.stock : 999;
+    if (stock && nuevaCantidad > stock) {
+        mostrarMensaje(`⚠️ Stock máximo: ${stock} unidades`, 'warning');
         return;
     }
     
