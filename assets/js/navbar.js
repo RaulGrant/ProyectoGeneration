@@ -1,4 +1,4 @@
-// ===== NAVBAR COMPONENT CON CSS AUTO-CARGADO Y LOGIN PERSONALIZADO =====
+
 class NavbarComponent {
   constructor() {
     this.loadCSS();
@@ -24,7 +24,6 @@ class NavbarComponent {
     const session = JSON.parse(sessionStorage.getItem('session') || 'null');
     const persistent = JSON.parse(localStorage.getItem('session') || 'null');
     const user = session || persistent;
-    const usernameDisplay = user ? `Hola, ${user.name}` : 'Login';
 
     // Crear el HTML del navbar
     const navbarHTML = `
@@ -47,7 +46,12 @@ class NavbarComponent {
               <li><a href="sobre-nosotros.html" class="nav-link" data-page="sobre-nosotros">Sobre Nosotros</a></li>
               <li><a href="nuestras-protesis.html" class="nav-link" data-page="nuestras-protesis">Catálogo</a></li>
               <li><a href="contact.html" class="nav-link" data-page="contact">Contacto</a></li>
-              <li><a href="Login.html" class="nav-link" data-page="login" id="loginLink">${usernameDisplay}</a></li>
+              <li>
+                ${user 
+                  ? `<a href="#" class="nav-link" data-page="logout" id="logoutBtn">Cerrar Sesión</a>` 
+                  : `<a href="Login.html" class="nav-link" data-page="login" id="loginLink">Login</a>`
+                }
+              </li>
             </ul>
           </div>
         </div>
@@ -57,6 +61,35 @@ class NavbarComponent {
     `;
 
     document.body.insertAdjacentHTML('afterbegin', navbarHTML);
+    
+    
+    if (user) {
+      this.initLogout();
+    }
+  }
+
+  initLogout() {
+    const logoutBtn = document.getElementById('logoutBtn');
+    
+    if (!logoutBtn) return;
+    
+    logoutBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      
+      
+      localStorage.removeItem('session');
+      sessionStorage.removeItem('session');
+      
+      
+      if (typeof showToast === 'function') {
+        showToast('Sesión cerrada exitosamente', 'success');
+      }
+      
+      
+      setTimeout(() => {
+        window.location.href = 'Login.html';
+      }, 500);
+    });
   }
 
   initHamburger() {
